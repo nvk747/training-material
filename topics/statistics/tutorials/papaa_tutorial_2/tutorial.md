@@ -10,14 +10,14 @@ objectives:
 - Learn to predict aberrant pathway activity using RNAseq data, mutational status
   and copy number variation data from TCGA.
 - Apply logistic regression based machine learning algorithms on TCGA data.
-time_estimation: ''
+time_estimation: '3h'
 key_points:
 - Identify the transcriptomic signature of tumor and potential biomarkers that are
   useful in improving personalized medicine
 - They will appear at the end of the tutorial
 contributors:
-- blankenberg
 - nvk747
+- blankenberg
 
 ---
 
@@ -28,38 +28,13 @@ contributors:
 
 Signaling pathways are most commonly altered across different tumor types. Many tumors possess at Least one driver alteration and nearly half of such alterations are potentially targeted by currently available drugs. A recent study in TCGA tumors has identified patterns of somatic variations and mechanisms in 10 canonical pathways(Sanchez-Vega et al. 2018). One-third of these tumors possess multiple alterations and have potentially complex phenotypes. Identifying a transcriptomic signature in these tumors would enable personalized therapeutic design strategies.A plethora of evidence suggests complex diseases, like cancer, can be the result of multiple genetic aberrations in biological networks or pathways rather than variation in a single gene. Often starter mutations occur in a key component network that ultimately leads to multigene dysregulation causing hallmark cancer phenotypes (Hanahan and Weinberg 2000). Many of these phenotypes are the result of disrupted transcriptional programs that affect the clinical progression and therapeutic responsiveness. Recent progress in exploring these transcriptomic changes in cancer pathogenesis provided useful clues in precision medicine (Bradner et al. 2017).
 
-Brief introduction to RTK/RAS/PI3K  pathway 
+The RTK/RAS/PI3K molecular genetic axis controls critical cellular functions and is commonly altered in various cancers (Fruman and Rommel 2014). Perturbations across this axis can lead to deficiencies in cell-cycle, survival, metabolism, motility and genome stability, triggering hallmark phenotypes of cancer. The constitutive activation and presence of phosphatidylinositol-3,4,5-trisphosphate (PIP3) trigger membrane-bound onco-signalosomes. This presents significant challenges for treatment, as PI3K cascade can be activated in several ways (Zhao and Roberts 2006).
 
-The RTK/RAS/PI3K molecular genetic axis controls critical cellular functions and is commonly altered in various cancers (Fruman and Rommel 2014)Perturbations across this axis can lead to deficiencies in cell-cycle, survival, metabolism, motility and genome stability, triggering hallmark phenotypes of cancer. The constitutive activation and presence of phosphatidylinositol-3,4,5-trisphosphate (PIP3) trigger membrane-bound onco-signalosomes. This presents significant challenges for treatment, as PI3K cascade can be activated in several ways (Zhao and Roberts 2006)
+In this tutorial we plan to measure aberrant PI3K pathway activity in TCGA dataset using RNASeq information and mutational and copy number information of following frequently altered genes. We named this tutorial as Pancancer Aberrant Pathway Activity Analysis (PAPAA)
 
-In this tutorial we plan to measure aberrant PI3K pathway activity in TCGA dataset using RNASeq information and mutational and copy number information of following genes
+![Figure-1](../../images/papaa/pi3k_pathway.png)
 
-| Gene   | OG/TSG|
-|------- |-------|
-| ERBB2  |  OG   |    
-| KRAS   |  OG   |
-| PIK3CA |  OG   |
-| AKT1   |  OG   |
-| PTEN   | TSG   |
-| PIK3R1 | TSG   |
-| STK11  | TSG   |
-
-Pancancer aberrant pathway activity analysis (PAPAA)   
-  	- PanCancer_classifier. 
- 	- PanCancer_within_disease_analysis. 
-  	- PanCancer_compare_within_models.   
-  	- PanCancer_apply_weights.   
-  	- PanCancer_visualize_decisions. 
-  	- PanCancer_map_mutation_class. 
-  	- PanCancer_alternative_genes_pathwaymapper. 
-  	- PanCancer_copy_burden_merge. 
-  	- PanCancer_pathway_count_heatmaps. 
-  	- PanCancer_targene_summary_figures. 
-  	- PanCancer_targene_cell_line_predictions. 
-  	- PanCancer_external_sample_status_prediction.
-
-**Please follow our
-[tutorial to learn how to fill the Markdown]({{ site.baseurl }}/topics/contributing/tutorials/create-new-tutorial-content/tutorial.html)**
+Cancer driver genes comprising both oncogenes(OG) and Tumor suppressor genes(TSG) share common phenotypical outcome. However they often have divergent molecular mechanisms  that drive the outcome. We are interested in capturing mutational specific differential transcriptional outcome among OG and TSG. Genes in red are oncogenes (activating or copy gain) and blue are tumor suppersor genes (inactivating or copy loss).
 
 > ### Agenda
 >
@@ -75,27 +50,30 @@ Pancancer aberrant pathway activity analysis (PAPAA)
 > ### {% icon hands_on %} Hands-on: Data upload
 >
 > 1. Create a new history for this tutorial
-> 2. Import the files from [Zenodo_re](https://zenodo.org/record/3629709#.XjCO85NKi-V) or from the shared data library
+> 2. Import the files from [PAPAA-Zenodo](https://zenodo.org/record/3632117#.Xjh96ZNKi-V) or from the shared data library
 >
 >    ```
-    https://zenodo.org/record/3629709/files/CCLE_DepMap_18Q1_maf_20180207.txt.gz?download=1
-	https://zenodo.org/record/3629709/files/CCLE_MUT_CNA_AMP_DEL_binary_Revealer.gct.gz?download=1
-	https://zenodo.org/record/3629709/files/ccle_rnaseq_genes_rpkm_20180929.gct.gz?download=1
-	https://zenodo.org/record/3629709/files/compounds.csv?download=1
-	https://zenodo.org/record/3629709/files/copy_number_gain_status.tsv.gz?download=1
-	https://zenodo.org/record/3629709/files/copy_number_loss_status.tsv.gz?download=1
-	https://zenodo.org/record/3629709/files/gdsc1_ccle_pharm_fitted_dose_data.txt.gz?download=1
-	https://zenodo.org/record/3629709/files/gdsc2_ccle_pharm_fitted_dose_data.txt.gz?download=1
-	https://zenodo.org/record/3629709/files/GDSC_CCLE_common_mut_cnv_binary.csv.gz?download=1
-	https://zenodo.org/record/3629709/files/GDSC_cell_lines_EXP_CCLE_names.csv.gz?download=1
-	https://zenodo.org/record/3629709/files/mc3.v0.2.8.PUBLIC.maf.gz?download=1
-	https://zenodo.org/record/3629709/files/mutation_burden_freeze.tsv?download=1
-	https://zenodo.org/record/3629709/files/pancan_GISTIC_threshold.tsv.gz?download=1
-	https://zenodo.org/record/3629709/files/pancan_mutation_freeze.tsv.gz?download=1
-	https://zenodo.org/record/3629709/files/pancan_rnaseq_freeze.tsv.gz?download=1
-	https://zenodo.org/record/3629709/files/sample_freeze.tsv?download=1
-	https://zenodo.org/record/3629709/files/seg_based_scores.tsv?download=1
-	https://zenodo.org/record/3629709/files/vogelstein_cancergenes.tsv?download=1
+    https://zenodo.org/record/3632117/files/CCLE_DepMap_18Q1_maf_20180207.txt.gz
+	https://zenodo.org/record/3632117/files/CCLE_MUT_CNA_AMP_DEL_binary_Revealer.tsv.gz
+	https://zenodo.org/record/3632117/files/ccle_rnaseq_genes_rpkm_20180929_mod.tsv.gz
+	https://zenodo.org/record/3632117/files/compounds_of_interest.txt
+	https://zenodo.org/record/3632117/files/copy_number_gain_status.tsv.gz
+	https://zenodo.org/record/3632117/files/copy_number_loss_status.tsv.gz
+	https://zenodo.org/record/3632117/files/gdsc1_ccle_pharm_fitted_dose_data.txt.gz
+	https://zenodo.org/record/3632117/files/gdsc2_ccle_pharm_fitted_dose_data.txt.gz
+	https://zenodo.org/record/3632117/files/GDSC_CCLE_common_mut_cnv_binary.tsv.gz
+	https://zenodo.org/record/3632117/files/GDSC_EXP_CCLE_converted_name.tsv.gz
+	https://zenodo.org/record/3632117/files/mc3.v0.2.8.PUBLIC.maf.gz
+	https://zenodo.org/record/3632117/files/mutation_burden_freeze.tsv
+	https://zenodo.org/record/3632117/files/pancan_mutation_freeze.tsv.gz
+	https://zenodo.org/record/3632117/files/pancan_rnaseq_freeze.tsv.gz
+	https://zenodo.org/record/3632117/files/path_genes.txt
+	https://zenodo.org/record/3632117/files/sample_freeze.tsv
+	https://zenodo.org/record/3632117/files/seg_based_scores.tsv
+	https://zenodo.org/record/3632117/files/sign.txt
+	https://zenodo.org/record/3632117/files/vlog_trans.csv
+	https://zenodo.org/record/3632117/files/vogelstein_cancergenes.tsv
+	https://zenodo.org/record/3632117/files/tcga_dictionary.tsv
     ```
 >    ***TODO***: *Add the files by the ones on Zenodo here (if not added)*
 >
@@ -119,35 +97,36 @@ Pancancer aberrant pathway activity analysis (PAPAA)
 
 Machine Learning use learning features from datasets and generate predictive models. Extracting transcriptional patterns and learning insights from this abundance of data is a developing research area. Transcriptional profiling was used to identify differentially expressed genes and pathways associated with drug resistance in breast cancer (Men et al. 2018). Such perturbations in oncogenic pathways can be useful in predicting sensitivity to therapeutic agents (Bild et al. 2006). Machine learning-based modeling provides a systematic manner to leverage these multi-omic data to predict phenotype or stratify tumors based on gene expression and pathway variations. We extended a previously developed elastic net penalized logistic regression classification modeling approach to derive transcription signature or pathway alterations to measure aberrant PI3K activity in the pan-cancer data(Way et al. 2018). This method integrates bulk RNA Sequencing (RNA-Seq), copy number and mutation data from PanCanAtlas (https://gdc.cancer.gov/). 
 
+TCGA Pancancer has uniformly processed Multi-omics data including RNASeq, copynumber and mutational data. It covers 33 different cancer types and having information from over 10000 samples. We used publicly available RNASeq, mutation and CNV data sets from TCGA. Description and processing details of these data sets are listed at this site: [Pancancer analysis](https://github.com/nvk747/pancancer.git)
+
+***Machine learning methodology***
 Logistic regression is a kind of machine learning approcah where statistical analysis that is used to predict the outcome of a dependent variable based on prior observations. Changes in gene expression are direcly connected to alterations/mutations in genes. we used above appoach to predict mutational status given the gene expression. Optimizing to the above prediciton of mutational status with gene expression variable, we used elatic net penalty with gradient descent algorithm is used to find the optimal cost function by going over a number of iterations. The objective of the classifier is to determine the probability a given sample (i) has a aberrant gene event given the sample’s RNaseq measurements (Xi). In order to achieve the objective, the classifier learns a vector of coefficients or gene-specific weights (w) that optimize the following penalized logistic function.
 
-$$P(yi = 1|Xi)= f(Xiw)$$
+![Figure-2](../../images/papaa/equation.png)
 
-< equation image need to be added > image: ![equation](../image/equation.jpeg) 
-Where alpha and l are regularization and elastic net mixing hyperparameters that are only active during training.
+Where alpha and l are regularization and elastic net mixing hyperparameters that are only active during training. Each model was tested at multiple alpha and l values and cross vaidated was performed.  
 
-TCGA Pancancer has uniformly processed Multi-omics data including RNASeq, copynumber and mutational data. It covers 33 different cancer types and having information from over 10000 samples.
+***Sample Processing step:***
 
-Sample Processing step: 
-*x-matrix* 
-Gene-expression data comprises of expression levels for ~20000 genes in ~10000 samples. Top 8000 highly variable genes between the samples were measured by median absolute deviation (MAD) and considered for analysis. 
+*x-matrix*
+> Gene-expression data comprises of expression levels for ~20000 genes in ~10000 samples. Top 8000 highly variable genes between the samples were measured by median absolute deviation (MAD) and considered for analysis. 
 
-*y-matrix* copy number and mutational data in the binary format for all samples. This set is sorted to given pathway target genes and cancer types. 
+*y-matrix*
+> copy number and mutational data in the binary format for all samples. This set is sorted to given pathway target genes and cancer types. 
 
-We then randomly held out 10% of the samples to create a test set and rest 90% for training.  Testing set is used as the validation to evaluate the performance of any machine learning algorithm and the remaining parts are used for learning/training.
+We then randomly held out 10% of the samples to create a test set and rest 90% for training.  Testing set is used as the validation to evaluate the performance of any machine learning algorithm and the remaining parts are used for learning/training. The training set is balanced for different cancer-types and PI3K status. 
 
 Predicting probabilities of an observation belonging to each class in a classification problem is more flexible rather than predicting classes directly. This method has an added advantage to tradeoff errors made by the model as it depends on interpretion of probabilities using different thresholds. Two diagnostic tools that help in the interpretation of probabilistic forecast for binary (two-class) classification predictive modeling problems are ROC Curves and Precision-Recall curves. Each model generated is evaluated and performance metrics is measured using AUROC and AUPR.
 
 As elatic net penalty with stochastic decent gradient apporach induces sparsity in the number of features used in classification, and the best/top features (genes) are likely to represent transcriptional signature of given disease or aberrant activity of the mutated genes in a pathway. 
 
-Each feature is given a rank and score negative or positive depending on its contribution to classifcation. The positve scored genes are likely to be upregulated in activated pathway samples and negatively scored genes are likely to be downsteam targets of altered pathways. 
+Each feature (gene) is given a rank and score(negative or positive) depending on its contribution to classifcation. The positve scored genes are likely to be upregulated in activated pathway samples and negatively scored genes are likely to be downsteam targets of altered pathways. 
 
-In this tutorial, we made series of steps to generate classification models and use those models for predicting pharmocological response or identifying potential biomarkers that are helpful in for treatment of various cancers. Generate model using PTEN,PI3KR1,STK11 (SET-1) tumor suppressor genes and another model from ERBB2,KRAS,PIK3CA,AKT11 (SET-2) oncogenes from ERK/RAS/PI3K signalling axis pathway. These models performacne in PI3K aberrant activity will be compared and presented in the series of the steps. We present additional analysis for SET-2 in other steps.
-
+In this tutorial, we made series of steps to generate classification models and used those models for predicting pharmocological response or identifying potential biomarkers that are helpful in for treatment of various cancers. Generate model using from ERBB2,KRAS,PIK3CA,AKT11 oncogenes from ERK/RAS/PI3K signalling axis pathway. 
 have fun!
 
 ## **PanCancer_classifier**
-This first step is designed to generate models with given set of target genes (targenes) belonging to a particular pathway (path_genes) and specific cancer types(diseases) from The Cancer Genome Atlas (TCGA). The model generated are evaluted using AUROC and AUPR as a whole or individual cancer types and also generate classficer scores or coeficients.
+This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes belonging to a ERK/RAS/PI3K signalling axis pathway(path_genes) and BLCA,BRCA,CESC,COAD,ESCA,LUAD,LUSC,OV,PRAD,READ,STAD,UCEC,UCS cancer types/diseases(ref: tcga_dictionary.tsv) from The Cancer Genome Atlas (TCGA). Additionally the generated model was used to evaluate alternative genes (PTEN,PIK3R1,STK11) and alternative dieseases (BRCA,COAD,ESCA,HNSC,LGG,LUAD,LUSC,PRAD,READ,GBM,UCEC,UCS).  
 
 > ### {% icon hands_on %} Hands-on: Generating model from ERBB2,PIK3CA,KRAS,AKT1 genes
 >
@@ -555,8 +534,8 @@ This first step is designed to generate models with given set of target genes (t
 > {: .solution}
 >
 {: .question}
-
-# **Conclusion**
+>
+# **Conclusions**
 {:.no_toc}
 
 Sum up the tutorial and the key takeaways here. We encourage adding an overview image of the
