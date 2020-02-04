@@ -123,7 +123,7 @@ Logistic regression is a kind of machine learning approcah where statistical ana
 
 $$P(yi = 1|Xi)= f(Xiw)$$
 
-< equation image need to be added > image: ![equation](path/to/smallorb.png) 
+< equation image need to be added > image: ![equation](../image/equation.jpeg) 
 Where alpha and l are regularization and elastic net mixing hyperparameters that are only active during training.
 
 TCGA Pancancer has uniformly processed Multi-omics data including RNASeq, copynumber and mutational data. It covers 33 different cancer types and having information from over 10000 samples.
@@ -172,7 +172,7 @@ This first step is designed to generate models with given set of target genes (t
 
 >    *Check parameter descriptions*
 >
-		Pancancer_Aberrant_Pathway_Activity_Analysis scripts/pancancer_classifier.py:
+	Pancancer_Aberrant_Pathway_Activity_Analysis scripts/pancancer_classifier.py:
         --genes             comma separated string of HUGO symbols for target genes or targenes_list.csv file
         --diseases          comma separated string of disease types/TCGA acronyms for classifier
         --folds             number of cross validation folds
@@ -542,23 +542,21 @@ This first step is designed to generate models with given set of target genes (t
        for GDSC2 pharmacological dataset (GDSC2_ccle_targene_all_drug_response.pdf)
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
 > ### {% icon question %} Questions
 >
-> 1. Question1?
-> 2. Question2?
+> 1. Can you build a classifer for tumor suppressor gene combination in PI3K pathway?
+> 2. how did the PI3K_LOSS model performed compared to PI3K_GAIN?
 >
 > > ### {% icon solution %} Solution
 > >
-> > 1. Answer for question1
-> > 2. Answer for question2
+> > 1. Try buiding a model using (PTEN,PIK3R1,STK11 genes and BRCA,COAD,ESCA,HNSC,LGG,LUAD,LUSC,PRAD,READ,GBM,UCEC,UCS cancer-types)
+> > 2. Check the AUROC and AUPR values. 
 > >
 > {: .solution}
 >
 {: .question}
 
-# Conclusion
+# **Conclusion**
 {:.no_toc}
 
 Sum up the tutorial and the key takeaways here. We encourage adding an overview image of the
