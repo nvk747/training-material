@@ -34,7 +34,7 @@ In this tutorial we plan to measure aberrant PI3K pathway activity in TCGA datas
 
 ![Figure-1](../../images/papaa/pi3k_pathway.png)
 
-Cancer driver genes comprising both oncogenes(OG) and Tumor suppressor genes(TSG) share common phenotypical outcome. However they often have divergent molecular mechanisms  that drive the outcome. We are interested in capturing mutational specific differential transcriptional outcome among OG and TSG. Genes in red are oncogenes (activating or copy gain) and blue are tumor suppersor genes (inactivating or copy loss).
+Cancer driver genes comprising both oncogenes(OG) and Tumor suppressor genes(TSG) share common phenotypical outcome. However they often have divergent molecular mechanisms  that drive the outcome. We are interested in capturing mutational specific differential transcriptional outcome among OG and TSG. In Fig-1 Genes in red are oncogenes (have activating or copy gain) and blue are tumor suppersor genes (have inactivating or copy loss).
 
 > ### Agenda
 >
@@ -126,12 +126,15 @@ In this tutorial, we made series of steps to generate classification models and 
 have fun!
 
 ## **PanCancer_classifier**
-This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes belonging to a ERK/RAS/PI3K signalling axis pathway(path_genes) and BLCA,BRCA,CESC,COAD,ESCA,LUAD,LUSC,OV,PRAD,READ,STAD,UCEC,UCS cancer types/diseases(ref: tcga_dictionary.tsv) from The Cancer Genome Atlas (TCGA). Additionally the generated model was used to evaluate alternative genes (PTEN,PIK3R1,STK11) and alternative dieseases (BRCA,COAD,ESCA,HNSC,LGG,LUAD,LUSC,PRAD,READ,GBM,UCEC,UCS).  
+This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes belonging to a ERK/RAS/PI3K signalling axis pathway(path_genes) and BLCA,BRCA,CESC,COAD,ESCA,LUAD,LUSC,OV,PRAD,READ,STAD,UCEC,UCS cancer types/diseases(ref: tcga_dictionary.tsv) from The Cancer Genome Atlas (TCGA). Additionally the generated model was used to evaluate alternative genes (PTEN,PIK3R1,STK11) and alternative dieseases (BRCA,COAD,ESCA,HNSC,LGG,LUAD,LUSC,PRAD,READ,GBM,UCEC,UCS) performance. This steps takes feature information (pancan_rnaseq_freeze.tsv.gz), mutational information(pancan_mutation_freeze.tsv.gz),load of mutations in each samples(mutation_burden_freeze.tsv.gz), threshold passed sample information(sample_freeze.tsv) and copy number information(copy_number_loss_status.tsv.gz & copy_number_gain_status.tsv.gz).
+![Figure-3](../../images/papaa/pan_auroc.png) 
+![Figure-4](../../images/papaa/coefficients.png)
+
 
 > ### {% icon hands_on %} Hands-on: Generating model from ERBB2,PIK3CA,KRAS,AKT1 genes
 >
 > 1. **PanCancer_classifier** {% icon tool %} with the following parameters:
->    - {% icon param-file %} *"Filename of features to use in model"*: `output` (Input dataset)
+>    - {% icon param-file %} *"Filename of features to use in model"*: `output` (pancan_rnaseq_freeze.tsv.gz)
 >    - *"Treat X matrix as 'raw'"*: `Yes`
 >    - {% icon param-file %} *"Filename mutations"*: `output` (Input dataset)
 >    - {% icon param-file %} *"Filename of mutation burden"*: `output` (Input dataset)
@@ -173,10 +176,19 @@ This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes
         --classifier_folder String of the location of classifier data
         
         Output:
-        ROC curves, AUROC across diseases, and classifier coefficients
+        - ROC curves
+        pan_model performance for all diseases        
+        alt_gene performance for all diseases
+        - AUROC across diseases
+        pan model performance for each disease
+        Train,Test,CV,random performance for each disease
+        - classifier coefficients
+        over all classifier summary 
+        summary counts and propotions for target genes in each disease 
 {: .hands_on}
 
 ## **within_disease_analysis**
+This step is designed to generate individual pan-within models for each individual disease. It takes the same inputs as first step and generates similar output for each of them.
 
 > ### {% icon hands_on %} Hands-on: Generating models for individual diseases listed for ERBB2,PIK3CA,KRAS,AKT1
 >
@@ -221,6 +233,8 @@ This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes
 
 
 ## **compare_within_models**
+we next do a performance comparision between the ERBB2,PIK3CA,KRAS,AKT1 pan model and individual models.
+![Figure-5](../../images/papaa/within.png)
 
 > ### {% icon hands_on %} Hands-on: compare the ERBB2_KRAS_PIK3CA_AKT1 pan model with individual disease models
 >
@@ -244,6 +258,7 @@ This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes
 {: .hands_on}
 
 ## **apply_weights**
+In this step we would like to predict y status (mutational status) using x matrix (gene expression). Subset the x matrix to MAD genes, scaling the expression and add covariate information. A logit transformation will be applied to output probabilities and classifier decisions. 
 
 > ### {% icon hands_on %} Hands-on: Apply weights for ERBB2_KRAS_PIK3CA_AKT1 model
 >
@@ -275,6 +290,8 @@ This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes
 {: .hands_on}
 
 ## **Visualize_decisions**
+In this step we generate plots for each disease and plot  total decision and hypermutated samples.
+![Figure-6](../../images/papaa/decisions.png)
 
 > ### {% icon hands_on %} Hands-on: Visualize decisions for ERBB2_KRAS_PIK3CA_AKT1 model
 >
@@ -296,6 +313,7 @@ This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes
 {: .hands_on}
 
 ## **map_mutation_class**
+In this step we combined variant level information for each mutation combining with classifier decisions and predictions.
 
 > ### {% icon hands_on %} Hands-on: map mutation class for ERBB2_KRAS_PIK3CA_AKT1 model
 >
@@ -321,6 +339,7 @@ This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes
 {: .hands_on}
 
 ## **alternative_genes_pathwaymapper**
+In this step we combine classifier weights,copy number information, recalulate metrics for positive samples, visuvalize distribution for AUROC and AUPR for all genes and metrics for each gene. 
 
 > ### {% icon hands_on %} Hands-on: alternative genes pathway mapper for ERBB2_KRAS_PIK3CA_AKT1 model
 >
@@ -353,6 +372,8 @@ This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes
 {: .hands_on}
 
 ## **pathway_count_heatmaps**
+This step generates combined heatmap from mutation and copy number information and summarizes mutation, copy and total counts per sample for the entire pathway. 
+![Figure-7](../../images/papaa/combined.png)
 
 > ### {% icon hands_on %} Hands-on: Heatmaps for ERBB2_KRAS_PIK3CA_AKT1 model
 >
@@ -392,6 +413,9 @@ This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes
 {: .hands_on}
 
 ## **targene_summary_figures**
+This step generates plots summarizing various analysis, including heatmaps for distribution of aberrant events across tumors, distirbution of predictions at variant level,summary distribution of PTEN variants R130X and R233X.
+
+![Figure-8](../../images/papaa/all_targene.png)
 
 > ### {% icon hands_on %} Hands-on: Summary figures for ERBB2_KRAS_PIK3CA_AKT1 model
 >
@@ -420,6 +444,8 @@ This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes
 {: .hands_on}
 
 ## **targene_cell_line_predictions**
+In this step we use our classifier information and predict mutational status for various cell lines in CCLE and GDSC data sources.
+![Figure-9](../../images/papaa/GDSC_CCLE.png)
 
 > ### {% icon hands_on %} Hands-on: Analysis of CCLE and GDSC celllines using ERBB2_KRAS_PIK3CA_AKT1 model
 >
@@ -474,6 +500,9 @@ This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes
 {: .hands_on}
 
 ## **external_sample_status_prediction**
+In this step we use our classifier information and predict mutational status for PTENKO, PI3KCA mutant, WT when PI3K is inhibited using A66. 
+![Figure-9](../../images/papaa/external.png)
+
 
 > ### {% icon hands_on %} Hands-on: external sample evaluation with ERBB2_KRAS_PIK3CA_AKT1 model
 >
@@ -496,6 +525,9 @@ This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes
 {: .hands_on}
 
 ## **targene_pharmacology**
+In this step we use the classifier derived cell line predictions and use them to evaluate pharmocological response of these cell lines. We plot log IC50 with classifier scores for each cell line and draw a correlation for drug response in absensce or presence of targene mutations
+
+![Figure-9](../../images/papaa/drug.png)
 
 > ### {% icon hands_on %} Hands-on: GDSC1 and GDSC2 pharmacological analysis using ERBB2_KRAS_PIK3CA_AKT1 model
 >
