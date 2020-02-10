@@ -131,7 +131,7 @@ This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes
 ![Figure-3](../../images/papaa/pan_auroc.png) 
 ![Figure-4](../../images/papaa/coefficients.png)
 
-> ### {% icon hands_on %} Hands-on: Generating model from ERBB2,PIK3CA,KRAS,AKT1 genes
+> ### {% icon hands_on %} Hands-on: Generating model from ERBB2,PIK3CA,KRAS,AKT1 genes with specific disease types
 >
 > 1. **PAPAA: PanCancer classifier** {% icon tool %} with the following parameters:
 >    - {% icon param-file %} *"Filename of features to use in model"*: `output` (Input dataset)
@@ -176,15 +176,21 @@ This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes
         --classifier_folder String of the location of classifier data
         
         Output:
-        - ROC curves
-        pan_model performance for all diseases        
-        alt_gene performance for all diseases
-        - AUROC across diseases
-        pan model performance for each disease
-        Train,Test,CV,random performance for each disease
-        - classifier coefficients
-        over all classifier summary 
-        summary counts and propotions for target genes in each disease 
+        - Log file for script run
+        - alt_gene_alt_disease_summary.tsv
+        - alt_summary_counts.csv
+        - classifier_coefficients.tsv
+        - classifier_summary.txt
+        - pancan_roc_results.tsv
+        - summary_counts.csv
+        - cv_heatmap.pdf
+        - Disease classifier figures: list of 2 files [disease_pr and disease_auroc]
+        - all_disease_pr.pdf
+        - all_disease_roc.pdf
+        - alt_gene_alt_disease_aupr_bar.pdf
+        - alt_gene_alt_disease_auroc_bar.pdf
+        - disease_aupr.pdf
+        - disease_auroc.pdf 
 {: .hands_on}
 
 ## **within_disease_analysis**
@@ -227,7 +233,13 @@ This step is designed to generate individual pan-within models for each individu
       --filename_cancer_gene_classification Filename of cancer gene classification table
       
       Output:
-      - ROC curves, AUROC across diseases, and classifier coefficients for individual diseases
+      - Log 
+      - list of classifier_summary.txt for each disease
+      - list of classifier_coefficients.tsv for each disease
+      - list of pancan_roc_results.tsv for each disease
+      - list of summary_counts.csv for each disease
+      - Within disease figures:  List of 5 files [all_disease_pr, all_disease_roc, cv_heatmap, disease_pr, disease_roc] for individual diseases
+      - Disease classifier figures: list of 2 files [disease_pr disease_roc] for each disease
 {: .hands_on}
 
 ## **compare_within_models**
@@ -288,8 +300,8 @@ In this step we would like to predict y status (mutational status) using x matri
       --filename_cancer_gene_classification Filename of cancer gene classification table
       
       Output:
-      - Generates .tsv file of classifier scores and other covariate info for plotting creates
-       "classifier_decisions.tsv" file and Apply a logit transform [y = 1/(1+e^(-wX))] to output probabilities
+      - Log
+      - classifier_decisions.tsv
 {: .hands_on}
 
 ## **Visualize_decisions**
@@ -582,7 +594,7 @@ In this step we use the classifier derived cell line predictions and use them to
 > {: .solution}
 >
 {: .question}
-
+>
 # **Conclusions**
 {:.no_toc}
 
