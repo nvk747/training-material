@@ -351,6 +351,8 @@ In this step we combined variant level information for each mutation combining w
       Output:
       - Merge per sample classifier scores with mutation types present in each sample
        and generate "mutation_classification_scores.tsv" file
+      - Log
+      - mutation_classification_scores.tsv
 {: .hands_on}
 
 ## **alternative_genes_pathwaymapper**
@@ -382,8 +384,10 @@ In this step we combine classifier weights,copy number information, recalulate m
       Output:
       - calculate and display metrics for targen classification
       - calulate and display pathway metrics ("pathway_metrics_pathwaymapper.txt")
-      - Visualize Distribution of AUROC and AUPRC for all genes and Get Metrics for All Genes
-       ("all_gene_metric_ranks.tsv")
+      - Visualize Distribution of AUROC and AUPRC for all genes and Get Metrics for All Genes ("all_gene_metric_ranks.tsv")
+      - Log
+      - pathway_metrics_pathwaymapper.txt
+      - all_gene_metric_ranks.tsv
 {: .hands_on}
 
 ## **pathway_count_heatmaps**
@@ -423,10 +427,14 @@ This step generates combined heatmap from mutation and copy number information a
       
       Output:
       - Mutation, Copy Number, and Total Heatmaps (Gene by Cancer-type).
-      - Calculates Mutations and copy number percentages of the genes in the 
-       and generates "pathway_mapper_percentages.txt" file. 
-      - Summarizes mutation, copy, and total counts per sample by targene pathway
-       and generates "path_events_per_sample.tsv" file
+      - Calculates Mutations and copy number percentages of the genes in the and generates "pathway_mapper_percentages.txt" file. 
+      - Summarizes mutation, copy, and total counts per sample by targene pathway and generates "path_events_per_sample.tsv" file
+      - Log
+      - mut_df.pdf
+      - copy_df.pdf
+      - combined_df.pdf
+      - pathway_mapper_percentages.txt"/>
+      - path_events_per_sample.tsv"/>
 {: .hands_on}
 
 ## **targene_summary_figures**
@@ -453,16 +461,23 @@ This step generates plots summarizing various analysis, including heatmaps for d
       Output:
       - Heatmaps of the distribution of aberrant events across tumors ("targene_heatmap.pdf" and "all_targene_heatmap.pdf")
       - Gene weights/Coefficients contributing to the model (targene_coef_plot.pdf)
-      - Plot distributions of predictions according to variant classification for OG and TSG
-       ("variant_gain_fill_map.pdf" and "variant_loss_fill_map.pdf")
-      - Plot summary distribution of PTEN variants R130X and R233X prediction scores using OG based classifer("PTEN_R130X_R233X_gain_distribution.pdf")
-      - Plot summary distribution of PTEN variants R130X and R233X prediction scores using TSG based classifer("PTEN_R130X_R233X_loss_distribution.pdf")
+      - Plot distributions of predictions according to variant classification for OG and TSG ("variant_gain_fill_map.pdf" and "variant_loss_fill_map.pdf")
       - Targene Summary Counts Distribution ("path_events_per_sample.tsv")
       - Targene pathway events counts ("targene_pathway_events_counts.pdf")
-      - Performance Metrics Distribution across pathway members
-       ("aupr_distribution.pdf" and "auroc_distribution.pdf")
-      - T-Test for AUPR between targene pathway genes and Other genes
-       ("targene_pathway_variant_AUPR_ttest.txt")
+      - Performance Metrics Distribution across pathway members ("aupr_distribution.pdf" and "auroc_distribution.pdf")
+      - T-Test for AUPR between targene pathway genes and Other genes ("targene_pathway_variant_AUPR_ttest.txt")
+      - Log
+      - targene_heatmap.pdf
+      - all_targene_heatmap.pdf
+      - targene_coef_plot.pdf
+      - variant_gain_fill_map.pdf
+      - variant_loss_fill_map.pdf
+      - aupr_distribution.pdf
+      - auroc_distribution.pdf
+      - targene_pathway_events_counts.pdf
+      - targene_pathway_variant_AUPR_ttest.txt
+      - amino_acid_mutation_scores.tsv
+      - nucleotide_mutation_scores.tsv
 {: .hands_on}
 
 ## **targene_cell_line_predictions**
@@ -503,25 +518,30 @@ In this step we use our classifier information and predict mutational status for
       
       Output:
       - Generate predictions for CCLE data using targene classifier(ccle_histogram.png)
-      - Generate classifier scores for CCLE cell lines and combines CCLE mutational data
-       and variant data with classifier scores (ccle_targene_classifier_scores.tsv).
+      - Generate classifier scores for CCLE cell lines and combines CCLE mutational data and variant data with classifier scores (ccle_targene_classifier_scores.tsv).
       - Performes t-test on classifier weights across targene mutant vs targene wildtype cell-line groups(ccle_targene_WT_MUT_predictions.pdf)
-      - add CCLE nucleotide scores at variant level and update nucleotide_mutation_scores.tsv
-       (updated_Data_nucleotide_scores.csv)
-      - add CCLE protein scores at variant level and update aminoacid_mutation_scores.tsv
-       (updated_Data_aminoacid_scores.csv)
+      - add CCLE nucleotide scores at variant level and update nucleotide_mutation_scores.tsv (updated_Data_nucleotide_scores.csv)
+      - add CCLE protein scores at variant level and update aminoacid_mutation_scores.tsv (updated_Data_aminoacid_scores.csv)
       - Generate predictions for GDSC data using targene classifier(gdsc_scores_histogram.png)
-      - Generate classifier scores for GDSC cell lines and combines CCLE mutational data
-       and variant data with classifier scores (gdsc_targene_classifier_scores.tsv).
+      - Generate classifier scores for GDSC cell lines and combines CCLE mutational data and variant data with classifier scores (gdsc_targene_classifier_scores.tsv).
       - Performes t-test on classifier weights across targene mutant vs targene wildtype cell-line groups(gdsc_targene_WT_MUT_predictions.pdf)
-      -Apply GDSC classifier scores to evaluate GDSC1 pharmacologial data response
-      (gdsc1_targene_pharmacology_predictions.tsv)
-      -Apply GDSC classifier scores to evaluate GDSC2 pharmacologial data response
-      (gdsc2_targene_pharmacology_predictions.tsv)
-      -Apply CCLE classifier scores to evaluate GDSC1 pharmacologial data response
-      (gdsc1_ccle_targene_pharmacology_predictions.tsv)
-      -Apply CCLE classifier scores to evaluate GDSC2 pharmacologial data response
-      (gdsc2_ccle_targene_pharmacology_predictions.tsv)
+      - Apply GDSC classifier scores to evaluate GDSC1 pharmacologial data response (gdsc1_targene_pharmacology_predictions.tsv)
+      - Apply GDSC classifier scores to evaluate GDSC2 pharmacologial data response (gdsc2_targene_pharmacology_predictions.tsv)
+      - Apply CCLE classifier scores to evaluate GDSC1 pharmacologial data response (gdsc1_ccle_targene_pharmacology_predictions.tsv)
+      - Apply CCLE classifier scores to evaluate GDSC2 pharmacologial data response (gdsc2_ccle_targene_pharmacology_predictions.tsv)
+      - Log 
+      - ccle_histogram.png
+      - ccle_targene_classifier_scores.tsv
+      - ccle_targene_WT_MUT_predictions.pdf
+      - updated_data_nucleotide_scores.csv
+      - updated_data_aminoacid_scores.csv
+      - gdsc_scores_histogram.png
+      - gdsc_targene_classifier_scores.tsv
+      - gdsc_targene_WT_MUT_predictions.pdf
+      - gdsc1_targene_pharmacology_predictions.tsv
+      - gdsc2_targene_pharmacology_predictions.tsv
+      - gdsc1_ccle_targene_pharmacology_predictions.tsv
+      - gdsc2_ccle_targene_pharmacology_predictions.tsv
 {: .hands_on}
 
 ## **external_sample_status_prediction**
@@ -547,6 +567,9 @@ In this step we use our classifier information and predict mutational status for
       Output:
       - compare and perform t-test significance calculation of perdicted scores
        between external normal and tumor samples ("targene_external_sample_predictions.pdf and targene_external_sample_predictions_1.pdf")
+      - Log
+      - Figure 1
+      - Figure 2
 {: .hands_on}
 
 ## **targene_pharmacology**
