@@ -133,22 +133,37 @@ This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes
 > ### {% icon hands_on %} Hands-on: Generating model from ERBB2,PIK3CA,KRAS,AKT1 genes with specific disease types
 >
 > 1. **PAPAA: PanCancer classifier** {% icon tool %} with the following parameters:
->    - {% icon param-file %} *"Filename of features to use in model"*: `output` (Input dataset)
+>    - {% icon param-file %} *"Filename of features to use in model"*: `pancan_rnaseq_freeze.tsv` (Input dataset)
 >    - *"Treat X matrix as 'raw'"*: `Yes`
->    - {% icon param-file %} *"Filename mutations"*: `output` (Input dataset)
->    - {% icon param-file %} *"Filename of mutation burden"*: `output` (Input dataset)
->    - {% icon param-file %} *"Filename of sample"*: `output` (Input dataset)
+>    - {% icon param-file %} *"Filename mutations"*: `pancan_mutation_freeze.tsv` (Input dataset)
+>    - {% icon param-file %} *"Filename of mutation burden"*: `mutation_burden_freeze.tsv` (Input dataset)
+>    - {% icon param-file %} *"Filename of sample"*: `sample_freeze.tsv` (Input dataset)
 >    - *"Comma separated string of HUGO gene symbols"*: `ERBB2,PIK3CA,KRAS,AKT1`
 >    - *"Comma sep string of TCGA disease acronyms. If no arguments are passed, filtering will default to options given in \--filter_count and \--filter_prop."*: `BLCA,BRCA,CESC,COAD,ESCA,LUAD,LUSC,OV,PRAD,READ,STAD,UCEC,UCS`
+>    - *"Number of cross validation folds to perform"*: `5`
 >    - *"Decision to drop input genes from X matrix"*: `Yes`
 >    - *"Supplement Y matrix with copy number events"*: `Yes`
+>    - {% icon param-file %} *"File with Copy number loss"*: `copy_number_loss_status.tsv` (Input dataset)
+>    - {% icon param-file %} *"File with Copy number gain"*: `copy_number_gain_status.tsv` (Input dataset)
+>    - {% icon param-file %} *"File with cancer gene classification table"*: `vogelstein_cancergenes.tsv` (Input dataset)
+>    - *"Min number of mutations in diseases to include"*: `15`
+>    - *"Min proportion of positives to include disease"*: `0.05`
+>    - *"Number of MAD genes to include in classifier"*: `8000`
 >    - *"the alphas for parameter sweep"*: `0.1,0.13,0.15,0.18,0.2,0.3,0.4,0.6,0.7`
 >    - *"the l1 ratios for parameter sweep"*: `0.1,0.125,0.15,0.2,0.25,0.3,0.35`
 >    - *"alternative genes to test performance"*: `PTEN,PIK3R1,STK11`
 >    - *"The alternative diseases to test performance"*: `BRCA,COAD,ESCA,HNSC,LGG,LUAD,LUSC,PRAD,READ,GBM,UCEC,UCS`
+>    - *"Min number of mutations in diseases to include in alternate"*: `15`
+>    - *"Min proportion of positives to include disease in alternate"*: `0.05`
 >    - *"Remove hypermutated samples"*: `Yes`
 >    - *"Keep intermediate ROC values for plotting"*: `Yes`
 >    - *"Shuffle the input gene exprs matrix alongside"*: `Yes`
+>    - *"Shuffle the gene exprs matrix before training"*: `No`
+>    - *"Remove mutation data from y matrix"*: `No`
+>    - *"Decision to drop rasopathy genes from X matrix"*: `No`
+>    - *"Comma separated list of genes to be dropped from X matrix"*: (leave empty)
+>    - *"Decision to drop gene expression values from X"*: `No`
+>    - *"Decision to drop covariate information from X"*: `No`
 {: .hands_on}
 
 >    *Check parameter descriptions*
@@ -199,16 +214,16 @@ This step is designed to generate individual pan-within models for each individu
 > ### {% icon hands_on %} Hands-on: Generating models for individual diseases listed for ERBB2,PIK3CA,KRAS,AKT1
 >
 > 1. **PAPAA: PanCancer within disease analysis** {% icon tool %} with the following parameters:
->    - {% icon param-file %} *"Filename of features to use in model"*: `output` (Input dataset)
+>    - {% icon param-file %} *"Filename of features to use in model"*: `pancan_rnaseq_freeze.tsv` (Input dataset)
 >    - *"Treat X matrix as 'raw'"*: `Yes`
->    - {% icon param-file %} *"Filename mutations"*: `output` (Input dataset)
->    - {% icon param-file %} *"Filename of mutation burden"*: `output` (Input dataset)
->    - {% icon param-file %} *"Filename of sample"*: `output` (Input dataset)
+>    - {% icon param-file %} *"Filename mutations"*: `pancan_mutation_freeze.tsv` (Input dataset)
+>    - {% icon param-file %} *"Filename of mutation burden"*: `mutation_burden_freeze.tsv` (Input dataset)
+>    - {% icon param-file %} *"Filename of sample"*: `sample_freeze.tsv` (Input dataset)
 >    - *"Comma separated string of HUGO gene symbols"*: `ERBB2,PIK3CA,KRAS,AKT1`
 >    - *"Comma sep string of TCGA disease acronyms. If no arguments are passed, filtering will default to options given in \--filter_count and \--filter_prop."*: `BLCA,BRCA,CESC,COAD,ESCA,LUAD,LUSC,OV,PRAD,READ,STAD,UCEC,UCS`
->    - {% icon param-file %} *"File with Copy number loss"*: `output` (Input dataset)
->    - {% icon param-file %} *"File with Copy number gain"*: `output` (Input dataset)
->    - {% icon param-file %} *"File with cancer gene classification table"*: `output` (Input dataset)
+>    - {% icon param-file %} *"File with Copy number loss"*: `copy_number_loss_status.tsv` (Input dataset)
+>    - {% icon param-file %} *"File with Copy number gain"*: `copy_number_gain_status.tsv` (Input dataset)
+>    - {% icon param-file %} *"File with cancer gene classification table"*: `vogelstein_cancergenes.tsv` (Input dataset)
 >    - *"the alphas for parameter sweep"*: `0.1,0.13,0.15,0.18,0.2,0.3,0.4,0.6,0.7`
 >    - *"the l1 ratios for parameter sweep"*: `0.1,0.125,0.15,0.2,0.25,0.3,0.35`
 >    - *"Remove hypermutated samples"*: `Yes`
