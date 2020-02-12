@@ -139,7 +139,7 @@ This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes
 >    - {% icon param-file %} *"Filename of mutation burden"*: `output` (Input dataset)
 >    - {% icon param-file %} *"Filename of sample"*: `output` (Input dataset)
 >    - *"Comma separated string of HUGO gene symbols"*: `ERBB2,PIK3CA,KRAS,AKT1`
->    - *"Comma sep string of TCGA disease acronyms. If no arguments are passed, filtering will default to options given in --filter_count and --filter_prop."*: `BLCA,BRCA,CESC,COAD,ESCA,LUAD,LUSC,OV,PRAD,READ,STAD,UCEC,UCS`
+>    - *"Comma sep string of TCGA disease acronyms. If no arguments are passed, filtering will default to options given in \--filter_count and \--filter_prop."*: `BLCA,BRCA,CESC,COAD,ESCA,LUAD,LUSC,OV,PRAD,READ,STAD,UCEC,UCS`
 >    - *"Decision to drop input genes from X matrix"*: `Yes`
 >    - *"Supplement Y matrix with copy number events"*: `Yes`
 >    - *"the alphas for parameter sweep"*: `0.1,0.13,0.15,0.18,0.2,0.3,0.4,0.6,0.7`
@@ -205,7 +205,7 @@ This step is designed to generate individual pan-within models for each individu
 >    - {% icon param-file %} *"Filename of mutation burden"*: `output` (Input dataset)
 >    - {% icon param-file %} *"Filename of sample"*: `output` (Input dataset)
 >    - *"Comma separated string of HUGO gene symbols"*: `ERBB2,PIK3CA,KRAS,AKT1`
->    - *"Comma sep string of TCGA disease acronyms. If no arguments are passed, filtering will default to options given in --filter_count and --filter_prop."*: `BLCA,BRCA,CESC,COAD,ESCA,LUAD,LUSC,OV,PRAD,READ,STAD,UCEC,UCS`
+>    - *"Comma sep string of TCGA disease acronyms. If no arguments are passed, filtering will default to options given in \--filter_count and \--filter_prop."*: `BLCA,BRCA,CESC,COAD,ESCA,LUAD,LUSC,OV,PRAD,READ,STAD,UCEC,UCS`
 >    - {% icon param-file %} *"File with Copy number loss"*: `output` (Input dataset)
 >    - {% icon param-file %} *"File with Copy number gain"*: `output` (Input dataset)
 >    - {% icon param-file %} *"File with cancer gene classification table"*: `output` (Input dataset)
