@@ -32,7 +32,7 @@ The RTK/RAS/PI3K molecular genetic axis controls critical cellular functions and
 
 In this tutorial we plan to measure aberrant PI3K pathway activity in TCGA dataset using RNASeq information and mutational and copy number information of following frequently altered genes. We named this tutorial as Pancancer Aberrant Pathway Activity Analysis (PAPAA)
 
-![Figure-1](../../images/papaa/pi3k_pathway.png)
+![Figure-1](images/pi3k_pathway.png)
 
 Cancer driver genes comprising both oncogenes(OG) and Tumor suppressor genes(TSG) share common phenotypical outcome. However they often have divergent molecular mechanisms  that drive the outcome. We are interested in capturing mutational specific differential transcriptional outcome among OG and TSG. In Fig-1 Genes in red are oncogenes (have activating or copy gain) and blue are tumor suppersor genes (have inactivating or copy loss).
 
@@ -53,27 +53,27 @@ Cancer driver genes comprising both oncogenes(OG) and Tumor suppressor genes(TSG
 > 2. Import the files from [PAPAA-Zenodo](https://zenodo.org/record/3632117#.Xjh96ZNKi-V) or from the shared data library
 >
 >    ```
-    https://zenodo.org/record/3632117/files/CCLE_DepMap_18Q1_maf_20180207.txt.gz
-	https://zenodo.org/record/3632117/files/CCLE_MUT_CNA_AMP_DEL_binary_Revealer.tsv.gz
-	https://zenodo.org/record/3632117/files/ccle_rnaseq_genes_rpkm_20180929_mod.tsv.gz
-	https://zenodo.org/record/3632117/files/compounds_of_interest.txt
-	https://zenodo.org/record/3632117/files/copy_number_gain_status.tsv.gz
-	https://zenodo.org/record/3632117/files/copy_number_loss_status.tsv.gz
-	https://zenodo.org/record/3632117/files/gdsc1_ccle_pharm_fitted_dose_data.txt.gz
-	https://zenodo.org/record/3632117/files/gdsc2_ccle_pharm_fitted_dose_data.txt.gz
-	https://zenodo.org/record/3632117/files/GDSC_CCLE_common_mut_cnv_binary.tsv.gz
-	https://zenodo.org/record/3632117/files/GDSC_EXP_CCLE_converted_name.tsv.gz
-	https://zenodo.org/record/3632117/files/mc3.v0.2.8.PUBLIC.maf.gz
-	https://zenodo.org/record/3632117/files/mutation_burden_freeze.tsv
-	https://zenodo.org/record/3632117/files/pancan_mutation_freeze.tsv.gz
-	https://zenodo.org/record/3632117/files/pancan_rnaseq_freeze.tsv.gz
-	https://zenodo.org/record/3632117/files/path_genes.txt
-	https://zenodo.org/record/3632117/files/sample_freeze.tsv
-	https://zenodo.org/record/3632117/files/seg_based_scores.tsv
-	https://zenodo.org/record/3632117/files/sign.txt
-	https://zenodo.org/record/3632117/files/vlog_trans.csv
-	https://zenodo.org/record/3632117/files/vogelstein_cancergenes.tsv
-	https://zenodo.org/record/3632117/files/tcga_dictionary.tsv
+https://zenodo.org/record/3632117/files/CCLE_DepMap_18Q1_maf_20180207.txt.gz
+https://zenodo.org/record/3632117/files/CCLE_MUT_CNA_AMP_DEL_binary_Revealer.tsv.gz
+https://zenodo.org/record/3632117/files/ccle_rnaseq_genes_rpkm_20180929_mod.tsv.gz
+https://zenodo.org/record/3632117/files/compounds_of_interest.txt
+https://zenodo.org/record/3632117/files/copy_number_gain_status.tsv.gz
+https://zenodo.org/record/3632117/files/copy_number_loss_status.tsv.gz
+https://zenodo.org/record/3632117/files/gdsc1_ccle_pharm_fitted_dose_data.txt.gz
+https://zenodo.org/record/3632117/files/gdsc2_ccle_pharm_fitted_dose_data.txt.gz
+https://zenodo.org/record/3632117/files/GDSC_CCLE_common_mut_cnv_binary.tsv.gz
+https://zenodo.org/record/3632117/files/GDSC_EXP_CCLE_converted_name.tsv.gz
+https://zenodo.org/record/3632117/files/mc3.v0.2.8.PUBLIC.maf.gz
+https://zenodo.org/record/3632117/files/mutation_burden_freeze.tsv
+https://zenodo.org/record/3632117/files/pancan_mutation_freeze.tsv.gz
+https://zenodo.org/record/3632117/files/pancan_rnaseq_freeze.tsv.gz
+https://zenodo.org/record/3632117/files/path_genes.txt
+https://zenodo.org/record/3632117/files/sample_freeze.tsv
+https://zenodo.org/record/3632117/files/seg_based_scores.tsv
+https://zenodo.org/record/3632117/files/sign.txt
+https://zenodo.org/record/3632117/files/vlog_trans.csv
+https://zenodo.org/record/3632117/files/vogelstein_cancergenes.tsv
+https://zenodo.org/record/3632117/files/tcga_dictionary.tsv
     ```
 >    ***TODO***: *Add the files by the ones on Zenodo here (if not added)*
 >
@@ -102,7 +102,7 @@ TCGA Pancancer has uniformly processed Multi-omics data including RNASeq, copynu
 ***Machine learning methodology***
 Logistic regression is a kind of machine learning approcah where statistical analysis that is used to predict the outcome of a dependent variable based on prior observations. Changes in gene expression are direcly connected to alterations/mutations in genes. we used above appoach to predict mutational status given the gene expression. Optimizing to the above prediciton of mutational status with gene expression variable, we used elatic net penalty with gradient descent algorithm is used to find the optimal cost function by going over a number of iterations. The objective of the classifier is to determine the probability a given sample (i) has a aberrant gene event given the sample’s RNaseq measurements (Xi). In order to achieve the objective, the classifier learns a vector of coefficients or gene-specific weights (w) that optimize the following penalized logistic function.
 
-![Figure-2](../../images/papaa/equation.png)
+![Figure-2](images/equation.png)
 
 Where alpha and l are regularization and elastic net mixing hyperparameters that are only active during training. Each model was tested at multiple alpha and l values and cross vaidated was performed.  
 
@@ -127,8 +127,8 @@ have fun!
 
 ## **PanCancer_classifier**
 This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes belonging to a ERK/RAS/PI3K signalling axis pathway(path_genes) and BLCA,BRCA,CESC,COAD,ESCA,LUAD,LUSC,OV,PRAD,READ,STAD,UCEC,UCS cancer types/diseases(ref: tcga_dictionary.tsv) from The Cancer Genome Atlas (TCGA). Additionally the generated model was used to evaluate alternative genes (PTEN,PIK3R1,STK11) and alternative dieseases (BRCA,COAD,ESCA,HNSC,LGG,LUAD,LUSC,PRAD,READ,GBM,UCEC,UCS) performance. This steps takes feature information (pancan_rnaseq_freeze.tsv.gz), mutational information(pancan_mutation_freeze.tsv.gz),load of mutations in each samples(mutation_burden_freeze.tsv.gz), threshold passed sample information(sample_freeze.tsv) and copy number information(copy_number_loss_status.tsv.gz & copy_number_gain_status.tsv.gz).
-![Figure-3](../../images/papaa/pan_auroc.png) 
-![Figure-4](../../images/papaa/coefficients.png)
+![Figure-3](images/pan_auroc.png) 
+![Figure-4](images/coefficients.png)
 
 > ### {% icon hands_on %} Hands-on: Generating model from ERBB2,PIK3CA,KRAS,AKT1 genes with specific disease types
 >
@@ -243,7 +243,7 @@ This step is designed to generate individual pan-within models for each individu
 
 ## **compare_within_models**
 we next do a performance comparision between the ERBB2,PIK3CA,KRAS,AKT1 pan model and individual models.
-![Figure-5](../../images/papaa/within.png)
+![Figure-5](images/within.png)
 
 > ### {% icon hands_on %} Hands-on: compare the ERBB2_KRAS_PIK3CA_AKT1 pan model with individual disease models
 >
@@ -305,7 +305,7 @@ In this step we would like to predict y status (mutational status) using x matri
 
 ## **Visualize_decisions**
 In this step we generate plots for each disease and plot  total decision and hypermutated samples.
-![Figure-6](../../images/papaa/decisions.png)
+![Figure-6](images/decisions.png)
 
 > ### {% icon hands_on %} Hands-on: Visualize decisions for ERBB2_KRAS_PIK3CA_AKT1 model
 >
@@ -391,7 +391,7 @@ In this step we combine classifier weights,copy number information, recalulate m
 
 ## **pathway_count_heatmaps**
 This step generates combined heatmap from mutation and copy number information and summarizes mutation, copy and total counts per sample for the entire pathway. 
-![Figure-7](../../images/papaa/combined.png)
+![Figure-7](images/combined.png)
 
 > ### {% icon hands_on %} Hands-on: Heatmaps for ERBB2_KRAS_PIK3CA_AKT1 model
 >
@@ -439,7 +439,7 @@ This step generates combined heatmap from mutation and copy number information a
 ## **targene_summary_figures**
 This step generates plots summarizing various analysis, including heatmaps for distribution of aberrant events across tumors, distirbution of predictions at variant level,summary distribution of PTEN variants R130X and R233X.
 
-![Figure-8](../../images/papaa/all_targene.png)
+![Figure-8](images/all_targene.png)
 
 > ### {% icon hands_on %} Hands-on: Summary figures for ERBB2_KRAS_PIK3CA_AKT1 model
 >
@@ -481,7 +481,7 @@ This step generates plots summarizing various analysis, including heatmaps for d
 
 ## **targene_cell_line_predictions**
 In this step we use our classifier information and predict mutational status for various cell lines in CCLE and GDSC data sources.
-![Figure-9](../../images/papaa/GDSC_CCLE.png)
+![Figure-9](images/GDSC_CCLE.png)
 
 > ### {% icon hands_on %} Hands-on: Analysis of CCLE and GDSC celllines using ERBB2_KRAS_PIK3CA_AKT1 model
 >
@@ -545,7 +545,7 @@ In this step we use our classifier information and predict mutational status for
 
 ## **external_sample_status_prediction**
 In this step we use our classifier information and predict mutational status for PTENKO, PI3KCA mutant, WT when PI3K is inhibited using A66. 
-![Figure-9](../../images/papaa/external.png)
+![Figure-9](images/external.png)
 
 > ### {% icon hands_on %} Hands-on: external sample evaluation with ERBB2_KRAS_PIK3CA_AKT1 model
 >
@@ -574,7 +574,7 @@ In this step we use our classifier information and predict mutational status for
 ## **targene_pharmacology**
 In this step we use the classifier derived cell line predictions and use them to evaluate pharmocological response of these cell lines. We plot log IC50 with classifier scores for each cell line and draw a correlation for drug response in absensce or presence of targene mutations
 
-![Figure-9](../../images/papaa/drug.png)
+![Figure-9](images/drug.png)
 
 > ### {% icon hands_on %} Hands-on: GDSC1 and GDSC2 pharmacological analysis using ERBB2_KRAS_PIK3CA_AKT1 model
 >
