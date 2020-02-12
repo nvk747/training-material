@@ -83,7 +83,7 @@ https://zenodo.org/record/3632117/files/tcga_dictionary.tsv
 >    {% include snippets/import_from_data_library.md %}
 >
 > 3. Rename the datasets
-> 4. Check that the datatype
+> 4. Check that the datatype for `CCLE_MUT_CNA_AMP_DEL_binary_Revealer.tsv.gz` is set to `tabular`
 >
 >    {% include snippets/change_datatype.md datatype="datatypes" %}
 >
