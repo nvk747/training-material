@@ -2,7 +2,7 @@
 layout: tutorial_hands_on
 
 title: Pancancer Aberrant Pathway Activity Analysis
-zenodo_link: https://zenodo.org/record/3632117#.Xjh8MpNKi-U
+zenodo_link: https://zenodo.org/record/3632117
 questions:
 - how to predict aberrant pathway activity in The cancer genome Atlas(TCGA) using
   Machine learning approaches?
@@ -20,6 +20,10 @@ contributors:
 - blankenberg
 
 ---
+
+
+
+
 
 # Introduction
 {:.no_toc}
