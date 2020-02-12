@@ -152,45 +152,46 @@ This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes
 {: .hands_on}
 
 >    *Check parameter descriptions*
->
-	Pancancer_Aberrant_Pathway_Activity_Analysis scripts/pancancer_classifier.py:
-        --genes             comma separated string of HUGO symbols for target genes or targenes_list.csv file
-        --diseases          comma separated string of disease types/TCGA acronyms for classifier
-        --folds             number of cross validation folds
-        --drop              drop the input genes from the X matrix
-        --copy_number       optional flag to supplement copy number to define Y
-        --filter_count      int of low count of mutation to include disease
-        --filter_prop       float of low proportion of mutated samples per disease
-        --num_features      int of number of genes to include in classifier
-        --alphas            comma separated string of alphas to test in pipeline
-        --l1_ratios         comma separated string of l1 parameters to test
-        --alt_genes         comma separated string of alternative genes to test
-        --alt_diseases      comma separated string of alternative diseases to test
-        --alt_filter_count  int of low count of mutations to include alt_diseases
-        --alt_filter_prop   float of low proportion of mutated samples alt_disease
-        --alt_folder        string of where to save the classifier figures
-        --remove_hyper      store_true: remove hypermutated samples
-        --keep_intermediate store_true: keep intermediate roc curve items
-        --x_matrix          string of which feature matrix to use
-        --classifier_folder String of the location of classifier data
-        
-        Output:
-        - Log file for script run
-        - alt_gene_alt_disease_summary.tsv
-        - alt_summary_counts.csv
-        - classifier_coefficients.tsv
-        - classifier_summary.txt
-        - pancan_roc_results.tsv
-        - summary_counts.csv
-        - cv_heatmap.pdf
-        - Disease classifier figures: list of 2 files [disease_pr and disease_auroc]
-        - all_disease_pr.pdf
-        - all_disease_roc.pdf
-        - alt_gene_alt_disease_aupr_bar.pdf
-        - alt_gene_alt_disease_auroc_bar.pdf
-        - disease_aupr.pdf
-        - disease_auroc.pdf 
-{: .hands_on}
+
+> ### {% icon details %} Pancancer Aberrant Pathway Activity Analysis `pancancer_classifier.py` inputs
+>    - \--genes             comma separated string of HUGO symbols for target genes or targenes_list.csv file
+>    - \--diseases          comma separated string of disease types/TCGA acronyms for classifier
+>    - \--folds             number of cross validation folds
+>    - \--drop              drop the input genes from the X matrix
+>    - \--copy_number       optional flag to supplement copy number to define Y
+>    - \--filter_count      int of low count of mutation to include disease
+>    - \--filter_prop       float of low proportion of mutated samples per disease
+>    - \--num_features      int of number of genes to include in classifier
+>    - \--alphas            comma separated string of alphas to test in pipeline
+>    - \--l1_ratios         comma separated string of l1 parameters to test
+>    - \--alt_genes         comma separated string of alternative genes to test
+>    - \--alt_diseases      comma separated string of alternative diseases to test
+>    - \--alt_filter_count  int of low count of mutations to include alt_diseases
+>    - \--alt_filter_prop   float of low proportion of mutated samples alt_disease
+>    - \--alt_folder        string of where to save the classifier figures
+>    - \--remove_hyper      store_true: remove hypermutated samples
+>    - \--keep_intermediate store_true: keep intermediate roc curve items
+>    - \--x_matrix          string of which feature matrix to use
+>    - \--classifier_folder String of the location of classifier data
+{: .details}
+
+> ### {% icon comment %} Outputs
+>    - Log file for script run
+>    - alt_gene_alt_disease_summary.tsv
+>    - alt_summary_counts.csv
+>    - classifier_coefficients.tsv
+>    - classifier_summary.txt
+>    - pancan_roc_results.tsv
+>    - summary_counts.csv
+>    - cv_heatmap.pdf
+>    - Disease classifier figures: list of 2 files [disease_pr and disease_auroc]
+>    - all_disease_pr.pdf
+>    - all_disease_roc.pdf
+>    - alt_gene_alt_disease_aupr_bar.pdf
+>    - alt_gene_alt_disease_auroc_bar.pdf
+>    - disease_aupr.pdf
+>    - disease_auroc.pdf
+{: .comment}
 
 ## **within_disease_analysis**
 This step is designed to generate individual pan-within models for each individual disease. It takes the same inputs as first step and generates similar output for each of them.
@@ -214,32 +215,33 @@ This step is designed to generate individual pan-within models for each individu
 {: .hands_on}
 
 >    *Check parameter descriptions*
->
-	 Pancancer_Aberrant_Pathway_Activity_Analysis scripts/within_disease_analysis.py:
-      --genes                               comma separated string of HUGO symbols for target genes or targenes_list.csv file
-      --diseases                            Comma seperated diseases list in a file
-      --alphas                              The alphas for parameter sweep
-      --l1_ratios                           The l1 ratios for parameter sweep
-      --remove_hyper                        Remove hypermutated samples
-      --alt_folder                          String of location to classification folder extending to individual diseases  
-      --x_matrix                            Filename of features to use in model
-      --x_as_raw                            Option to treat x_matrix as raw
-      --filename_mut                        Filename of sample/gene mutations to use in model
-      --filename_mut_burden                 Filename of sample mutation burden to use in model
-      --filename_sample                     Filename of patient/samples to use in model
-      --filename_copy_loss                  Filename of copy number loss
-      --filename_copy_gain                  Filename of copy number gain
-      --filename_cancer_gene_classification Filename of cancer gene classification table
-      
-      Output:
-      - Log 
-      - list of classifier_summary.txt for each disease
-      - list of classifier_coefficients.tsv for each disease
-      - list of pancan_roc_results.tsv for each disease
-      - list of summary_counts.csv for each disease
-      - Within disease figures:  List of 5 files [all_disease_pr, all_disease_roc, cv_heatmap, disease_pr, disease_roc] for individual diseases
-      - Disease classifier figures: list of 2 files [disease_pr disease_roc] for each disease
-{: .hands_on}
+
+> ### {% icon details %} Pancancer Aberrant Pathway Activity Analysis `within_disease_analysis.py` inputs
+>    - \--genes                               comma separated string of HUGO symbols for target genes or targenes_list.csv file
+>    - \--diseases                            Comma seperated diseases list in a file
+>    - \--alphas                              The alphas for parameter sweep
+>    - \--l1_ratios                           The l1 ratios for parameter sweep
+>    - \--remove_hyper                        Remove hypermutated samples
+>    - \--alt_folder                          String of location to classification folder extending to individual diseases
+>    - \--x_matrix                            Filename of features to use in model
+>    - \--x_as_raw                            Option to treat x_matrix as raw
+>    - \--filename_mut                        Filename of sample/gene mutations to use in model
+>    - \--filename_mut_burden                 Filename of sample mutation burden to use in model
+>    - \--filename_sample                     Filename of patient/samples to use in model
+>    - \--filename_copy_loss                  Filename of copy number loss
+>    - \--filename_copy_gain                  Filename of copy number gain
+>    - \--filename_cancer_gene_classification Filename of cancer gene classification table
+{: .details}
+
+> ### {% icon comment %} Outputs
+>    - Log
+>    - list of classifier_summary.txt for each disease
+>    - list of classifier_coefficients.tsv for each disease
+>    - list of pancan_roc_results.tsv for each disease
+>    - list of summary_counts.csv for each disease
+>    - Within disease figures:  List of 5 files [all_disease_pr, all_disease_roc, cv_heatmap, disease_pr, disease_roc] for individual diseases
+>    - Disease classifier figures: list of 2 files [disease_pr disease_roc] for each disease
+{: .comment}
 
 ## **compare_within_models**
 we next do a performance comparision between the ERBB2,PIK3CA,KRAS,AKT1 pan model and individual models.
@@ -256,19 +258,20 @@ we next do a performance comparision between the ERBB2,PIK3CA,KRAS,AKT1 pan mode
 {: .hands_on}
 
 >   *Check parameter descriptions*
->
-	Pancancer_Aberrant_Pathway_Activity_Analysis scripts/compare_within_models.R:
-        --within_dir        String of the Directory location of where pan within cancer-type data is
-        --pancan_summary    String of the Directory location of where pan classifier summary is
-        --alt_gene          String of the Directory location of classifier summary for alt gene
-      
-      Output:
-      - Process PanCancer Classifier and within disease/cancertype summary files and generate
-       AUROC and AUPR comparion files ("auroc_comparison.pdf" and "aupr_comparison.pdf")
-      - Process altgene classifier summary and altgene within disease/cancertypes summary files
-       and process pancan_alt_summary file to determine alternative classifier prediction
-       performance on alternative gene ("alt_gene_auroc_comparison.pdf" and "alt_gene_aupr_comparison.pdf")
-{: .hands_on}
+
+> ### {% icon details %} Pancancer Aberrant Pathway Activity Analysis `compare_within_models.R` inputs
+>    - \--within_dir        String of the Directory location of where pan within cancer-type data is
+>    - \--pancan_summary    String of the Directory location of where pan classifier summary is
+>    - \--alt_gene          String of the Directory location of classifier summary for alt gene
+{: .details}
+
+> ### {% icon comment %} Outputs
+>    - Process PanCancer Classifier and within disease/cancertype summary files and generate
+>    AUROC and AUPR comparion files ("auroc_comparison.pdf" and "aupr_comparison.pdf")
+>    - Process altgene classifier summary and altgene within disease/cancertypes summary files
+>    and process pancan_alt_summary file to determine alternative classifier prediction
+>    performance on alternative gene ("alt_gene_auroc_comparison.pdf" and "alt_gene_aupr_comparison.pdf")
+{: .comment}
 
 ## **apply_weights**
 In this step we would like to predict y status (mutational status) using x matrix (gene expression). Subset the x matrix to MAD genes, scaling the expression and add covariate information. A logit transformation will be applied to output probabilities and classifier decisions. 
@@ -286,22 +289,23 @@ In this step we would like to predict y status (mutational status) using x matri
 {: .hands_on}
 
 >    *Check parameter descriptions*
->
-	 Pancancer_Aberrant_Pathway_Activity_Analysis scripts/apply_weights.py:
-      --classifier                          String of the location of classifier file
-      --copy_number                         Supplement Y matrix with copy number events
-      --x_matrix                            Filename of features to use in model
-      --filename_mut                        Filename of sample/gene mutations to use in model
-      --filename_mut_burden                 Filename of sample mutation burden to use in model
-      --filename_sample                     Filename of patient/samples to use in model
-      --filename_copy_loss                  Filename of copy number loss
-      --filename_copy_gain                  Filename of copy number gain
-      --filename_cancer_gene_classification Filename of cancer gene classification table
-      
-      Output:
-      - Log
-      - classifier_decisions.tsv
-{: .hands_on}
+
+> ### {% icon details %} Pancancer Aberrant Pathway Activity Analysis `apply_weights.py` inputs
+>    - \--classifier                          String of the location of classifier file
+>    - \--copy_number                         Supplement Y matrix with copy number events
+>    - \--x_matrix                            Filename of features to use in model
+>    - \--filename_mut                        Filename of sample/gene mutations to use in model
+>    - \--filename_mut_burden                 Filename of sample mutation burden to use in model
+>    - \--filename_sample                     Filename of patient/samples to use in model
+>    - \--filename_copy_loss                  Filename of copy number loss
+>    - \--filename_copy_gain                  Filename of copy number gain
+>    - \--filename_cancer_gene_classification Filename of cancer gene classification table
+{: .details}
+
+> ### {% icon comment %} Outputs
+>    - Log
+>    - classifier_decisions.tsv
+{: .comment}
 
 ## **Visualize_decisions**
 In this step we generate plots for each disease and plot  total decision and hypermutated samples.
@@ -314,17 +318,18 @@ In this step we generate plots for each disease and plot  total decision and hyp
 {: .hands_on}
 
 > *Check parameter descriptions*
->
-	Pancancer_Aberrant_Pathway_Activity_Analysis scripts/visualize_decisions.py:
-        --scores  String of the folder location of classifier_decisions.tsv
-        --custom  comma separated list of columns to plot
-                  (optional: True)
-      
-      Output:
-      - Visualize decision function for all samples ("total_decisions.pdf") 
-      - Plot disease type specific decision functions ("decision_plot_{}.pdf")
-      - Visualize decision function for hyper mutated tumors ("hyper_mutated.pdf")
-{: .hands_on}
+
+> ### {% icon details %} Pancancer Aberrant Pathway Activity Analysis `visualize_decisions.py` inputs
+>    - \--scores  String of the folder location of classifier_decisions.tsv
+>    - \--custom  comma separated list of columns to plot
+>    (optional: True)
+{: .details}
+
+> ### {% icon comment %} Outputs
+>    - Visualize decision function for all samples ("total_decisions.pdf")
+>    - Plot disease type specific decision functions ("decision_plot_{}.pdf")
+>    - Visualize decision function for hyper mutated tumors ("hyper_mutated.pdf")
+{: .comment}
 
 ## **map_mutation_class**
 In this step we combined variant level information for each mutation combining with classifier decisions and predictions.
@@ -339,20 +344,21 @@ In this step we combined variant level information for each mutation combining w
 {: .hands_on}
 
 >    *Check parameter descriptions*
->
-	Pancancer_Aberrant_Pathway_Activity_Analysis scripts/map_mutation_class.py:
-      --scores              String of the location of folder containing classifier_decisions.tsv
-      --path_genes          comma separated string of HUGO symbols for all genes in the pathway or Pathway genes list file
-      --filename_copy_loss  Filename of copy number loss
-      --filename_copy_gain  Filename of copy number gain
-      --filename_raw_mut    Filename of raw mut MAF
-        
-      Output:
-      - Merge per sample classifier scores with mutation types present in each sample
-       and generate "mutation_classification_scores.tsv" file
-      - Log
-      - mutation_classification_scores.tsv
-{: .hands_on}
+
+> ### {% icon details %} Pancancer Aberrant Pathway Activity Analysis `map_mutation_class.py` inputs
+>    - \--scores              String of the location of folder containing classifier_decisions.tsv
+>    - \--path_genes          comma separated string of HUGO symbols for all genes in the pathway or Pathway genes list file
+>    - \--filename_copy_loss  Filename of copy number loss
+>    - \--filename_copy_gain  Filename of copy number gain
+>    - \--filename_raw_mut    Filename of raw mut MAF
+{: .details}
+
+> ### {% icon comment %} Outputs
+>    - Merge per sample classifier scores with mutation types present in each sample
+>    and generate "mutation_classification_scores.tsv" file
+>    - Log
+>    - mutation_classification_scores.tsv
+{: .comment}
 
 ## **alternative_genes_pathwaymapper**
 In this step we combine classifier weights,copy number information, recalulate metrics for positive samples, visuvalize distribution for AUROC and AUPR for all genes and metrics for each gene. 
@@ -369,25 +375,26 @@ In this step we combine classifier weights,copy number information, recalulate m
 {: .hands_on}
 
 >    *Check parameter descriptions*
->
-	Pancancer_Aberrant_Pathway_Activity_Analysis scripts/targene_alternative_genes_pathwaymapper.py:
-      --genes                               comma separated string of HUGO symbols for target genes or targenes_list.csv file
-      --path_genes                          comma separated string of HUGO symbols for all genes in the target pathway or path_genes.csv file
-      --scores                              String of the location of classifier scores/alt_folder
-      --filename_mut                        Filename of sample/gene mutations to use in model
-      --filename_mut_burden                 Filename of sample mutation burden to use in model
-      --filename_sample                     Filename of patient/samples to use in model
-      --filename_copy_loss                  Filename of copy number loss
-      --filename_copy_gain                  Filename of copy number gain
-      
-      Output:
-      - calculate and display metrics for targen classification
-      - calulate and display pathway metrics ("pathway_metrics_pathwaymapper.txt")
-      - Visualize Distribution of AUROC and AUPRC for all genes and Get Metrics for All Genes ("all_gene_metric_ranks.tsv")
-      - Log
-      - pathway_metrics_pathwaymapper.txt
-      - all_gene_metric_ranks.tsv
-{: .hands_on}
+
+> ### {% icon details %} Pancancer Aberrant Pathway Activity Analysis `targene_alternative_genes_pathwaymapper.py` inputs
+>    - \--genes                               comma separated string of HUGO symbols for target genes or targenes_list.csv file
+>    - \--path_genes                          comma separated string of HUGO symbols for all genes in the target pathway or path_genes.csv file
+>    - \--scores                              String of the location of classifier scores/alt_folder
+>    - \--filename_mut                        Filename of sample/gene mutations to use in model
+>    - \--filename_mut_burden                 Filename of sample mutation burden to use in model
+>    - \--filename_sample                     Filename of patient/samples to use in model
+>    - \--filename_copy_loss                  Filename of copy number loss
+>    - \--filename_copy_gain                  Filename of copy number gain
+{: .details}
+
+> ### {% icon comment %} Outputs
+>    - calculate and display metrics for targen classification
+>    - calulate and display pathway metrics ("pathway_metrics_pathwaymapper.txt")
+>    - Visualize Distribution of AUROC and AUPRC for all genes and Get Metrics for All Genes ("all_gene_metric_ranks.tsv")
+>    - Log
+>    - pathway_metrics_pathwaymapper.txt
+>    - all_gene_metric_ranks.tsv
+{: .comment}
 
 ## **pathway_count_heatmaps**
 This step generates combined heatmap from mutation and copy number information and summarizes mutation, copy and total counts per sample for the entire pathway. 
@@ -411,30 +418,31 @@ This step generates combined heatmap from mutation and copy number information a
 {: .hands_on}
 
 >    *Check parameter descriptions*
->
-	Pancancer_Aberrant_Pathway_Activity_Analysis scripts/targene_pathway_count_heatmaps.py:
-      --genes                               comma separated string of HUGO symbols for target genes or targenes_list.csv file
-      --path_genes                          comma separated string of HUGO symbols for all genes in the target pathway or path_genes.csv file
-      --scores                              String of the location of classifier scores/alt_folder
-      --x_matrix                            Filename of features to use in model
-      --filename_mut                        Filename of sample/gene mutations to use in model
-      --filename_mut_burden                 Filename of sample mutation burden to use in model
-      --filename_sample                     Filename of patient/samples to use in model
-      --filename_copy_loss                  Filename of copy number loss
-      --filename_copy_gain                  Filename of copy number gain
-      --filename_cancer_gene_classification Filename of cancer gene classification table
-      
-      Output:
-      - Mutation, Copy Number, and Total Heatmaps (Gene by Cancer-type).
-      - Calculates Mutations and copy number percentages of the genes in the and generates "pathway_mapper_percentages.txt" file. 
-      - Summarizes mutation, copy, and total counts per sample by targene pathway and generates "path_events_per_sample.tsv" file
-      - Log
-      - mut_df.pdf
-      - copy_df.pdf
-      - combined_df.pdf
-      - pathway_mapper_percentages.txt"/>
-      - path_events_per_sample.tsv"/>
-{: .hands_on}
+
+> ### {% icon details %} Pancancer Aberrant Pathway Activity Analysis `targene_pathway_count_heatmaps.py` inputs
+>    - \--genes                               comma separated string of HUGO symbols for target genes or targenes_list.csv file
+>    - \--path_genes                          comma separated string of HUGO symbols for all genes in the target pathway or path_genes.csv file
+>    - \--scores                              String of the location of classifier scores/alt_folder
+>    - \--x_matrix                            Filename of features to use in model
+>    - \--filename_mut                        Filename of sample/gene mutations to use in model
+>    - \--filename_mut_burden                 Filename of sample mutation burden to use in model
+>    - \--filename_sample                     Filename of patient/samples to use in model
+>    - \--filename_copy_loss                  Filename of copy number loss
+>    - \--filename_copy_gain                  Filename of copy number gain
+>    - \--filename_cancer_gene_classification Filename of cancer gene classification table
+{: .details}
+
+> ### {% icon comment %} Outputs
+>    - Mutation, Copy Number, and Total Heatmaps (Gene by Cancer-type).
+>    - Calculates Mutations and copy number percentages of the genes in the and generates "pathway_mapper_percentages.txt" file.
+>    - Summarizes mutation, copy, and total counts per sample by targene pathway and generates "path_events_per_sample.tsv" file
+>    - Log
+>    - mut_df.pdf
+>    - copy_df.pdf
+>    - combined_df.pdf
+>    - pathway_mapper_percentages.txt
+>    - path_events_per_sample.tsv
+{: .comment}
 
 ## **targene_summary_figures**
 This step generates plots summarizing various analysis, including heatmaps for distribution of aberrant events across tumors, distirbution of predictions at variant level,summary distribution of PTEN variants R130X and R233X.
@@ -453,31 +461,32 @@ This step generates plots summarizing various analysis, including heatmaps for d
 {: .hands_on}
 
 >    *Check parameter descriptions*
->
-	Pancancer_Aberrant_Pathway_Activity_Analysis scripts/viz/targene_summary_figures.R:
-      --classifier_folder   String of the location of classifier data
-      
-      Output:
-      - Heatmaps of the distribution of aberrant events across tumors ("targene_heatmap.pdf" and "all_targene_heatmap.pdf")
-      - Gene weights/Coefficients contributing to the model (targene_coef_plot.pdf)
-      - Plot distributions of predictions according to variant classification for OG and TSG ("variant_gain_fill_map.pdf" and "variant_loss_fill_map.pdf")
-      - Targene Summary Counts Distribution ("path_events_per_sample.tsv")
-      - Targene pathway events counts ("targene_pathway_events_counts.pdf")
-      - Performance Metrics Distribution across pathway members ("aupr_distribution.pdf" and "auroc_distribution.pdf")
-      - T-Test for AUPR between targene pathway genes and Other genes ("targene_pathway_variant_AUPR_ttest.txt")
-      - Log
-      - targene_heatmap.pdf
-      - all_targene_heatmap.pdf
-      - targene_coef_plot.pdf
-      - variant_gain_fill_map.pdf
-      - variant_loss_fill_map.pdf
-      - aupr_distribution.pdf
-      - auroc_distribution.pdf
-      - targene_pathway_events_counts.pdf
-      - targene_pathway_variant_AUPR_ttest.txt
-      - amino_acid_mutation_scores.tsv
-      - nucleotide_mutation_scores.tsv
-{: .hands_on}
+
+> ### {% icon details %} Pancancer Aberrant Pathway Activity Analysis `targene_summary_figures.R` inputs
+>    - \--classifier_folder   String of the location of classifier data
+{: .details}
+
+> ### {% icon comment %} Outputs
+>    - Heatmaps of the distribution of aberrant events across tumors ("targene_heatmap.pdf" and "all_targene_heatmap.pdf")
+>    - Gene weights/Coefficients contributing to the model (targene_coef_plot.pdf)
+>    - Plot distributions of predictions according to variant classification for OG and TSG ("variant_gain_fill_map.pdf" and "variant_loss_fill_map.pdf")
+>    - Targene Summary Counts Distribution ("path_events_per_sample.tsv")
+>    - Targene pathway events counts ("targene_pathway_events_counts.pdf")
+>    - Performance Metrics Distribution across pathway members ("aupr_distribution.pdf" and "auroc_distribution.pdf")
+>    - T-Test for AUPR between targene pathway genes and Other genes ("targene_pathway_variant_AUPR_ttest.txt")
+>    - Log
+>    - targene_heatmap.pdf
+>    - all_targene_heatmap.pdf
+>    - targene_coef_plot.pdf
+>    - variant_gain_fill_map.pdf
+>    - variant_loss_fill_map.pdf
+>    - aupr_distribution.pdf
+>    - auroc_distribution.pdf
+>    - targene_pathway_events_counts.pdf
+>    - targene_pathway_variant_AUPR_ttest.txt
+>    - amino_acid_mutation_scores.tsv
+>    - nucleotide_mutation_scores.tsv
+{: .comment}
 
 ## **targene_cell_line_predictions**
 In this step we use our classifier information and predict mutational status for various cell lines in CCLE and GDSC data sources.
@@ -502,46 +511,47 @@ In this step we use our classifier information and predict mutational status for
 {: .hands_on}
 
 >   *Check parameter descriptions*
->
-	Pancancer_Aberrant_Pathway_Activity_Analysis scripts/viz/targene_cell_line_predictions.py:
-      --targenes        comma separated string of HUGO symbols for target genes or targenes_list.csv file
-      --path_genes      comma separated string of HUGO symbols for all genes in the target pathway or path_genes.csv file
-      --classifier      String of the location of classifier_summary file
-      --ccle_rnaseq     Filename of CCLE gene expression data file
-      --ccle_mut        Filename of CCLE cell lines/gene mutations data file
-      --ccle_maf        Filename of CCLE mutational variant level data file
-      --gdsc_rnaseq     Filename of GDSC gene expression data file
-      --gdsc_mut        Filename of GDSC cell lines/gene mutations data file
-      --gdsc1_phar      Filename of GDSC1 pharmocological response data
-      --gdsc2_phar      Filename of GDSC2 pharmocological response data
-      
-      Output:
-      - Generate predictions for CCLE data using targene classifier(ccle_histogram.png)
-      - Generate classifier scores for CCLE cell lines and combines CCLE mutational data and variant data with classifier scores (ccle_targene_classifier_scores.tsv).
-      - Performes t-test on classifier weights across targene mutant vs targene wildtype cell-line groups(ccle_targene_WT_MUT_predictions.pdf)
-      - add CCLE nucleotide scores at variant level and update nucleotide_mutation_scores.tsv (updated_Data_nucleotide_scores.csv)
-      - add CCLE protein scores at variant level and update aminoacid_mutation_scores.tsv (updated_Data_aminoacid_scores.csv)
-      - Generate predictions for GDSC data using targene classifier(gdsc_scores_histogram.png)
-      - Generate classifier scores for GDSC cell lines and combines CCLE mutational data and variant data with classifier scores (gdsc_targene_classifier_scores.tsv).
-      - Performes t-test on classifier weights across targene mutant vs targene wildtype cell-line groups(gdsc_targene_WT_MUT_predictions.pdf)
-      - Apply GDSC classifier scores to evaluate GDSC1 pharmacologial data response (gdsc1_targene_pharmacology_predictions.tsv)
-      - Apply GDSC classifier scores to evaluate GDSC2 pharmacologial data response (gdsc2_targene_pharmacology_predictions.tsv)
-      - Apply CCLE classifier scores to evaluate GDSC1 pharmacologial data response (gdsc1_ccle_targene_pharmacology_predictions.tsv)
-      - Apply CCLE classifier scores to evaluate GDSC2 pharmacologial data response (gdsc2_ccle_targene_pharmacology_predictions.tsv)
-      - Log 
-      - ccle_histogram.png
-      - ccle_targene_classifier_scores.tsv
-      - ccle_targene_WT_MUT_predictions.pdf
-      - updated_data_nucleotide_scores.csv
-      - updated_data_aminoacid_scores.csv
-      - gdsc_scores_histogram.png
-      - gdsc_targene_classifier_scores.tsv
-      - gdsc_targene_WT_MUT_predictions.pdf
-      - gdsc1_targene_pharmacology_predictions.tsv
-      - gdsc2_targene_pharmacology_predictions.tsv
-      - gdsc1_ccle_targene_pharmacology_predictions.tsv
-      - gdsc2_ccle_targene_pharmacology_predictions.tsv
-{: .hands_on}
+
+> ### {% icon details %} Pancancer Aberrant Pathway Activity Analysis `targene_cell_line_predictions.py` inputs
+>    - \--targenes        comma separated string of HUGO symbols for target genes or targenes_list.csv file
+>    - \--path_genes      comma separated string of HUGO symbols for all genes in the target pathway or path_genes.csv file
+>    - \--classifier      String of the location of classifier_summary file
+>    - \--ccle_rnaseq     Filename of CCLE gene expression data file
+>    - \--ccle_mut        Filename of CCLE cell lines/gene mutations data file
+>    - \--ccle_maf        Filename of CCLE mutational variant level data file
+>    - \--gdsc_rnaseq     Filename of GDSC gene expression data file
+>    - \--gdsc_mut        Filename of GDSC cell lines/gene mutations data file
+>    - \--gdsc1_phar      Filename of GDSC1 pharmocological response data
+>    - \--gdsc2_phar      Filename of GDSC2 pharmocological response data
+{: .details}
+
+> ### {% icon comment %} Outputs
+>    - Generate predictions for CCLE data using targene classifier(ccle_histogram.png)
+>    - Generate classifier scores for CCLE cell lines and combines CCLE mutational data and variant data with classifier scores (ccle_targene_classifier_scores.tsv).
+>    - Performes t-test on classifier weights across targene mutant vs targene wildtype cell-line groups(ccle_targene_WT_MUT_predictions.pdf)
+>    - add CCLE nucleotide scores at variant level and update nucleotide_mutation_scores.tsv (updated_Data_nucleotide_scores.csv)
+>    - add CCLE protein scores at variant level and update aminoacid_mutation_scores.tsv (updated_Data_aminoacid_scores.csv)
+>    - Generate predictions for GDSC data using targene classifier(gdsc_scores_histogram.png)
+>    - Generate classifier scores for GDSC cell lines and combines CCLE mutational data and variant data with classifier scores (gdsc_targene_classifier_scores.tsv).
+>    - Performes t-test on classifier weights across targene mutant vs targene wildtype cell-line groups(gdsc_targene_WT_MUT_predictions.pdf)
+>    - Apply GDSC classifier scores to evaluate GDSC1 pharmacologial data response (gdsc1_targene_pharmacology_predictions.tsv)
+>    - Apply GDSC classifier scores to evaluate GDSC2 pharmacologial data response (gdsc2_targene_pharmacology_predictions.tsv)
+>    - Apply CCLE classifier scores to evaluate GDSC1 pharmacologial data response (gdsc1_ccle_targene_pharmacology_predictions.tsv)
+>    - Apply CCLE classifier scores to evaluate GDSC2 pharmacologial data response (gdsc2_ccle_targene_pharmacology_predictions.tsv)
+>    - Log
+>    - ccle_histogram.png
+>    - ccle_targene_classifier_scores.tsv
+>    - ccle_targene_WT_MUT_predictions.pdf
+>    - updated_data_nucleotide_scores.csv
+>    - updated_data_aminoacid_scores.csv
+>    - gdsc_scores_histogram.png
+>    - gdsc_targene_classifier_scores.tsv
+>    - gdsc_targene_WT_MUT_predictions.pdf
+>    - gdsc1_targene_pharmacology_predictions.tsv
+>    - gdsc2_targene_pharmacology_predictions.tsv
+>    - gdsc1_ccle_targene_pharmacology_predictions.tsv
+>    - gdsc2_ccle_targene_pharmacology_predictions.tsv
+{: .comment}
 
 ## **external_sample_status_prediction**
 In this step we use our classifier information and predict mutational status for PTENKO, PI3KCA mutant, WT when PI3K is inhibited using A66. 
@@ -557,19 +567,20 @@ In this step we use our classifier information and predict mutational status for
 {: .hands_on}
 
 >    *Check parameter descriptions*
->
-	Pancancer_Aberrant_Pathway_Activity_Analysis scripts/targene_alternative_genes_pathwaymapper.py:
-      --classifier          String of the location of classifier scores/alt_folder
-      --ex_vlog             File path for external sample expression data file[fpkm/rlog/vlog values]
-      --sign                assigned tumor [1] or normal [-1] sample mutational status
-      
-      Output:
-      - compare and perform t-test significance calculation of perdicted scores
-       between external normal and tumor samples ("targene_external_sample_predictions.pdf and targene_external_sample_predictions_1.pdf")
-      - Log
-      - Figure 1
-      - Figure 2
-{: .hands_on}
+
+> ### {% icon details %} Pancancer Aberrant Pathway Activity Analysis `targene_alternative_genes_pathwaymapper.py` inputs
+>    - \--classifier          String of the location of classifier scores/alt_folder
+>    - \--ex_vlog             File path for external sample expression data file[fpkm/rlog/vlog values]
+>    - \--sign                assigned tumor [1] or normal [-1] sample mutational status
+{: .details}
+
+> ### {% icon comment %} Outputs
+>    - compare and perform t-test significance calculation of perdicted scores
+>    between external normal and tumor samples ("targene_external_sample_predictions.pdf and targene_external_sample_predictions_1.pdf")
+>    - Log
+>    - Figure 1
+>    - Figure 2
+{: .comment}
 
 ## **targene_pharmacology**
 In this step we use the classifier derived cell line predictions and use them to evaluate pharmocological response of these cell lines. We plot log IC50 with classifier scores for each cell line and draw a correlation for drug response in absensce or presence of targene mutations
@@ -587,21 +598,23 @@ In this step we use the classifier derived cell line predictions and use them to
 {: .hands_on}
 
 >    *Check parameter descriptions*
->
-	Pancancer_Aberrant_Pathway_Activity_Analysis scripts/viz/targene_pharmacology.R:
-      --classifier    String of the location of classifier folder
-      --compound      Filename of list of pharmocological compounds for evaluation\
-      
-      Output:
-      - Scatter plots with visualizing drug response compared to GDSC targene classifier scores
-       for GDSC1 pharmacological dataset (GDSC1_targene_all_drug_response.pdf)  
-      - Scatter plots with visualizing drug response compared to CCLE targene classifier scores
-       for GDSC1 pharmacological dataset (GDSC1_ccle_targene_all_drug_response.pdf)
-      - Scatter plots with visualizing drug response compared to GDSC targene classifier scores
-       for GDSC2 pharmacological dataset (GDSC2_targene_all_drug_response.pdf)  
-      - Scatter plots with visualizing drug response compared to CCLE targene classifier scores
-       for GDSC2 pharmacological dataset (GDSC2_ccle_targene_all_drug_response.pdf)
-{: .hands_on}
+
+> ### {% icon details %} Pancancer Aberrant Pathway Activity Analysis `targene_pharmacology.R` inputs
+>    - \--classifier    String of the location of classifier folder
+>    - \--compound      Filename of list of pharmocological compounds for evaluation
+{: .details}
+
+> ### {% icon comment %} Outputs
+>    - Scatter plots with visualizing drug response compared to GDSC targene classifier scores
+>    for GDSC1 pharmacological dataset (GDSC1_targene_all_drug_response.pdf)
+>    - Scatter plots with visualizing drug response compared to CCLE targene classifier scores
+>    for GDSC1 pharmacological dataset (GDSC1_ccle_targene_all_drug_response.pdf)
+>    - Scatter plots with visualizing drug response compared to GDSC targene classifier scores
+>    for GDSC2 pharmacological dataset (GDSC2_targene_all_drug_response.pdf)
+>    - Scatter plots with visualizing drug response compared to CCLE targene classifier scores
+>    for GDSC2 pharmacological dataset (GDSC2_ccle_targene_all_drug_response.pdf)
+{: .comment}
+
 
 > ### {% icon question %} Questions
 >
