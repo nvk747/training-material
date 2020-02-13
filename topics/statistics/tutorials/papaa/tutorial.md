@@ -265,10 +265,10 @@ we next do a performance comparision between the ERBB2,PIK3CA,KRAS,AKT1 pan mode
 > ### {% icon hands_on %} Hands-on: compare the ERBB2_KRAS_PIK3CA_AKT1 pan model with individual disease models
 >
 > 1. **PAPAA: PanCancer compare within models** {% icon tool %} with the following parameters:
->    - {% icon param-file %} *"pancancer classifier summary"*: `classifier_summary` (output of **PAPAA: PanCancer classifier** {% icon tool %})
->    - {% icon param-file %} *"pancancer classifier coefficients"*: `classifier_coefficients` (output of **PAPAA: PanCancer classifier** {% icon tool %})
->    - {% icon param-file %} *"pan_within classifier summary"*: `classifier_summary` (output of **PAPAA: PanCancer within disease analysis** {% icon tool %})
->    - {% icon param-file %} *"pan_within classifier coefficients"*: `classifier_coefficients` (output of **PAPAA: PanCancer within disease analysis** {% icon tool %})
+>    - {% icon param-file %} *"pancancer classifier summary"*: `classifier_summary.txt` (output of **PAPAA: PanCancer classifier** {% icon tool %})
+>    - {% icon param-file %} *"pancancer classifier coefficients"*: `classifier_coefficients.tsv` (output of **PAPAA: PanCancer classifier** {% icon tool %})
+>    - {% icon param-file %} *"pan_within classifier summary"*: `classifier_summary.txt` (output of **PAPAA: PanCancer within disease analysis** {% icon tool %})
+>    - {% icon param-file %} *"pan_within classifier coefficients"*: `classifier_coefficients.tsv` (output of **PAPAA: PanCancer within disease analysis** {% icon tool %})
 >    - *"Would you want to compare given model with alt gene model?"*: `do not do alt gene`
 {: .hands_on}
 
@@ -294,13 +294,16 @@ In this step we would like to predict y status (mutational status) using x matri
 > ### {% icon hands_on %} Hands-on: Apply weights for ERBB2_KRAS_PIK3CA_AKT1 model
 >
 > 1. **PAPAA: PanCancer apply weights** {% icon tool %} with the following parameters:
->    - {% icon param-file %} *"Filename of features to use in model"*: `output` (Input dataset)
->    - {% icon param-file %} *"Filename mutations"*: `output` (Input dataset)
->    - {% icon param-file %} *"Filename of mutation burden"*: `output` (Input dataset)
->    - {% icon param-file %} *"Filename of sample"*: `output` (Input dataset)
+>    - {% icon param-file %} *"Filename of features to use in model"*: `pancan_rnaseq_freeze.tsv` (Input dataset)
+>    - {% icon param-file %} *"Filename mutations"*: `pancan_mutation_freeze.tsv` (Input dataset)
+>    - {% icon param-file %} *"Filename of mutation burden"*: `mutation_burden_freeze.tsv` (Input dataset)
+>    - {% icon param-file %} *"Filename of sample"*: `sample_freeze.tsv` (Input dataset)
 >    - *"Supplement Y matrix with copy number events"*: `Yes`
->    - {% icon param-file %} *"pancancer classifier summary"*: `classifier_summary` (output of **PAPAA: PanCancer classifier** {% icon tool %})
->    - {% icon param-file %} *"pancancer classifier coefficients"*: `classifier_coefficients` (output of **PAPAA: PanCancer classifier** {% icon tool %})
+>    - {% icon param-file %} *"File with Copy number loss"*: `copy_number_loss_status.tsv` (Input dataset)
+>    - {% icon param-file %} *"File with Copy number gain"*: `copy_number_gain_status.tsv` (Input dataset)
+>    - {% icon param-file %} *"File with cancer gene classification table"*: `vogelstein_cancergenes.tsv` (Input dataset)
+>    - {% icon param-file %} *"pancancer classifier summary"*: `classifier_summary.txt` (output of **PAPAA: PanCancer classifier** {% icon tool %})
+>    - {% icon param-file %} *"pancancer classifier coefficients"*: `classifier_coefficients.tsv` (output of **PAPAA: PanCancer classifier** {% icon tool %})
 {: .hands_on}
 
 >    *Check parameter descriptions*
@@ -329,7 +332,7 @@ In this step we generate plots for each disease and plot  total decision and hyp
 > ### {% icon hands_on %} Hands-on: Visualize decisions for ERBB2_KRAS_PIK3CA_AKT1 model
 >
 > 1. **PAPAA: PanCancer visualize decisions** {% icon tool %} with the following parameters:
->    - {% icon param-file %} *"pancancer decisions"*: `classifier_decisions` (output of **PAPAA: PanCancer apply weights** {% icon tool %})
+>    - {% icon param-file %} *"pancancer decisions"*: `classifier_decisions.tsv` (output of **PAPAA: PanCancer apply weights** {% icon tool %})
 {: .hands_on}
 
 > *Check parameter descriptions*
@@ -352,10 +355,13 @@ In this step we combined variant level information for each mutation combining w
 > ### {% icon hands_on %} Hands-on: map mutation class for ERBB2_KRAS_PIK3CA_AKT1 model
 >
 > 1. **PAPAA: PanCancer map mutation class** {% icon tool %} with the following parameters:
->    - {% icon param-file %} *"pancancer decisions"*: `classifier_decisions` (output of **PAPAA: PanCancer apply weights** {% icon tool %})
->    - {% icon param-file %} *"string of the genes to extract or gene list file"*: `output` (Input dataset)
+>    - {% icon param-file %} *"pancancer decisions"*: `classifier_decisions.tsv` (output of **PAPAA: PanCancer apply weights** {% icon tool %})
+>    - {% icon param-file %} *"string of the genes to extract or gene list file"*: `path_genes.txt` (Input dataset)
+>    - {% icon param-file %} *"Filename of sample"*: `sample_freeze.tsv` (Input dataset)
 >    - *"Supplement Y matrix with copy number events"*: `Yes`
->    - {% icon param-file %} *"Filename of raw mut MAF"*: `output` (Input dataset)
+>    - {% icon param-file %} *"File with Copy number loss"*: `copy_number_loss_status.tsv` (Input dataset)
+>    - {% icon param-file %} *"File with Copy number gain"*: `copy_number_gain_status.tsv` (Input dataset)
+>    - {% icon param-file %} *"Filename of raw mut MAF"*: `mc3.v0.2.8.PUBLIC.maf` (Input dataset)
 {: .hands_on}
 
 >    *Check parameter descriptions*
@@ -381,12 +387,14 @@ In this step we combine classifier weights,copy number information, recalulate m
 > ### {% icon hands_on %} Hands-on: alternative genes pathway mapper for ERBB2_KRAS_PIK3CA_AKT1 model
 >
 > 1. **PAPAA: PanCancer alternative genes pathwaymapper** {% icon tool %} with the following parameters:
->    - {% icon param-file %} *"pancancer decisions"*: `classifier_decisions` (output of **PAPAA: PanCancer apply weights** {% icon tool %})
+>    - {% icon param-file %} *"pancancer decisions"*: `classifier_decisions.tsv` (output of **PAPAA: PanCancer apply weights** {% icon tool %})
 >    - *"Comma separated string of HUGO gene symbols"*: `ERBB2,PIK3CA,KRAS,AKT1`
->    - {% icon param-file %} *"string of the genes to extract or gene list file"*: `output` (Input dataset)
->    - {% icon param-file %} *"Filename mutations"*: `output` (Input dataset)
->    - {% icon param-file %} *"Filename of sample"*: `output` (Input dataset)
+>    - {% icon param-file %} *"string of the genes to extract or gene list file"*: `path_genes.txt` (Input dataset)
+>    - {% icon param-file %} *"Filename mutations"*: `pancan_mutation_freeze.tsv ` (Input dataset)
+>    - {% icon param-file %} *"Filename of sample"*: `sample_freeze.tsv` (Input dataset)
 >    - *"Supplement Y matrix with copy number events"*: `Yes`
+>    - {% icon param-file %} *"File with Copy number loss"*: `copy_number_loss_status.tsv` (Input dataset)
+>    - {% icon param-file %} *"File with Copy number gain"*: `copy_number_gain_status.tsv` (Input dataset)
 {: .hands_on}
 
 >    *Check parameter descriptions*
@@ -418,18 +426,18 @@ This step generates combined heatmap from mutation and copy number information a
 > ### {% icon hands_on %} Hands-on: Heatmaps for ERBB2_KRAS_PIK3CA_AKT1 model
 >
 > 1. **PAPAA: PanCancer pathway count heatmaps** {% icon tool %} with the following parameters:
->    - {% icon param-file %} *"pancancer decisions"*: `classifier_decisions` (output of **PAPAA: PanCancer apply weights** {% icon tool %})
->    - {% icon param-file %} *"pancancer metrics pathwaymapper"*: `pathway_metrics_pathwaymapper` (output of **PAPAA: PanCancer alternative genes pathwaymapper** {% icon tool %})
->    - {% icon param-file %} *"pancancer gene metric ranks"*: `all_gene_metric_ranks` (output of **PAPAA: PanCancer alternative genes pathwaymapper** {% icon tool %})
+>    - {% icon param-file %} *"pancancer decisions"*: `classifier_decisions.tsv` (output of **PAPAA: PanCancer apply weights** {% icon tool %})
+>    - {% icon param-file %} *"pancancer metrics pathwaymapper"*: `pathway_metrics_pathwaymapper.txt` (output of **PAPAA: PanCancer alternative genes pathwaymapper** {% icon tool %})
+>    - {% icon param-file %} *"pancancer gene metric ranks"*: `all_gene_metric_ranks.tsv` (output of **PAPAA: PanCancer alternative genes pathwaymapper** {% icon tool %})
 >    - *"Comma separated string of HUGO gene symbols"*: `ERBB2,PIK3CA,KRAS,AKT1`
->    - {% icon param-file %} *"String of the pathway genes to extract"*: `output` (Input dataset)
->    - {% icon param-file %} *"Filename of features to use in model"*: `output` (Input dataset)
->    - {% icon param-file %} *"Filename mutations"*: `output` (Input dataset)
->    - {% icon param-file %} *"Filename of mutation burden"*: `output` (Input dataset)
->    - {% icon param-file %} *"Filename of sample"*: `output` (Input dataset)
->    - {% icon param-file %} *"File with Copy number loss"*: `output` (Input dataset)
->    - {% icon param-file %} *"File with Copy number gain"*: `output` (Input dataset)
->    - {% icon param-file %} *"File with cancer gene classification table"*: `output` (Input dataset)
+>    - {% icon param-file %} *"String of the pathway genes to extract"*: `path_genes.txt` (Input dataset)
+>    - {% icon param-file %} *"Filename of features to use in model"*: `pancan_rnaseq_freeze.tsv.gz` (Input dataset)
+>    - {% icon param-file %} *"Filename mutations"*: `pancan_mutation_freeze.tsv` (Input dataset)
+>    - {% icon param-file %} *"Filename of mutation burden"*: `mutation_burden_freeze.tsv` (Input dataset)
+>    - {% icon param-file %} *"Filename of sample"*: `sample_freeze.tsv` (Input dataset)
+>    - {% icon param-file %} *"File with Copy number loss"*: `copy_number_loss_status.tsv` (Input dataset)
+>    - {% icon param-file %} *"File with Copy number gain"*: `copy_number_gain_status.tsv` (Input dataset)
+>    - {% icon param-file %} *"File with cancer gene classification table"*: `vogelstein_cancergenes.tsv` (Input dataset)
 {: .hands_on}
 
 >    *Check parameter descriptions*
@@ -467,12 +475,12 @@ This step generates plots summarizing various analysis, including heatmaps for d
 > ### {% icon hands_on %} Hands-on: Summary figures for ERBB2_KRAS_PIK3CA_AKT1 model
 >
 > 1. **PAPAA: PanCancer targene summary figures** {% icon tool %} with the following parameters:
->    - {% icon param-file %} *"Classifier data"*: `classifier_summary` (output of **PAPAA: PanCancer classifier** {% icon tool %})
->    - {% icon param-file %} *"pancancer classifier coefficients"*: `classifier_coefficients` (output of **PAPAA: PanCancer classifier** {% icon tool %})
->    - {% icon param-file %} *"summary counts"*: `summary_counts` (output of **PAPAA: PanCancer classifier** {% icon tool %})
->    - {% icon param-file %} *"mutation classification scores"*: `mutation_classification_scores` (output of **PAPAA: PanCancer map mutation class** {% icon tool %})
->    - {% icon param-file %} *"path events per sample"*: `path_events_per_sample` (output of **PAPAA: PanCancer pathway count heatmaps** {% icon tool %})
->    - {% icon param-file %} *"pancancer gene metric ranks"*: `all_gene_metric_ranks` (output of **PAPAA: PanCancer alternative genes pathwaymapper** {% icon tool %})
+>    - {% icon param-file %} *"Classifier data"*: `classifier_summary.txt` (output of **PAPAA: PanCancer classifier** {% icon tool %})
+>    - {% icon param-file %} *"pancancer classifier coefficients"*: `classifier_coefficients.tsv` (output of **PAPAA: PanCancer classifier** {% icon tool %})
+>    - {% icon param-file %} *"summary counts"*: `summary_counts.csv` (output of **PAPAA: PanCancer classifier** {% icon tool %})
+>    - {% icon param-file %} *"mutation classification scores"*: `mutation_classification_scores.tsv` (output of **PAPAA: PanCancer map mutation class** {% icon tool %})
+>    - {% icon param-file %} *"path events per sample"*: `path_events_per_sample.tsv` (output of **PAPAA: PanCancer pathway count heatmaps** {% icon tool %})
+>    - {% icon param-file %} *"pancancer gene metric ranks"*: `all_gene_metric_ranks.tsv` (output of **PAPAA: PanCancer alternative genes pathwaymapper** {% icon tool %})
 {: .hands_on}
 
 >    *Check parameter descriptions*
@@ -510,19 +518,19 @@ In this step we use our classifier information and predict mutational status for
 > ### {% icon hands_on %} Hands-on: Analysis of CCLE and GDSC celllines using ERBB2_KRAS_PIK3CA_AKT1 model
 >
 > 1. **PAPAA: PanCancer targene cell line predictions** {% icon tool %} with the following parameters:
->    - {% icon param-file %} *"Classifier data"*: `classifier_summary` (output of **PAPAA: PanCancer classifier** {% icon tool %})
->    - {% icon param-file %} *"pancancer classifier coefficients"*: `classifier_coefficients` (output of **PAPAA: PanCancer classifier** {% icon tool %})
->    - {% icon param-file %} *"nucleotide mutation scores"*: `nucleotide acid mutation scores` (output of **PAPAA: PanCancer targene summary figures** {% icon tool %})
->    - {% icon param-file %} *"amino acid mutation scores"*: `amino acid mutation scores` (output of **PAPAA: PanCancer targene summary figures** {% icon tool %})
+>    - {% icon param-file %} *"Classifier data"*: `classifier_summary.txt` (output of **PAPAA: PanCancer classifier** {% icon tool %})
+>    - {% icon param-file %} *"pancancer classifier coefficients"*: `classifier_coefficients.tsv` (output of **PAPAA: PanCancer classifier** {% icon tool %})
+>    - {% icon param-file %} *"nucleotide mutation scores"*: `nucleotide_acid_mutation_scores.tsv` (output of **PAPAA: PanCancer targene summary figures** {% icon tool %})
+>    - {% icon param-file %} *"amino acid mutation scores"*: `amino_acid_mutation_scores.tsv` (output of **PAPAA: PanCancer targene summary figures** {% icon tool %})
 >    - *"Comma separated string of HUGO targene symbols"*: `ERBB2_MUT,PIK3CA_MUT,KRAS_MUT,AKT1_MUT`
->    - {% icon param-file %} *"string of the genes to extract or gene list file"*: `output` (Input dataset)
->    - {% icon param-file %} *"Filename ccle rnaseq data"*: `output` (Input dataset)
->    - {% icon param-file %} *"Filename ccle mutational data"*: `output` (Input dataset)
->    - {% icon param-file %} *"Filename ccle variant data"*: `output` (Input dataset)
->    - {% icon param-file %} *"Filename gdsc rnaseq data"*: `output` (Input dataset)
->    - {% icon param-file %} *"Filename gdsc mutational data"*: `output` (Input dataset)
->    - {% icon param-file %} *"Filename for gdsc1 pharmacological data file"*: `output` (Input dataset)
->    - {% icon param-file %} *"Filename for gdsc2 pharmacological data file"*: `output` (Input dataset)
+>    - {% icon param-file %} *"string of the genes to extract or gene list file"*: `path_genes.txt` (Input dataset)
+>    - {% icon param-file %} *"Filename ccle rnaseq data"*: `ccle_rnaseq_genes_rpkm_20180929_mod.tsv` (Input dataset)
+>    - {% icon param-file %} *"Filename ccle mutational data"*: `CCLE_MUT_CNA_AMP_DEL_binary_Revealer.gct` (Input dataset)
+>    - {% icon param-file %} *"Filename ccle variant data"*: `CCLE_DepMap_18Q1_maf_20180207.txt` (Input dataset)
+>    - {% icon param-file %} *"Filename gdsc rnaseq data"*: `GDSC_EXP_CCLE_converted_name.tsv` (Input dataset)
+>    - {% icon param-file %} *"Filename gdsc mutational data"*: `GDSC_CCLE_common_mut_cnv_binary.tsv` (Input dataset)
+>    - {% icon param-file %} *"Filename for gdsc1 pharmacological data file"*: `gdsc1_ccle_pharm_fitted_dose_data.txt` (Input dataset)
+>    - {% icon param-file %} *"Filename for gdsc2 pharmacological data file"*: `gdsc2_ccle_pharm_fitted_dose_data.txt` (Input dataset)
 {: .hands_on}
 
 >   *Check parameter descriptions*
@@ -575,10 +583,10 @@ In this step we use our classifier information and predict mutational status for
 > ### {% icon hands_on %} Hands-on: external sample evaluation with ERBB2_KRAS_PIK3CA_AKT1 model
 >
 > 1. **PAPAA: PanCancer external sample status prediction** {% icon tool %} with the following parameters:
->    - {% icon param-file %} *"Classifier data"*: `classifier_summary` (output of **PAPAA: PanCancer classifier** {% icon tool %})
->    - {% icon param-file %} *"pancancer classifier coefficients"*: `classifier_coefficients` (output of **PAPAA: PanCancer classifier** {% icon tool %})
->    - {% icon param-file %} *"external sample gene expression data"*: `output` (Input dataset)
->    - {% icon param-file %} *"given mutational status"*: `output` (Input dataset)
+>    - {% icon param-file %} *"Classifier data"*: `classifier_summary.txt` (output of **PAPAA: PanCancer classifier** {% icon tool %})
+>    - {% icon param-file %} *"pancancer classifier coefficients"*: `classifier_coefficients.tsv` (output of **PAPAA: PanCancer classifier** {% icon tool %})
+>    - {% icon param-file %} *"external sample gene expression data"*: `vlog_trans.csv` (Input dataset)
+>    - {% icon param-file %} *"given mutational status"*: `sign.txt` (Input dataset)
 {: .hands_on}
 
 >    *Check parameter descriptions*
@@ -605,11 +613,11 @@ In this step we use the classifier derived cell line predictions and use them to
 > ### {% icon hands_on %} Hands-on: GDSC1 and GDSC2 pharmacological analysis using ERBB2_KRAS_PIK3CA_AKT1 model
 >
 > 1. **PAPAA: PanCancer targene pharmacology** {% icon tool %} with the following parameters:
->    - {% icon param-file %} *"gdsc1 targene pharmacology predictions"*: `gdsc1 targene pharmacology predictions` (output of **PAPAA: PanCancer targene cell line predictions** {% icon tool %})
->    - {% icon param-file %} *"gdsc2 targene pharmacology predictions"*: `gdsc2 targene pharmacology predictions` (output of **PAPAA: PanCancer targene cell line predictions** {% icon tool %})
->    - {% icon param-file %} *"gdsc1 ccle targene pharmacology predictions"*: `gdsc1 ccle targene pharmacology predictions` (output of **PAPAA: PanCancer targene cell line predictions** {% icon tool %})
->    - {% icon param-file %} *"gdsc2 ccle targene pharmacology predictions"*: `gdsc2 ccle targene pharmacology predictions` (output of **PAPAA: PanCancer targene cell line predictions** {% icon tool %})
->    - {% icon param-file %} *"Filename list of compounds"*: `output` (Input dataset)
+>    - {% icon param-file %} *"gdsc1 targene pharmacology predictions"*: `gdsc1_targene_pharmacology_predictions.tsv` (output of **PAPAA: PanCancer targene cell line predictions** {% icon tool %})
+>    - {% icon param-file %} *"gdsc2 targene pharmacology predictions"*: `gdsc2_targene_pharmacology_predictions.tsv` (output of **PAPAA: PanCancer targene cell line predictions** {% icon tool %})
+>    - {% icon param-file %} *"gdsc1 ccle targene pharmacology predictions"*: `gdsc1_ccle_targene_pharmacology_predictions.tsv` (output of **PAPAA: PanCancer targene cell line predictions** {% icon tool %})
+>    - {% icon param-file %} *"gdsc2 ccle targene pharmacology predictions"*: `gdsc2_ccle_targene_pharmacology_predictions.tsv` (output of **PAPAA: PanCancer targene cell line predictions** {% icon tool %})
+>    - {% icon param-file %} *"Filename list of compounds"*: `compounds_of_interest.txt` (Input dataset)
 {: .hands_on}
 
 >    *Check parameter descriptions*
