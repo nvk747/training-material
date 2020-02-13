@@ -26,7 +26,7 @@ contributors:
 
 <!-- This is a comment. -->
 
-Signaling pathways are most commonly altered across different tumor types. Many tumors possess at Least one driver alteration and nearly half of such alterations are potentially targeted by currently available drugs. A recent study in TCGA tumors has identified patterns of somatic variations and mechanisms in 10 canonical pathways(Sanchez-Vega et al. 2018). One-third of these tumors possess multiple alterations and have potentially complex phenotypes. Identifying a transcriptomic signature in these tumors would enable personalized therapeutic design strategies. A plethora of evidence suggests complex diseases, like cancer, can be the result of multiple genetic aberrations in biological networks or pathways rather than variation in a single gene. Often starter mutations occur in a key component network that ultimately leads to multigene dysregulation causing hallmark cancer phenotypes (Hanahan and Weinberg 2000). Many of these phenotypes are the result of disrupted transcriptional programs that affect the clinical progression and therapeutic responsiveness. Recent progress in exploring these transcriptomic changes in cancer pathogenesis provided useful clues in precision medicine (Bradner et al. 2017).
+Signaling pathways are most commonly altered across different tumor types. Many tumors possess at least one driver alteration and nearly half of such alterations are potentially targeted by currently available drugs. A recent study in TCGA tumors has identified patterns of somatic variations and mechanisms in 10 canonical pathways(Sanchez-Vega et al. 2018). One-third of these tumors possess multiple alterations and have potentially complex phenotypes. Identifying a transcriptomic signature in these tumors would enable personalized therapeutic design strategies. A plethora of evidence suggests complex diseases, like cancer, can be the result of multiple genetic aberrations in biological networks or pathways rather than variation in a single gene. Often starter mutations occur in a key component network that ultimately leads to multigene dysregulation causing hallmark cancer phenotypes (Hanahan and Weinberg 2000). Many of these phenotypes are the result of disrupted transcriptional programs that affect the clinical progression and therapeutic responsiveness. Recent progress in exploring these transcriptomic changes in cancer pathogenesis provided useful clues in precision medicine (Bradner et al. 2017).
 
 The RTK/RAS/PI3K molecular genetic axis controls critical cellular functions and is commonly altered in various cancers (Fruman and Rommel 2014). Perturbations across this axis can lead to deficiencies in cell-cycle, survival, metabolism, motility and genome stability, triggering hallmark phenotypes of cancer. The constitutive activation and presence of phosphatidylinositol-3,4,5-trisphosphate (PIP3) trigger membrane-bound onco-signalosomes. This presents significant challenges for treatment, as PI3K cascade can be activated in several ways (Zhao and Roberts 2006).
 
@@ -34,7 +34,7 @@ In this tutorial we plan to measure aberrant PI3K pathway activity in TCGA datas
 
 ![Figure-1](images/pi3k_pathway.png)
 
-Cancer driver genes comprising both oncogenes(OG) and Tumor suppressor genes(TSG) share common phenotypical outcome. However they often have divergent molecular mechanisms  that drive the outcome. We are interested in capturing mutational specific differential transcriptional outcome among OG and TSG. In Fig-1 Genes in red are oncogenes (have activating or copy gain) and blue are tumor suppressor genes (have inactivating or copy loss).
+Cancer driver genes comprising both oncogenes (OG) and Tumor suppressor genes (TSG) share common phenotypical outcome. However they often have divergent molecular mechanisms  that drive the outcome. We are interested in capturing mutational specific differential transcriptional outcome among OG and TSG. In Fig-1 Genes in red are oncogenes (have activating or copy gain) and blue are tumor suppressor genes (have inactivating or copy loss).
 
 > ### Agenda
 >
@@ -125,7 +125,7 @@ Each feature (gene) is given a rank and score(negative or positive) depending on
 In this tutorial, we made series of steps to generate classification models and used those models for predicting pharmacological response or identifying potential biomarkers that are helpful in for treatment of various cancers. Generate model using from ERBB2,KRAS,PIK3CA,AKT11 oncogenes from ERK/RAS/PI3K signaling axis pathway. 
 have fun!
 
-## **PanCancer_classifier**
+## **PanCancer classifier**
 This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes belonging to a ERK/RAS/PI3K signaling axis pathway(path_genes) and BLCA,BRCA,CESC,COAD,ESCA,LUAD,LUSC,OV,PRAD,READ,STAD,UCEC,UCS cancer types/diseases(ref: tcga_dictionary.tsv) from The Cancer Genome Atlas (TCGA). Additionally the generated model was used to evaluate alternative genes (PTEN,PIK3R1,STK11) and alternative dieseases (BRCA,COAD,ESCA,HNSC,LGG,LUAD,LUSC,PRAD,READ,GBM,UCEC,UCS) performance. This steps takes feature information (pancan_rnaseq_freeze.tsv.gz), mutational information(pancan_mutation_freeze.tsv.gz),load of mutations in each samples(mutation_burden_freeze.tsv.gz), threshold passed sample information(sample_freeze.tsv) and copy number information(copy_number_loss_status.tsv.gz & copy_number_gain_status.tsv.gz).
 ![Figure-3](images/pan_auroc.png) 
 ![Figure-4](images/coefficients.png)
@@ -208,7 +208,7 @@ This first step is designed to generate model with ERBB2,KRAS,PIK3CA,AKT11 genes
 >    - disease_auroc.pdf
 {: .comment}
 
-## **within_disease_analysis**
+## **PanCancer within disease analysis**
 This step is designed to generate individual pan-within models for each individual disease. It takes the same inputs as first step and generates similar output for each of them.
 
 > ### {% icon hands_on %} Hands-on: Generating models for individual diseases listed for ERBB2,PIK3CA,KRAS,AKT1
@@ -258,7 +258,7 @@ This step is designed to generate individual pan-within models for each individu
 >    - Disease classifier figures: list of 2 files [disease_pr disease_roc] for each disease
 {: .comment}
 
-## **compare_within_models**
+## **PanCancer compare within models**
 we next do a performance comparision between the ERBB2,PIK3CA,KRAS,AKT1 pan model and individual models.
 ![Figure-5](images/within.png)
 
@@ -288,7 +288,7 @@ we next do a performance comparision between the ERBB2,PIK3CA,KRAS,AKT1 pan mode
 >    performance on alternative gene ("alt_gene_auroc_comparison.pdf" and "alt_gene_aupr_comparison.pdf")
 {: .comment}
 
-## **apply_weights**
+## **PanCancer apply weights**
 In this step we would like to predict y status (mutational status) using x matrix (gene expression). Subset the x matrix to MAD genes, scaling the expression and add covariate information. A logit transformation will be applied to output probabilities and classifier decisions. 
 
 > ### {% icon hands_on %} Hands-on: Apply weights for ERBB2_KRAS_PIK3CA_AKT1 model
@@ -325,7 +325,7 @@ In this step we would like to predict y status (mutational status) using x matri
 >    - classifier_decisions.tsv
 {: .comment}
 
-## **Visualize_decisions**
+## **PanCancer visualize decisions**
 In this step we generate plots for each disease and plot  total decision and hypermutated samples.
 ![Figure-6](images/decisions.png)
 
@@ -349,7 +349,7 @@ In this step we generate plots for each disease and plot  total decision and hyp
 >    - Visualize decision function for hyper mutated tumors ("hyper_mutated.pdf")
 {: .comment}
 
-## **map_mutation_class**
+## **PanCancer map mutation class**
 In this step we combined variant level information for each mutation combining with classifier decisions and predictions.
 
 > ### {% icon hands_on %} Hands-on: map mutation class for ERBB2_KRAS_PIK3CA_AKT1 model
@@ -381,7 +381,7 @@ In this step we combined variant level information for each mutation combining w
 >    - mutation_classification_scores.tsv
 {: .comment}
 
-## **alternative_genes_pathwaymapper**
+## **PanCancer alternative genes pathwaymapper**
 In this step we combine classifier weights,copy number information, recalulate metrics for positive samples, visuvalize distribution for AUROC and AUPR for all genes and metrics for each gene. 
 
 > ### {% icon hands_on %} Hands-on: alternative genes pathway mapper for ERBB2_KRAS_PIK3CA_AKT1 model
@@ -419,7 +419,7 @@ In this step we combine classifier weights,copy number information, recalulate m
 >    - all_gene_metric_ranks.tsv
 {: .comment}
 
-## **pathway_count_heatmaps**
+## **PanCancer pathway count heatmaps**
 This step generates combined heatmap from mutation and copy number information and summarizes mutation, copy and total counts per sample for the entire pathway. 
 ![Figure-7](images/combined.png)
 
@@ -467,7 +467,7 @@ This step generates combined heatmap from mutation and copy number information a
 >    - path_events_per_sample.tsv
 {: .comment}
 
-## **targene_summary_figures**
+## **PanCancer targene summary figures**
 This step generates plots summarizing various analysis, including heatmaps for distribution of aberrant events across tumors, distribution of predictions at variant level,summary distribution of PTEN variants R130X and R233X.
 
 ![Figure-8](images/all_targene.png)
@@ -511,7 +511,7 @@ This step generates plots summarizing various analysis, including heatmaps for d
 >    - nucleotide_mutation_scores.tsv
 {: .comment}
 
-## **targene_cell_line_predictions**
+## **PanCancer targene cell line predictions**
 In this step we use our classifier information and predict mutational status for various cell lines in CCLE and GDSC data sources.
 ![Figure-9](images/GDSC_CCLE.png)
 
@@ -576,7 +576,7 @@ In this step we use our classifier information and predict mutational status for
 >    - gdsc2_ccle_targene_pharmacology_predictions.tsv
 {: .comment}
 
-## **external_sample_status_prediction**
+## **PanCancer external sample status prediction**
 In this step we use our classifier information and predict mutational status for PTENKO, PI3KCA mutant, WT when PI3K is inhibited using A66. 
 ![Figure-9](images/external.png)
 
@@ -605,7 +605,7 @@ In this step we use our classifier information and predict mutational status for
 >    - Figure 2
 {: .comment}
 
-## **targene_pharmacology**
+## **PanCancer targene pharmacology**
 In this step we use the classifier derived cell line predictions and use them to evaluate pharmacological response of these cell lines. We plot log IC50 with classifier scores for each cell line and draw a correlation for drug response in absensce or presence of targene mutations
 
 ![Figure-9](images/drug.png)
