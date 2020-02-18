@@ -1,1 +1,1401 @@
-{"uuid": "f96af137-a2aa-4f7d-8736-3df4ad1472c4", "tags": [], "format-version": "0.1", "name": "new_papaa@0.1.5_pi3k_gain", "version": 2, "steps": {"0": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"name\": \"vogelstein_cancergenes.tsv\"}", "id": 0, "uuid": "5d260245-5cd0-41cc-98be-dd9ba0f822a3", "errors": null, "name": "Input dataset", "label": "vogelstein_cancergenes.tsv", "inputs": [{"name": "vogelstein_cancergenes.tsv", "description": ""}], "position": {"top": 134.0000114440918, "left": 134}, "annotation": "", "content_id": null, "type": "data_input"}, "1": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"name\": \"pancan_rnaseq_freeze.tsv\"}", "id": 1, "uuid": "530e3c49-fa1c-4ad3-91c1-30d19d2b8604", "errors": null, "name": "Input dataset", "label": "pancan_rnaseq_freeze.tsv", "inputs": [{"name": "pancan_rnaseq_freeze.tsv", "description": ""}], "position": {"top": 220.43000411987305, "left": 134}, "annotation": "", "content_id": null, "type": "data_input"}, "2": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"name\": \"pancan_mutation_freeze.tsv\"}", "id": 2, "uuid": "0069f9a0-c96b-44fb-8ff4-4184709160d9", "errors": null, "name": "Input dataset", "label": "pancan_mutation_freeze.tsv", "inputs": [{"name": "pancan_mutation_freeze.tsv", "description": ""}], "position": {"top": 306.8495292663574, "left": 134}, "annotation": "", "content_id": null, "type": "data_input"}, "3": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"name\": \"copy_number_loss_status.tsv\"}", "id": 3, "uuid": "531a3b7e-4748-4a34-a300-2e021e20bf94", "errors": null, "name": "Input dataset", "label": "copy_number_loss_status.tsv", "inputs": [{"name": "copy_number_loss_status.tsv", "description": ""}], "position": {"top": 393.28998947143555, "left": 134}, "annotation": "", "content_id": null, "type": "data_input"}, "4": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"name\": \"copy_number_gain_status.tsv\"}", "id": 4, "uuid": "ba712d45-4c00-4564-bb0c-145b14931c67", "errors": null, "name": "Input dataset", "label": "copy_number_gain_status.tsv", "inputs": [{"name": "copy_number_gain_status.tsv", "description": ""}], "position": {"top": 479.70954513549805, "left": 134}, "annotation": "", "content_id": null, "type": "data_input"}, "5": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"name\": \"mutation_burden_freeze.tsv\"}", "id": 5, "uuid": "ba91c898-574f-41ec-b652-05c1d05f0ff8", "errors": null, "name": "Input dataset", "label": "mutation_burden_freeze.tsv", "inputs": [{"name": "mutation_burden_freeze.tsv", "description": ""}], "position": {"top": 566.1395378112793, "left": 134}, "annotation": "", "content_id": null, "type": "data_input"}, "6": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"name\": \"sample_freeze.tsv\"}", "id": 6, "uuid": "ab9d2d25-b2b0-45a4-a64c-cb0704ea7301", "errors": null, "name": "Input dataset", "label": "sample_freeze.tsv", "inputs": [{"name": "sample_freeze.tsv", "description": ""}], "position": {"top": 652.5800285339355, "left": 134}, "annotation": "", "content_id": null, "type": "data_input"}, "7": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"name\": \"mc3.v0.2.8.PUBLIC.maf\"}", "id": 7, "uuid": "aaa13a04-cd61-445b-b539-82a7e6c5fe3e", "errors": null, "name": "Input dataset", "label": "mc3.v0.2.8.PUBLIC.maf", "inputs": [{"name": "mc3.v0.2.8.PUBLIC.maf", "description": ""}], "position": {"top": 725.6099967956543, "left": 134}, "annotation": "", "content_id": null, "type": "data_input"}, "8": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"name\": \"CCLE_DepMap_18Q1_maf_20180207.txt\"}", "id": 8, "uuid": "0084dcdf-53dd-4e44-9624-f7655cd4e801", "errors": null, "name": "Input dataset", "label": "CCLE_DepMap_18Q1_maf_20180207.txt", "inputs": [{"name": "CCLE_DepMap_18Q1_maf_20180207.txt", "description": ""}], "position": {"top": 798.6400260925293, "left": 134}, "annotation": "", "content_id": null, "type": "data_input"}, "9": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"name\": \"gdsc1_ccle_pharm_fitted_dose_data.txt\"}", "id": 9, "uuid": "5db2981d-c48c-4a59-b546-c92f371ac322", "errors": null, "name": "Input dataset", "label": "gdsc1_ccle_pharm_fitted_dose_data.txt", "inputs": [{"name": "gdsc1_ccle_pharm_fitted_dose_data.txt", "description": ""}], "position": {"top": 885.0700187683105, "left": 134}, "annotation": "", "content_id": null, "type": "data_input"}, "10": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"name\": \"gdsc2_ccle_pharm_fitted_dose_data.txt\"}", "id": 10, "uuid": "454d1942-9a2a-47ca-893b-afd77ad35043", "errors": null, "name": "Input dataset", "label": "gdsc2_ccle_pharm_fitted_dose_data.txt", "inputs": [{"name": "gdsc2_ccle_pharm_fitted_dose_data.txt", "description": ""}], "position": {"top": 971.5000114440918, "left": 134}, "annotation": "", "content_id": null, "type": "data_input"}, "11": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"name\": \"path_genes.txt\"}", "id": 11, "uuid": "20a6976a-d0f4-4cc5-8709-562a65a50334", "errors": null, "name": "Input dataset", "label": "path_genes.txt", "inputs": [{"name": "path_genes.txt", "description": ""}], "position": {"top": 1057.9194450378418, "left": 134}, "annotation": "", "content_id": null, "type": "data_input"}, "12": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"name\": \"sign.txt\"}", "id": 12, "uuid": "e63d5a83-f68d-4b31-bdc4-2e436380aaa3", "errors": null, "name": "Input dataset", "label": "sign.txt", "inputs": [{"name": "sign.txt", "description": ""}], "position": {"top": 1117.5495719909668, "left": 134}, "annotation": "", "content_id": null, "type": "data_input"}, "13": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"name\": \"vlog_trans.csv\"}", "id": 13, "uuid": "14b4f57e-366d-4768-b0d5-6f7d2d18d84f", "errors": null, "name": "Input dataset", "label": "vlog_trans.csv", "inputs": [{"name": "vlog_trans.csv", "description": ""}], "position": {"top": 1177.1795768737793, "left": 134}, "annotation": "", "content_id": null, "type": "data_input"}, "14": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"name\": \"GDSC_CCLE_common_mut_cnv_binary.tsv.gz\"}", "id": 14, "uuid": "17856c07-1fe3-405b-8de3-20c67cd5e692", "errors": null, "name": "Input dataset", "label": "GDSC_CCLE_common_mut_cnv_binary.tsv.gz", "inputs": [{"name": "GDSC_CCLE_common_mut_cnv_binary.tsv.gz", "description": ""}], "position": {"top": 1236.8095817565918, "left": 134}, "annotation": "", "content_id": null, "type": "data_input"}, "15": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"name\": \"ccle_rnaseq_genes_rpkm_20180929_mod.tsv.gz\"}", "id": 15, "uuid": "43288504-9942-44b1-a3fb-8b0fe3c851b8", "errors": null, "name": "Input dataset", "label": "ccle_rnaseq_genes_rpkm_20180929_mod.tsv.gz", "inputs": [{"name": "ccle_rnaseq_genes_rpkm_20180929_mod.tsv.gz", "description": ""}], "position": {"top": 1323.2500114440918, "left": 134}, "annotation": "", "content_id": null, "type": "data_input"}, "16": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"name\": \"GDSC_EXP_CCLE_converted_name.tsv.gz\"}", "id": 16, "uuid": "7a83d0a4-48d1-4fb2-b062-424a046c70c0", "errors": null, "name": "Input dataset", "label": "GDSC_EXP_CCLE_converted_name.tsv.gz", "inputs": [{"name": "GDSC_EXP_CCLE_converted_name.tsv.gz", "description": ""}], "position": {"top": 1423.0799674987793, "left": 134}, "annotation": "", "content_id": null, "type": "data_input"}, "17": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"name\": \"CCLE_MUT_CNA_AMP_DEL_binary_Revealer.tsv\"}", "id": 17, "uuid": "7119005d-473b-4f4e-97c4-a1a87e534b23", "errors": null, "name": "Input dataset", "label": "CCLE_MUT_CNA_AMP_DEL_binary_Revealer.tsv", "inputs": [{"name": "CCLE_MUT_CNA_AMP_DEL_binary_Revealer.tsv", "description": ""}], "position": {"top": 1509.5100212097168, "left": 134}, "annotation": "", "content_id": null, "type": "data_input"}, "18": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"name\": \"compounds_of_interest.txt\"}", "id": 18, "uuid": "d124ca9b-863d-44b3-9960-1b07661dc0e6", "errors": null, "name": "Input dataset", "label": "compounds_of_interest.txt", "inputs": [{"name": "compounds_of_interest.txt", "description": ""}], "position": {"top": 1595.9399528503418, "left": 134}, "annotation": "", "content_id": null, "type": "data_input"}, "19": {"tool_id": "pancancer_classifier", "tool_version": "0.1.5", "outputs": [{"type": "input", "name": "disease_figures"}, {"type": "txt", "name": "log"}, {"type": "tabular", "name": "alt_gene_alt_disease_summary"}, {"type": "csv", "name": "alt_summary_counts"}, {"type": "tabular", "name": "classifier_coefficients"}, {"type": "txt", "name": "classifier_summary"}, {"type": "tabular", "name": "pancan_roc_results"}, {"type": "csv", "name": "summary_counts"}, {"type": "pdf", "name": "cv_heatmap"}, {"type": "pdf", "name": "all_disease_pr"}, {"type": "pdf", "name": "all_disease_roc"}, {"type": "pdf", "name": "alt_gene_alt_disease_aupr_bar"}, {"type": "pdf", "name": "alt_gene_alt_disease_auroc_bar"}, {"type": "pdf", "name": "disease_aupr"}, {"type": "pdf", "name": "disease_auroc"}], "workflow_outputs": [], "input_connections": {"copy_number_conditional|filename_copy_loss": {"output_name": "output", "id": 3}, "filename_mut": {"output_name": "output", "id": 2}, "filename_sample": {"output_name": "output", "id": 6}, "filename_mut_burden": {"output_name": "output", "id": 5}, "copy_number_conditional|filename_cancer_gene_classification": {"output_name": "output", "id": 0}, "x_matrix": {"output_name": "output", "id": 1}, "copy_number_conditional|filename_copy_gain": {"output_name": "output", "id": 4}}, "tool_state": "{\"alt_filter_prop\": \"\\\"0.05\\\"\", \"alt_filter_count\": \"\\\"15\\\"\", \"folds\": \"\\\"5\\\"\", \"filename_sample\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"l1_ratios\": \"\\\"0.1,0.125,0.15,0.2,0.25,0.3,0.35\\\"\", \"x_matrix\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"drop_x_genes\": \"\\\"\\\"\", \"__page__\": null, \"shuffled\": \"\\\"true\\\"\", \"drop_rasopathy\": \"\\\"false\\\"\", \"filename_mut\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__rerun_remap_job_id__\": null, \"drop_expression\": \"\\\"false\\\"\", \"drop_covariates\": \"\\\"false\\\"\", \"diseases\": \"\\\"BLCA,BRCA,CESC,COAD,ESCA,LUAD,LUSC,OV,PRAD,READ,STAD,UCEC,UCS\\\"\", \"no_mutation\": \"\\\"false\\\"\", \"num_features\": \"\\\"8000\\\"\", \"genes\": \"\\\"ERBB2,PIK3CA,KRAS,AKT1\\\"\", \"copy_number_conditional\": \"{\\\"__current_case__\\\": 0, \\\"copy_number\\\": \\\"true\\\", \\\"filename_cancer_gene_classification\\\": {\\\"__class__\\\": \\\"ConnectedValue\\\"}, \\\"filename_copy_gain\\\": {\\\"__class__\\\": \\\"ConnectedValue\\\"}, \\\"filename_copy_loss\\\": {\\\"__class__\\\": \\\"ConnectedValue\\\"}}\", \"shuffled_before_training\": \"\\\"false\\\"\", \"remove_hyper\": \"\\\"true\\\"\", \"alphas\": \"\\\"0.1,0.13,0.15,0.18,0.2,0.3,0.4,0.6,0.7\\\"\", \"alt_genes\": \"\\\"PTEN,PIK3R1,STK11\\\"\", \"alt_diseases\": \"\\\"BRCA,COAD,ESCA,HNSC,LGG,LUAD,LUSC,PRAD,READ,GBM,UCEC,UCS\\\"\", \"filter_count\": \"\\\"15\\\"\", \"x_as_raw\": \"\\\"true\\\"\", \"drop\": \"\\\"true\\\"\", \"filename_mut_burden\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"keep_intermediate\": \"\\\"true\\\"\", \"filter_prop\": \"\\\"0.05\\\"\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\"}", "id": 19, "uuid": "55b2dbda-67ab-4b35-8168-2629aee8349c", "errors": null, "name": "PAPAA: PanCancer classifier", "post_job_actions": {}, "label": null, "inputs": [], "position": {"top": 134.0000114440918, "left": 301.5}, "annotation": "", "content_id": "pancancer_classifier", "type": "tool"}, "20": {"tool_id": "pancancer_within_disease_analysis", "tool_version": "0.1.5", "outputs": [{"type": "input", "name": "classifier_summary"}, {"type": "input", "name": "classifier_coefficients"}, {"type": "input", "name": "pancan_roc_results"}, {"type": "input", "name": "summary_counts"}, {"type": "input", "name": "within_disease"}, {"type": "input", "name": "disease_figures"}, {"type": "txt", "name": "log"}], "workflow_outputs": [], "input_connections": {"filename_copy_loss": {"output_name": "output", "id": 3}, "filename_mut": {"output_name": "output", "id": 2}, "filename_sample": {"output_name": "output", "id": 6}, "filename_mut_burden": {"output_name": "output", "id": 5}, "filename_copy_gain": {"output_name": "output", "id": 4}, "filename_cancer_gene_classification": {"output_name": "output", "id": 0}, "x_matrix": {"output_name": "output", "id": 1}}, "tool_state": "{\"alphas\": \"\\\"0.1,0.13,0.15,0.18,0.2,0.3,0.4,0.6,0.7\\\"\", \"filename_copy_loss\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"diseases\": \"\\\"BLCA,BRCA,CESC,COAD,ESCA,LUAD,LUSC,OV,PRAD,READ,STAD,UCEC,UCS\\\"\", \"__page__\": null, \"x_as_raw\": \"\\\"true\\\"\", \"filename_mut\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__rerun_remap_job_id__\": null, \"filename_sample\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"filename_mut_burden\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"filename_copy_gain\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"filename_cancer_gene_classification\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"genes\": \"\\\"ERBB2,PIK3CA,KRAS,AKT1\\\"\", \"l1_ratios\": \"\\\"0.1,0.125,0.15,0.2,0.25,0.3,0.35\\\"\", \"remove_hyper\": \"\\\"true\\\"\", \"x_matrix\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\"}", "id": 20, "uuid": "e1123af4-a647-4961-b2a5-4b92096f389a", "errors": null, "name": "PAPAA: PanCancer within disease analysis", "post_job_actions": {}, "label": null, "inputs": [], "position": {"top": 1058.5999870300293, "left": 301.5}, "annotation": "", "content_id": "pancancer_within_disease_analysis", "type": "tool"}, "21": {"tool_id": "pancancer_apply_weights", "tool_version": "0.1.5", "outputs": [{"type": "txt", "name": "log"}, {"type": "tabular", "name": "classifier_decisions"}], "workflow_outputs": [], "input_connections": {"copy_number_conditional|filename_copy_loss": {"output_name": "output", "id": 3}, "filename_mut": {"output_name": "output", "id": 2}, "filename_sample": {"output_name": "output", "id": 6}, "filename_mut_burden": {"output_name": "output", "id": 5}, "copy_number_conditional|filename_cancer_gene_classification": {"output_name": "output", "id": 0}, "pancan_classifier_coefficients": {"output_name": "classifier_coefficients", "id": 19}, "x_matrix": {"output_name": "output", "id": 1}, "classifier": {"output_name": "classifier_summary", "id": 19}, "copy_number_conditional|filename_copy_gain": {"output_name": "output", "id": 4}}, "tool_state": "{\"__page__\": null, \"x_matrix\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__rerun_remap_job_id__\": null, \"filename_sample\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"filename_mut_burden\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"pancan_classifier_coefficients\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"copy_number_conditional\": \"{\\\"__current_case__\\\": 0, \\\"copy_number\\\": \\\"true\\\", \\\"filename_cancer_gene_classification\\\": {\\\"__class__\\\": \\\"ConnectedValue\\\"}, \\\"filename_copy_gain\\\": {\\\"__class__\\\": \\\"ConnectedValue\\\"}, \\\"filename_copy_loss\\\": {\\\"__class__\\\": \\\"ConnectedValue\\\"}}\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\", \"classifier\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"filename_mut\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\"}", "id": 21, "uuid": "396233bb-cb0d-40fe-891a-21225c9041f4", "errors": null, "name": "PAPAA: PanCancer apply weights", "post_job_actions": {}, "label": null, "inputs": [], "position": {"top": 408.6999931335449, "left": 521.260009765625}, "annotation": "", "content_id": "pancancer_apply_weights", "type": "tool"}, "22": {"tool_id": "pancancer_external_sample_status_prediction", "tool_version": "0.1.5", "outputs": [{"type": "txt", "name": "log"}, {"type": "pdf", "name": "figure1"}, {"type": "pdf", "name": "figure2"}], "workflow_outputs": [], "input_connections": {"ex_vlog": {"output_name": "output", "id": 13}, "pancan_classifier_coefficients": {"output_name": "classifier_coefficients", "id": 19}, "classifier": {"output_name": "classifier_summary", "id": 19}, "sign": {"output_name": "output", "id": 12}}, "tool_state": "{\"__page__\": null, \"ex_vlog\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__rerun_remap_job_id__\": null, \"sign\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"pancan_classifier_coefficients\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\", \"classifier\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\"}", "id": 22, "uuid": "f5c73c34-95ca-4b1d-9838-583485bbd4e3", "errors": null, "name": "PAPAA: PanCancer external sample status prediction", "post_job_actions": {}, "label": null, "inputs": [], "position": {"top": 750.399974822998, "left": 521.260009765625}, "annotation": "", "content_id": "pancancer_external_sample_status_prediction", "type": "tool"}, "23": {"tool_id": "pancancer_compare_within_models", "tool_version": "0.1.5", "outputs": [{"type": "txt", "name": "log"}, {"type": "pdf", "name": "aupr_comparison"}, {"type": "pdf", "name": "auroc_comparison"}], "workflow_outputs": [], "input_connections": {"pan_within_classifier_coefficients": {"output_name": "classifier_coefficients", "id": 20}, "pan_within_classifier_summary": {"output_name": "classifier_summary", "id": 20}, "pancan_summary": {"output_name": "classifier_summary", "id": 19}, "pancan_classifier_coefficients": {"output_name": "classifier_coefficients", "id": 19}}, "tool_state": "{\"__page__\": null, \"pancan_summary\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"pan_within_classifier_coefficients\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"pancan_classifier_coefficients\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"pan_within_classifier_summary\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"include_alt\": \"{\\\"__current_case__\\\": 1, \\\"include_alt_select\\\": \\\"false\\\"}\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\", \"__rerun_remap_job_id__\": null}", "id": 23, "uuid": "08e0e0ac-b7bf-4298-94c5-0671c7f7abde", "errors": null, "name": "PAPAA: PanCancer compare within models", "post_job_actions": {}, "label": null, "inputs": [], "position": {"top": 134.0000114440918, "left": 521.260009765625}, "annotation": "", "content_id": "pancancer_compare_within_models", "type": "tool"}, "24": {"tool_id": "pancancer_visualize_decisions", "tool_version": "0.1.5", "outputs": [{"type": "input", "name": "classifier_decisions_figures"}, {"type": "txt", "name": "log"}, {"type": "pdf", "name": "total_decisions"}, {"type": "pdf", "name": "hyper_mutated"}], "workflow_outputs": [], "input_connections": {"scores": {"output_name": "classifier_decisions", "id": 21}}, "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"custom\": \"\\\"\\\"\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\", \"scores\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\"}", "id": 24, "uuid": "cdc58811-69af-41ec-a4cc-5f8999040eca", "errors": null, "name": "PAPAA: PanCancer visualize decisions", "post_job_actions": {}, "label": null, "inputs": [], "position": {"top": 134.0000114440918, "left": 741.02001953125}, "annotation": "", "content_id": "pancancer_visualize_decisions", "type": "tool"}, "25": {"tool_id": "pancancer_map_mutation_class", "tool_version": "0.1.5", "outputs": [{"type": "txt", "name": "log"}, {"type": "tabular", "name": "mutation_classification_scores"}], "workflow_outputs": [], "input_connections": {"copy_number_conditional|filename_copy_gain": {"output_name": "output", "id": 4}, "filename_raw_mut": {"output_name": "output", "id": 7}, "path_genes": {"output_name": "output", "id": 11}, "copy_number_conditional|filename_copy_loss": {"output_name": "output", "id": 3}, "scores": {"output_name": "classifier_decisions", "id": 21}}, "tool_state": "{\"__page__\": null, \"filename_raw_mut\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"path_genes\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__rerun_remap_job_id__\": null, \"scores\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"copy_number_conditional\": \"{\\\"__current_case__\\\": 0, \\\"copy_number\\\": \\\"true\\\", \\\"filename_copy_gain\\\": {\\\"__class__\\\": \\\"ConnectedValue\\\"}, \\\"filename_copy_loss\\\": {\\\"__class__\\\": \\\"ConnectedValue\\\"}}\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\"}", "id": 25, "uuid": "dbd18505-e393-469c-abb7-9a5b214a3d2b", "errors": null, "name": "PAPAA: PanCancer map mutation class", "post_job_actions": {}, "label": null, "inputs": [], "position": {"top": 368.5000114440918, "left": 741.02001953125}, "annotation": "", "content_id": "pancancer_map_mutation_class", "type": "tool"}, "26": {"tool_id": "pancancer_alternative_genes_pathwaymapper", "tool_version": "0.1.5", "outputs": [{"type": "txt", "name": "log"}, {"type": "txt", "name": "pathway_metrics_pathwaymapper"}, {"type": "tabular", "name": "all_gene_metric_ranks"}], "workflow_outputs": [], "input_connections": {"copy_number_conditional|filename_copy_loss": {"output_name": "output", "id": 3}, "filename_mut": {"output_name": "output", "id": 2}, "filename_sample": {"output_name": "output", "id": 6}, "scores": {"output_name": "classifier_decisions", "id": 21}, "path_genes": {"output_name": "output", "id": 11}, "copy_number_conditional|filename_copy_gain": {"output_name": "output", "id": 4}}, "tool_state": "{\"__page__\": null, \"filename_sample\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"path_genes\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__rerun_remap_job_id__\": null, \"genes\": \"\\\"ERBB2,PIK3CA,KRAS,AKT1\\\"\", \"scores\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"copy_number_conditional\": \"{\\\"__current_case__\\\": 0, \\\"copy_number\\\": \\\"true\\\", \\\"filename_copy_gain\\\": {\\\"__class__\\\": \\\"ConnectedValue\\\"}, \\\"filename_copy_loss\\\": {\\\"__class__\\\": \\\"ConnectedValue\\\"}}\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\", \"filename_mut\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\"}", "id": 26, "uuid": "4f35b04c-26d2-479e-aa51-40ed922b5f94", "errors": null, "name": "PAPAA: PanCancer alternative genes pathwaymapper", "post_job_actions": {}, "label": null, "inputs": [], "position": {"top": 643.200023651123, "left": 741.02001953125}, "annotation": "", "content_id": "pancancer_alternative_genes_pathwaymapper", "type": "tool"}, "27": {"tool_id": "pancancer_pathway_count_heatmaps", "tool_version": "0.1.5", "outputs": [{"type": "txt", "name": "log"}, {"type": "pdf", "name": "mut_df"}, {"type": "pdf", "name": "copy_df"}, {"type": "pdf", "name": "combined_df"}, {"type": "txt", "name": "pathway_mapper_percentages"}, {"type": "tabular", "name": "path_events_per_sample"}], "workflow_outputs": [], "input_connections": {"pathway_metrics": {"output_name": "pathway_metrics_pathwaymapper", "id": 26}, "x_matrix": {"output_name": "output", "id": 1}, "filename_sample": {"output_name": "output", "id": 6}, "filename_mut_burden": {"output_name": "output", "id": 5}, "all_gene_metric_ranks": {"output_name": "all_gene_metric_ranks", "id": 26}, "filename_cancer_gene_classification": {"output_name": "output", "id": 0}, "filename_copy_loss": {"output_name": "output", "id": 3}, "scores": {"output_name": "classifier_decisions", "id": 21}, "filename_copy_gain": {"output_name": "output", "id": 4}, "path_genes": {"output_name": "output", "id": 11}, "filename_mut": {"output_name": "output", "id": 2}}, "tool_state": "{\"__page__\": null, \"filename_copy_loss\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"x_matrix\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__rerun_remap_job_id__\": null, \"filename_sample\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"filename_mut_burden\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"filename_copy_gain\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"filename_cancer_gene_classification\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"pathway_metrics\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"genes\": \"\\\"ERBB2,PIK3CA,KRAS,AKT1\\\"\", \"scores\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\", \"all_gene_metric_ranks\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"path_genes\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"filename_mut\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\"}", "id": 27, "uuid": "51f500e9-808a-4193-a756-6083ad1f2cd1", "errors": null, "name": "PAPAA: PanCancer pathway count heatmaps", "post_job_actions": {}, "label": null, "inputs": [], "position": {"top": 134.0000114440918, "left": 960.780029296875}, "annotation": "", "content_id": "pancancer_pathway_count_heatmaps", "type": "tool"}, "28": {"tool_id": "pancancer_targene_summary_figures", "tool_version": "0.1.5", "outputs": [{"type": "txt", "name": "log"}, {"type": "pdf", "name": "targene_heatmap"}, {"type": "pdf", "name": "all_targene_heatmap"}, {"type": "pdf", "name": "targene_coef_plot"}, {"type": "pdf", "name": "variant_gain_fill_map"}, {"type": "pdf", "name": "variant_loss_fill_map"}, {"type": "pdf", "name": "aupr_distribution"}, {"type": "pdf", "name": "auroc_distribution"}, {"type": "pdf", "name": "targene_pathway_events_counts"}, {"type": "txt", "name": "targene pathway variant AUPR ttest"}, {"type": "tabular", "name": "amino acid mutation scores"}, {"type": "tabular", "name": "nucleotide acid mutation scores"}], "workflow_outputs": [], "input_connections": {"summary_counts": {"output_name": "summary_counts", "id": 19}, "classifier_folder": {"output_name": "classifier_summary", "id": 19}, "all_gene_metric_ranks": {"output_name": "all_gene_metric_ranks", "id": 26}, "mutation_classification_scores": {"output_name": "mutation_classification_scores", "id": 25}, "pancan_classifier_coefficients": {"output_name": "classifier_coefficients", "id": 19}, "path_events_per_sample": {"output_name": "path_events_per_sample", "id": 27}}, "tool_state": "{\"__page__\": null, \"summary_counts\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__rerun_remap_job_id__\": null, \"classifier_folder\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"all_gene_metric_ranks\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"mutation_classification_scores\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"pancan_classifier_coefficients\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"path_events_per_sample\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\"}", "id": 28, "uuid": "25fcb1be-64bd-462d-8e79-d66ebad4353f", "errors": null, "name": "PAPAA: PanCancer targene summary figures", "post_job_actions": {}, "label": null, "inputs": [], "position": {"top": 134.0000114440918, "left": 1180.5400390625}, "annotation": "", "content_id": "pancancer_targene_summary_figures", "type": "tool"}, "29": {"tool_id": "pancancer_targene_cell_line_predictions", "tool_version": "0.1.5", "outputs": [{"type": "txt", "name": "log"}, {"type": "png", "name": "ccle_histogram"}, {"type": "tabular", "name": "ccle targene classifier scores"}, {"type": "pdf", "name": "ccle targene WT MUT predictions"}, {"type": "csv", "name": "updated_data_nucleotide_scores"}, {"type": "csv", "name": "updated_data_aminoacid_scores"}, {"type": "png", "name": "gdsc_scores_histogram"}, {"type": "tabular", "name": "gdsc targene classifier scores"}, {"type": "pdf", "name": "gdsc targene WT MUT predictions"}, {"type": "tabular", "name": "gdsc1 targene pharmacology predictions"}, {"type": "tabular", "name": "gdsc2 targene pharmacology predictions"}, {"type": "tabular", "name": "gdsc1 ccle targene pharmacology predictions"}, {"type": "tabular", "name": "gdsc2 ccle targene pharmacology predictions"}], "workflow_outputs": [], "input_connections": {"amino_acid_mutation_scores": {"output_name": "amino acid mutation scores", "id": 28}, "gdsc2_phar": {"output_name": "output", "id": 10}, "ccle_rnaseq": {"output_name": "output", "id": 15}, "ccle_mut": {"output_name": "output", "id": 17}, "nucleotide_mutation_scores": {"output_name": "nucleotide acid mutation scores", "id": 28}, "pancan_classifier_coefficients": {"output_name": "classifier_coefficients", "id": 19}, "gdsc_rnaseq": {"output_name": "output", "id": 16}, "gdsc1_phar": {"output_name": "output", "id": 9}, "gdsc_mut": {"output_name": "output", "id": 14}, "ccle_maf": {"output_name": "output", "id": 8}, "path_genes": {"output_name": "output", "id": 11}, "classifier": {"output_name": "classifier_summary", "id": 19}}, "tool_state": "{\"amino_acid_mutation_scores\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"gdsc2_phar\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"ccle_rnaseq\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"ccle_mut\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__page__\": null, \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\", \"__rerun_remap_job_id__\": null, \"nucleotide_mutation_scores\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"targenes\": \"\\\"ERBB2_MUT,PIK3CA_MUT,KRAS_MUT,AKT1_MUT\\\"\", \"pancan_classifier_coefficients\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"gdsc_rnaseq\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"gdsc1_phar\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"gdsc_mut\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"ccle_maf\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"path_genes\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"classifier\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\"}", "id": 29, "uuid": "07de5857-fd46-4c8c-8a2e-d49ca659152c", "errors": null, "name": "PAPAA: PanCancer targene cell line predictions", "post_job_actions": {}, "label": null, "inputs": [], "position": {"top": 134.0000114440918, "left": 1400.300048828125}, "annotation": "", "content_id": "pancancer_targene_cell_line_predictions", "type": "tool"}, "30": {"tool_id": "pancancer_targene_pharmacology", "tool_version": "0.1.5", "outputs": [{"type": "txt", "name": "log"}, {"type": "pdf", "name": "GDSC1_targene_all_drug_response"}, {"type": "pdf", "name": "GDSC2_targene_all_drug_response"}, {"type": "pdf", "name": "GDSC1_ccle_targene_all_drug_response"}, {"type": "pdf", "name": "GDSC2_ccle_targene_all_drug_response"}], "workflow_outputs": [], "input_connections": {"gdsc1_ccle_targene_pharmacology_predictions": {"output_name": "gdsc1 ccle targene pharmacology predictions", "id": 29}, "compound": {"output_name": "output", "id": 18}, "gdsc2_targene_pharmacology_predictions": {"output_name": "gdsc2 targene pharmacology predictions", "id": 29}, "gdsc1_targene_pharmacology_predictions": {"output_name": "gdsc1 targene pharmacology predictions", "id": 29}, "gdsc2_ccle_targene_pharmacology_predictions": {"output_name": "gdsc2 ccle targene pharmacology predictions", "id": 29}}, "tool_state": "{\"gdsc1_ccle_targene_pharmacology_predictions\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__page__\": null, \"gdsc2_targene_pharmacology_predictions\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"gdsc2_ccle_targene_pharmacology_predictions\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__rerun_remap_job_id__\": null, \"gdsc1_targene_pharmacology_predictions\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"compound\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\"}", "id": 30, "uuid": "00c1e681-1868-4914-bd54-e8c8323c64c7", "errors": null, "name": "PAPAA: PanCancer targene pharmacology", "post_job_actions": {}, "label": null, "inputs": [], "position": {"top": 134.0000114440918, "left": 1620.06005859375}, "annotation": "", "content_id": "pancancer_targene_pharmacology", "type": "tool"}}, "annotation": "", "a_galaxy_workflow": "true"}
+{
+  "uuid": "f96af137-a2aa-4f7d-8736-3df4ad1472c4",
+  "tags": [],
+  "format-version": "0.1",
+  "name": "Pancancer Aberrant Pathway Activity Analysis (PAPAA): PI3K gain",
+  "version": 2,
+  "steps": {
+    "0": {
+      "tool_id": null,
+      "tool_version": null,
+      "outputs": [],
+      "workflow_outputs": [],
+      "input_connections": {},
+      "tool_state": "{\"name\": \"vogelstein_cancergenes.tsv\"}",
+      "id": 0,
+      "uuid": "5d260245-5cd0-41cc-98be-dd9ba0f822a3",
+      "errors": null,
+      "name": "Input dataset",
+      "label": "vogelstein_cancergenes.tsv",
+      "inputs": [
+        {
+          "name": "vogelstein_cancergenes.tsv",
+          "description": ""
+        }
+      ],
+      "position": {
+        "top": 134.0000114440918,
+        "left": 134
+      },
+      "annotation": "",
+      "content_id": null,
+      "type": "data_input"
+    },
+    "1": {
+      "tool_id": null,
+      "tool_version": null,
+      "outputs": [],
+      "workflow_outputs": [],
+      "input_connections": {},
+      "tool_state": "{\"name\": \"pancan_rnaseq_freeze.tsv\"}",
+      "id": 1,
+      "uuid": "530e3c49-fa1c-4ad3-91c1-30d19d2b8604",
+      "errors": null,
+      "name": "Input dataset",
+      "label": "pancan_rnaseq_freeze.tsv",
+      "inputs": [
+        {
+          "name": "pancan_rnaseq_freeze.tsv",
+          "description": ""
+        }
+      ],
+      "position": {
+        "top": 220.43000411987305,
+        "left": 134
+      },
+      "annotation": "",
+      "content_id": null,
+      "type": "data_input"
+    },
+    "2": {
+      "tool_id": null,
+      "tool_version": null,
+      "outputs": [],
+      "workflow_outputs": [],
+      "input_connections": {},
+      "tool_state": "{\"name\": \"pancan_mutation_freeze.tsv\"}",
+      "id": 2,
+      "uuid": "0069f9a0-c96b-44fb-8ff4-4184709160d9",
+      "errors": null,
+      "name": "Input dataset",
+      "label": "pancan_mutation_freeze.tsv",
+      "inputs": [
+        {
+          "name": "pancan_mutation_freeze.tsv",
+          "description": ""
+        }
+      ],
+      "position": {
+        "top": 306.8495292663574,
+        "left": 134
+      },
+      "annotation": "",
+      "content_id": null,
+      "type": "data_input"
+    },
+    "3": {
+      "tool_id": null,
+      "tool_version": null,
+      "outputs": [],
+      "workflow_outputs": [],
+      "input_connections": {},
+      "tool_state": "{\"name\": \"copy_number_loss_status.tsv\"}",
+      "id": 3,
+      "uuid": "531a3b7e-4748-4a34-a300-2e021e20bf94",
+      "errors": null,
+      "name": "Input dataset",
+      "label": "copy_number_loss_status.tsv",
+      "inputs": [
+        {
+          "name": "copy_number_loss_status.tsv",
+          "description": ""
+        }
+      ],
+      "position": {
+        "top": 393.28998947143555,
+        "left": 134
+      },
+      "annotation": "",
+      "content_id": null,
+      "type": "data_input"
+    },
+    "4": {
+      "tool_id": null,
+      "tool_version": null,
+      "outputs": [],
+      "workflow_outputs": [],
+      "input_connections": {},
+      "tool_state": "{\"name\": \"copy_number_gain_status.tsv\"}",
+      "id": 4,
+      "uuid": "ba712d45-4c00-4564-bb0c-145b14931c67",
+      "errors": null,
+      "name": "Input dataset",
+      "label": "copy_number_gain_status.tsv",
+      "inputs": [
+        {
+          "name": "copy_number_gain_status.tsv",
+          "description": ""
+        }
+      ],
+      "position": {
+        "top": 479.70954513549805,
+        "left": 134
+      },
+      "annotation": "",
+      "content_id": null,
+      "type": "data_input"
+    },
+    "5": {
+      "tool_id": null,
+      "tool_version": null,
+      "outputs": [],
+      "workflow_outputs": [],
+      "input_connections": {},
+      "tool_state": "{\"name\": \"mutation_burden_freeze.tsv\"}",
+      "id": 5,
+      "uuid": "ba91c898-574f-41ec-b652-05c1d05f0ff8",
+      "errors": null,
+      "name": "Input dataset",
+      "label": "mutation_burden_freeze.tsv",
+      "inputs": [
+        {
+          "name": "mutation_burden_freeze.tsv",
+          "description": ""
+        }
+      ],
+      "position": {
+        "top": 566.1395378112793,
+        "left": 134
+      },
+      "annotation": "",
+      "content_id": null,
+      "type": "data_input"
+    },
+    "6": {
+      "tool_id": null,
+      "tool_version": null,
+      "outputs": [],
+      "workflow_outputs": [],
+      "input_connections": {},
+      "tool_state": "{\"name\": \"sample_freeze.tsv\"}",
+      "id": 6,
+      "uuid": "ab9d2d25-b2b0-45a4-a64c-cb0704ea7301",
+      "errors": null,
+      "name": "Input dataset",
+      "label": "sample_freeze.tsv",
+      "inputs": [
+        {
+          "name": "sample_freeze.tsv",
+          "description": ""
+        }
+      ],
+      "position": {
+        "top": 652.5800285339355,
+        "left": 134
+      },
+      "annotation": "",
+      "content_id": null,
+      "type": "data_input"
+    },
+    "7": {
+      "tool_id": null,
+      "tool_version": null,
+      "outputs": [],
+      "workflow_outputs": [],
+      "input_connections": {},
+      "tool_state": "{\"name\": \"mc3.v0.2.8.PUBLIC.maf\"}",
+      "id": 7,
+      "uuid": "aaa13a04-cd61-445b-b539-82a7e6c5fe3e",
+      "errors": null,
+      "name": "Input dataset",
+      "label": "mc3.v0.2.8.PUBLIC.maf",
+      "inputs": [
+        {
+          "name": "mc3.v0.2.8.PUBLIC.maf",
+          "description": ""
+        }
+      ],
+      "position": {
+        "top": 725.6099967956543,
+        "left": 134
+      },
+      "annotation": "",
+      "content_id": null,
+      "type": "data_input"
+    },
+    "8": {
+      "tool_id": null,
+      "tool_version": null,
+      "outputs": [],
+      "workflow_outputs": [],
+      "input_connections": {},
+      "tool_state": "{\"name\": \"CCLE_DepMap_18Q1_maf_20180207.txt\"}",
+      "id": 8,
+      "uuid": "0084dcdf-53dd-4e44-9624-f7655cd4e801",
+      "errors": null,
+      "name": "Input dataset",
+      "label": "CCLE_DepMap_18Q1_maf_20180207.txt",
+      "inputs": [
+        {
+          "name": "CCLE_DepMap_18Q1_maf_20180207.txt",
+          "description": ""
+        }
+      ],
+      "position": {
+        "top": 798.6400260925293,
+        "left": 134
+      },
+      "annotation": "",
+      "content_id": null,
+      "type": "data_input"
+    },
+    "9": {
+      "tool_id": null,
+      "tool_version": null,
+      "outputs": [],
+      "workflow_outputs": [],
+      "input_connections": {},
+      "tool_state": "{\"name\": \"gdsc1_ccle_pharm_fitted_dose_data.txt\"}",
+      "id": 9,
+      "uuid": "5db2981d-c48c-4a59-b546-c92f371ac322",
+      "errors": null,
+      "name": "Input dataset",
+      "label": "gdsc1_ccle_pharm_fitted_dose_data.txt",
+      "inputs": [
+        {
+          "name": "gdsc1_ccle_pharm_fitted_dose_data.txt",
+          "description": ""
+        }
+      ],
+      "position": {
+        "top": 885.0700187683105,
+        "left": 134
+      },
+      "annotation": "",
+      "content_id": null,
+      "type": "data_input"
+    },
+    "10": {
+      "tool_id": null,
+      "tool_version": null,
+      "outputs": [],
+      "workflow_outputs": [],
+      "input_connections": {},
+      "tool_state": "{\"name\": \"gdsc2_ccle_pharm_fitted_dose_data.txt\"}",
+      "id": 10,
+      "uuid": "454d1942-9a2a-47ca-893b-afd77ad35043",
+      "errors": null,
+      "name": "Input dataset",
+      "label": "gdsc2_ccle_pharm_fitted_dose_data.txt",
+      "inputs": [
+        {
+          "name": "gdsc2_ccle_pharm_fitted_dose_data.txt",
+          "description": ""
+        }
+      ],
+      "position": {
+        "top": 971.5000114440918,
+        "left": 134
+      },
+      "annotation": "",
+      "content_id": null,
+      "type": "data_input"
+    },
+    "11": {
+      "tool_id": null,
+      "tool_version": null,
+      "outputs": [],
+      "workflow_outputs": [],
+      "input_connections": {},
+      "tool_state": "{\"name\": \"path_genes.txt\"}",
+      "id": 11,
+      "uuid": "20a6976a-d0f4-4cc5-8709-562a65a50334",
+      "errors": null,
+      "name": "Input dataset",
+      "label": "path_genes.txt",
+      "inputs": [
+        {
+          "name": "path_genes.txt",
+          "description": ""
+        }
+      ],
+      "position": {
+        "top": 1057.9194450378418,
+        "left": 134
+      },
+      "annotation": "",
+      "content_id": null,
+      "type": "data_input"
+    },
+    "12": {
+      "tool_id": null,
+      "tool_version": null,
+      "outputs": [],
+      "workflow_outputs": [],
+      "input_connections": {},
+      "tool_state": "{\"name\": \"sign.txt\"}",
+      "id": 12,
+      "uuid": "e63d5a83-f68d-4b31-bdc4-2e436380aaa3",
+      "errors": null,
+      "name": "Input dataset",
+      "label": "sign.txt",
+      "inputs": [
+        {
+          "name": "sign.txt",
+          "description": ""
+        }
+      ],
+      "position": {
+        "top": 1117.5495719909668,
+        "left": 134
+      },
+      "annotation": "",
+      "content_id": null,
+      "type": "data_input"
+    },
+    "13": {
+      "tool_id": null,
+      "tool_version": null,
+      "outputs": [],
+      "workflow_outputs": [],
+      "input_connections": {},
+      "tool_state": "{\"name\": \"vlog_trans.csv\"}",
+      "id": 13,
+      "uuid": "14b4f57e-366d-4768-b0d5-6f7d2d18d84f",
+      "errors": null,
+      "name": "Input dataset",
+      "label": "vlog_trans.csv",
+      "inputs": [
+        {
+          "name": "vlog_trans.csv",
+          "description": ""
+        }
+      ],
+      "position": {
+        "top": 1177.1795768737793,
+        "left": 134
+      },
+      "annotation": "",
+      "content_id": null,
+      "type": "data_input"
+    },
+    "14": {
+      "tool_id": null,
+      "tool_version": null,
+      "outputs": [],
+      "workflow_outputs": [],
+      "input_connections": {},
+      "tool_state": "{\"name\": \"GDSC_CCLE_common_mut_cnv_binary.tsv.gz\"}",
+      "id": 14,
+      "uuid": "17856c07-1fe3-405b-8de3-20c67cd5e692",
+      "errors": null,
+      "name": "Input dataset",
+      "label": "GDSC_CCLE_common_mut_cnv_binary.tsv.gz",
+      "inputs": [
+        {
+          "name": "GDSC_CCLE_common_mut_cnv_binary.tsv.gz",
+          "description": ""
+        }
+      ],
+      "position": {
+        "top": 1236.8095817565918,
+        "left": 134
+      },
+      "annotation": "",
+      "content_id": null,
+      "type": "data_input"
+    },
+    "15": {
+      "tool_id": null,
+      "tool_version": null,
+      "outputs": [],
+      "workflow_outputs": [],
+      "input_connections": {},
+      "tool_state": "{\"name\": \"ccle_rnaseq_genes_rpkm_20180929_mod.tsv.gz\"}",
+      "id": 15,
+      "uuid": "43288504-9942-44b1-a3fb-8b0fe3c851b8",
+      "errors": null,
+      "name": "Input dataset",
+      "label": "ccle_rnaseq_genes_rpkm_20180929_mod.tsv.gz",
+      "inputs": [
+        {
+          "name": "ccle_rnaseq_genes_rpkm_20180929_mod.tsv.gz",
+          "description": ""
+        }
+      ],
+      "position": {
+        "top": 1323.2500114440918,
+        "left": 134
+      },
+      "annotation": "",
+      "content_id": null,
+      "type": "data_input"
+    },
+    "16": {
+      "tool_id": null,
+      "tool_version": null,
+      "outputs": [],
+      "workflow_outputs": [],
+      "input_connections": {},
+      "tool_state": "{\"name\": \"GDSC_EXP_CCLE_converted_name.tsv.gz\"}",
+      "id": 16,
+      "uuid": "7a83d0a4-48d1-4fb2-b062-424a046c70c0",
+      "errors": null,
+      "name": "Input dataset",
+      "label": "GDSC_EXP_CCLE_converted_name.tsv.gz",
+      "inputs": [
+        {
+          "name": "GDSC_EXP_CCLE_converted_name.tsv.gz",
+          "description": ""
+        }
+      ],
+      "position": {
+        "top": 1423.0799674987793,
+        "left": 134
+      },
+      "annotation": "",
+      "content_id": null,
+      "type": "data_input"
+    },
+    "17": {
+      "tool_id": null,
+      "tool_version": null,
+      "outputs": [],
+      "workflow_outputs": [],
+      "input_connections": {},
+      "tool_state": "{\"name\": \"CCLE_MUT_CNA_AMP_DEL_binary_Revealer.tsv\"}",
+      "id": 17,
+      "uuid": "7119005d-473b-4f4e-97c4-a1a87e534b23",
+      "errors": null,
+      "name": "Input dataset",
+      "label": "CCLE_MUT_CNA_AMP_DEL_binary_Revealer.tsv",
+      "inputs": [
+        {
+          "name": "CCLE_MUT_CNA_AMP_DEL_binary_Revealer.tsv",
+          "description": ""
+        }
+      ],
+      "position": {
+        "top": 1509.5100212097168,
+        "left": 134
+      },
+      "annotation": "",
+      "content_id": null,
+      "type": "data_input"
+    },
+    "18": {
+      "tool_id": null,
+      "tool_version": null,
+      "outputs": [],
+      "workflow_outputs": [],
+      "input_connections": {},
+      "tool_state": "{\"name\": \"compounds_of_interest.txt\"}",
+      "id": 18,
+      "uuid": "d124ca9b-863d-44b3-9960-1b07661dc0e6",
+      "errors": null,
+      "name": "Input dataset",
+      "label": "compounds_of_interest.txt",
+      "inputs": [
+        {
+          "name": "compounds_of_interest.txt",
+          "description": ""
+        }
+      ],
+      "position": {
+        "top": 1595.9399528503418,
+        "left": 134
+      },
+      "annotation": "",
+      "content_id": null,
+      "type": "data_input"
+    },
+    "19": {
+      "tool_id": "pancancer_classifier",
+      "tool_version": "0.1.5",
+      "outputs": [
+        {
+          "type": "input",
+          "name": "disease_figures"
+        },
+        {
+          "type": "txt",
+          "name": "log"
+        },
+        {
+          "type": "tabular",
+          "name": "alt_gene_alt_disease_summary"
+        },
+        {
+          "type": "csv",
+          "name": "alt_summary_counts"
+        },
+        {
+          "type": "tabular",
+          "name": "classifier_coefficients"
+        },
+        {
+          "type": "txt",
+          "name": "classifier_summary"
+        },
+        {
+          "type": "tabular",
+          "name": "pancan_roc_results"
+        },
+        {
+          "type": "csv",
+          "name": "summary_counts"
+        },
+        {
+          "type": "pdf",
+          "name": "cv_heatmap"
+        },
+        {
+          "type": "pdf",
+          "name": "all_disease_pr"
+        },
+        {
+          "type": "pdf",
+          "name": "all_disease_roc"
+        },
+        {
+          "type": "pdf",
+          "name": "alt_gene_alt_disease_aupr_bar"
+        },
+        {
+          "type": "pdf",
+          "name": "alt_gene_alt_disease_auroc_bar"
+        },
+        {
+          "type": "pdf",
+          "name": "disease_aupr"
+        },
+        {
+          "type": "pdf",
+          "name": "disease_auroc"
+        }
+      ],
+      "workflow_outputs": [],
+      "input_connections": {
+        "copy_number_conditional|filename_copy_loss": {
+          "output_name": "output",
+          "id": 3
+        },
+        "filename_mut": {
+          "output_name": "output",
+          "id": 2
+        },
+        "filename_sample": {
+          "output_name": "output",
+          "id": 6
+        },
+        "filename_mut_burden": {
+          "output_name": "output",
+          "id": 5
+        },
+        "copy_number_conditional|filename_cancer_gene_classification": {
+          "output_name": "output",
+          "id": 0
+        },
+        "x_matrix": {
+          "output_name": "output",
+          "id": 1
+        },
+        "copy_number_conditional|filename_copy_gain": {
+          "output_name": "output",
+          "id": 4
+        }
+      },
+      "tool_state": "{\"alt_filter_prop\": \"\\\"0.05\\\"\", \"alt_filter_count\": \"\\\"15\\\"\", \"folds\": \"\\\"5\\\"\", \"filename_sample\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"l1_ratios\": \"\\\"0.1,0.125,0.15,0.2,0.25,0.3,0.35\\\"\", \"x_matrix\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"drop_x_genes\": \"\\\"\\\"\", \"__page__\": null, \"shuffled\": \"\\\"true\\\"\", \"drop_rasopathy\": \"\\\"false\\\"\", \"filename_mut\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__rerun_remap_job_id__\": null, \"drop_expression\": \"\\\"false\\\"\", \"drop_covariates\": \"\\\"false\\\"\", \"diseases\": \"\\\"BLCA,BRCA,CESC,COAD,ESCA,LUAD,LUSC,OV,PRAD,READ,STAD,UCEC,UCS\\\"\", \"no_mutation\": \"\\\"false\\\"\", \"num_features\": \"\\\"8000\\\"\", \"genes\": \"\\\"ERBB2,PIK3CA,KRAS,AKT1\\\"\", \"copy_number_conditional\": \"{\\\"__current_case__\\\": 0, \\\"copy_number\\\": \\\"true\\\", \\\"filename_cancer_gene_classification\\\": {\\\"__class__\\\": \\\"ConnectedValue\\\"}, \\\"filename_copy_gain\\\": {\\\"__class__\\\": \\\"ConnectedValue\\\"}, \\\"filename_copy_loss\\\": {\\\"__class__\\\": \\\"ConnectedValue\\\"}}\", \"shuffled_before_training\": \"\\\"false\\\"\", \"remove_hyper\": \"\\\"true\\\"\", \"alphas\": \"\\\"0.1,0.13,0.15,0.18,0.2,0.3,0.4,0.6,0.7\\\"\", \"alt_genes\": \"\\\"PTEN,PIK3R1,STK11\\\"\", \"alt_diseases\": \"\\\"BRCA,COAD,ESCA,HNSC,LGG,LUAD,LUSC,PRAD,READ,GBM,UCEC,UCS\\\"\", \"filter_count\": \"\\\"15\\\"\", \"x_as_raw\": \"\\\"true\\\"\", \"drop\": \"\\\"true\\\"\", \"filename_mut_burden\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"keep_intermediate\": \"\\\"true\\\"\", \"filter_prop\": \"\\\"0.05\\\"\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\"}",
+      "id": 19,
+      "uuid": "55b2dbda-67ab-4b35-8168-2629aee8349c",
+      "errors": null,
+      "name": "PAPAA: PanCancer classifier",
+      "post_job_actions": {},
+      "label": null,
+      "inputs": [],
+      "position": {
+        "top": 134.0000114440918,
+        "left": 301.5
+      },
+      "annotation": "",
+      "content_id": "pancancer_classifier",
+      "type": "tool"
+    },
+    "20": {
+      "tool_id": "pancancer_within_disease_analysis",
+      "tool_version": "0.1.5",
+      "outputs": [
+        {
+          "type": "input",
+          "name": "classifier_summary"
+        },
+        {
+          "type": "input",
+          "name": "classifier_coefficients"
+        },
+        {
+          "type": "input",
+          "name": "pancan_roc_results"
+        },
+        {
+          "type": "input",
+          "name": "summary_counts"
+        },
+        {
+          "type": "input",
+          "name": "within_disease"
+        },
+        {
+          "type": "input",
+          "name": "disease_figures"
+        },
+        {
+          "type": "txt",
+          "name": "log"
+        }
+      ],
+      "workflow_outputs": [],
+      "input_connections": {
+        "filename_copy_loss": {
+          "output_name": "output",
+          "id": 3
+        },
+        "filename_mut": {
+          "output_name": "output",
+          "id": 2
+        },
+        "filename_sample": {
+          "output_name": "output",
+          "id": 6
+        },
+        "filename_mut_burden": {
+          "output_name": "output",
+          "id": 5
+        },
+        "filename_copy_gain": {
+          "output_name": "output",
+          "id": 4
+        },
+        "filename_cancer_gene_classification": {
+          "output_name": "output",
+          "id": 0
+        },
+        "x_matrix": {
+          "output_name": "output",
+          "id": 1
+        }
+      },
+      "tool_state": "{\"alphas\": \"\\\"0.1,0.13,0.15,0.18,0.2,0.3,0.4,0.6,0.7\\\"\", \"filename_copy_loss\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"diseases\": \"\\\"BLCA,BRCA,CESC,COAD,ESCA,LUAD,LUSC,OV,PRAD,READ,STAD,UCEC,UCS\\\"\", \"__page__\": null, \"x_as_raw\": \"\\\"true\\\"\", \"filename_mut\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__rerun_remap_job_id__\": null, \"filename_sample\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"filename_mut_burden\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"filename_copy_gain\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"filename_cancer_gene_classification\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"genes\": \"\\\"ERBB2,PIK3CA,KRAS,AKT1\\\"\", \"l1_ratios\": \"\\\"0.1,0.125,0.15,0.2,0.25,0.3,0.35\\\"\", \"remove_hyper\": \"\\\"true\\\"\", \"x_matrix\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\"}",
+      "id": 20,
+      "uuid": "e1123af4-a647-4961-b2a5-4b92096f389a",
+      "errors": null,
+      "name": "PAPAA: PanCancer within disease analysis",
+      "post_job_actions": {},
+      "label": null,
+      "inputs": [],
+      "position": {
+        "top": 1058.5999870300293,
+        "left": 301.5
+      },
+      "annotation": "",
+      "content_id": "pancancer_within_disease_analysis",
+      "type": "tool"
+    },
+    "21": {
+      "tool_id": "pancancer_apply_weights",
+      "tool_version": "0.1.5",
+      "outputs": [
+        {
+          "type": "txt",
+          "name": "log"
+        },
+        {
+          "type": "tabular",
+          "name": "classifier_decisions"
+        }
+      ],
+      "workflow_outputs": [],
+      "input_connections": {
+        "copy_number_conditional|filename_copy_loss": {
+          "output_name": "output",
+          "id": 3
+        },
+        "filename_mut": {
+          "output_name": "output",
+          "id": 2
+        },
+        "filename_sample": {
+          "output_name": "output",
+          "id": 6
+        },
+        "filename_mut_burden": {
+          "output_name": "output",
+          "id": 5
+        },
+        "copy_number_conditional|filename_cancer_gene_classification": {
+          "output_name": "output",
+          "id": 0
+        },
+        "pancan_classifier_coefficients": {
+          "output_name": "classifier_coefficients",
+          "id": 19
+        },
+        "x_matrix": {
+          "output_name": "output",
+          "id": 1
+        },
+        "classifier": {
+          "output_name": "classifier_summary",
+          "id": 19
+        },
+        "copy_number_conditional|filename_copy_gain": {
+          "output_name": "output",
+          "id": 4
+        }
+      },
+      "tool_state": "{\"__page__\": null, \"x_matrix\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__rerun_remap_job_id__\": null, \"filename_sample\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"filename_mut_burden\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"pancan_classifier_coefficients\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"copy_number_conditional\": \"{\\\"__current_case__\\\": 0, \\\"copy_number\\\": \\\"true\\\", \\\"filename_cancer_gene_classification\\\": {\\\"__class__\\\": \\\"ConnectedValue\\\"}, \\\"filename_copy_gain\\\": {\\\"__class__\\\": \\\"ConnectedValue\\\"}, \\\"filename_copy_loss\\\": {\\\"__class__\\\": \\\"ConnectedValue\\\"}}\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\", \"classifier\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"filename_mut\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\"}",
+      "id": 21,
+      "uuid": "396233bb-cb0d-40fe-891a-21225c9041f4",
+      "errors": null,
+      "name": "PAPAA: PanCancer apply weights",
+      "post_job_actions": {},
+      "label": null,
+      "inputs": [],
+      "position": {
+        "top": 408.6999931335449,
+        "left": 521.260009765625
+      },
+      "annotation": "",
+      "content_id": "pancancer_apply_weights",
+      "type": "tool"
+    },
+    "22": {
+      "tool_id": "pancancer_external_sample_status_prediction",
+      "tool_version": "0.1.5",
+      "outputs": [
+        {
+          "type": "txt",
+          "name": "log"
+        },
+        {
+          "type": "pdf",
+          "name": "figure1"
+        },
+        {
+          "type": "pdf",
+          "name": "figure2"
+        }
+      ],
+      "workflow_outputs": [],
+      "input_connections": {
+        "ex_vlog": {
+          "output_name": "output",
+          "id": 13
+        },
+        "pancan_classifier_coefficients": {
+          "output_name": "classifier_coefficients",
+          "id": 19
+        },
+        "classifier": {
+          "output_name": "classifier_summary",
+          "id": 19
+        },
+        "sign": {
+          "output_name": "output",
+          "id": 12
+        }
+      },
+      "tool_state": "{\"__page__\": null, \"ex_vlog\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__rerun_remap_job_id__\": null, \"sign\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"pancan_classifier_coefficients\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\", \"classifier\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\"}",
+      "id": 22,
+      "uuid": "f5c73c34-95ca-4b1d-9838-583485bbd4e3",
+      "errors": null,
+      "name": "PAPAA: PanCancer external sample status prediction",
+      "post_job_actions": {},
+      "label": null,
+      "inputs": [],
+      "position": {
+        "top": 750.399974822998,
+        "left": 521.260009765625
+      },
+      "annotation": "",
+      "content_id": "pancancer_external_sample_status_prediction",
+      "type": "tool"
+    },
+    "23": {
+      "tool_id": "pancancer_compare_within_models",
+      "tool_version": "0.1.5",
+      "outputs": [
+        {
+          "type": "txt",
+          "name": "log"
+        },
+        {
+          "type": "pdf",
+          "name": "aupr_comparison"
+        },
+        {
+          "type": "pdf",
+          "name": "auroc_comparison"
+        }
+      ],
+      "workflow_outputs": [],
+      "input_connections": {
+        "pan_within_classifier_coefficients": {
+          "output_name": "classifier_coefficients",
+          "id": 20
+        },
+        "pan_within_classifier_summary": {
+          "output_name": "classifier_summary",
+          "id": 20
+        },
+        "pancan_summary": {
+          "output_name": "classifier_summary",
+          "id": 19
+        },
+        "pancan_classifier_coefficients": {
+          "output_name": "classifier_coefficients",
+          "id": 19
+        }
+      },
+      "tool_state": "{\"__page__\": null, \"pancan_summary\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"pan_within_classifier_coefficients\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"pancan_classifier_coefficients\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"pan_within_classifier_summary\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"include_alt\": \"{\\\"__current_case__\\\": 1, \\\"include_alt_select\\\": \\\"false\\\"}\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\", \"__rerun_remap_job_id__\": null}",
+      "id": 23,
+      "uuid": "08e0e0ac-b7bf-4298-94c5-0671c7f7abde",
+      "errors": null,
+      "name": "PAPAA: PanCancer compare within models",
+      "post_job_actions": {},
+      "label": null,
+      "inputs": [],
+      "position": {
+        "top": 134.0000114440918,
+        "left": 521.260009765625
+      },
+      "annotation": "",
+      "content_id": "pancancer_compare_within_models",
+      "type": "tool"
+    },
+    "24": {
+      "tool_id": "pancancer_visualize_decisions",
+      "tool_version": "0.1.5",
+      "outputs": [
+        {
+          "type": "input",
+          "name": "classifier_decisions_figures"
+        },
+        {
+          "type": "txt",
+          "name": "log"
+        },
+        {
+          "type": "pdf",
+          "name": "total_decisions"
+        },
+        {
+          "type": "pdf",
+          "name": "hyper_mutated"
+        }
+      ],
+      "workflow_outputs": [],
+      "input_connections": {
+        "scores": {
+          "output_name": "classifier_decisions",
+          "id": 21
+        }
+      },
+      "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"custom\": \"\\\"\\\"\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\", \"scores\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\"}",
+      "id": 24,
+      "uuid": "cdc58811-69af-41ec-a4cc-5f8999040eca",
+      "errors": null,
+      "name": "PAPAA: PanCancer visualize decisions",
+      "post_job_actions": {},
+      "label": null,
+      "inputs": [],
+      "position": {
+        "top": 134.0000114440918,
+        "left": 741.02001953125
+      },
+      "annotation": "",
+      "content_id": "pancancer_visualize_decisions",
+      "type": "tool"
+    },
+    "25": {
+      "tool_id": "pancancer_map_mutation_class",
+      "tool_version": "0.1.5",
+      "outputs": [
+        {
+          "type": "txt",
+          "name": "log"
+        },
+        {
+          "type": "tabular",
+          "name": "mutation_classification_scores"
+        }
+      ],
+      "workflow_outputs": [],
+      "input_connections": {
+        "copy_number_conditional|filename_copy_gain": {
+          "output_name": "output",
+          "id": 4
+        },
+        "filename_raw_mut": {
+          "output_name": "output",
+          "id": 7
+        },
+        "path_genes": {
+          "output_name": "output",
+          "id": 11
+        },
+        "copy_number_conditional|filename_copy_loss": {
+          "output_name": "output",
+          "id": 3
+        },
+        "scores": {
+          "output_name": "classifier_decisions",
+          "id": 21
+        }
+      },
+      "tool_state": "{\"__page__\": null, \"filename_raw_mut\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"path_genes\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__rerun_remap_job_id__\": null, \"scores\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"copy_number_conditional\": \"{\\\"__current_case__\\\": 0, \\\"copy_number\\\": \\\"true\\\", \\\"filename_copy_gain\\\": {\\\"__class__\\\": \\\"ConnectedValue\\\"}, \\\"filename_copy_loss\\\": {\\\"__class__\\\": \\\"ConnectedValue\\\"}}\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\"}",
+      "id": 25,
+      "uuid": "dbd18505-e393-469c-abb7-9a5b214a3d2b",
+      "errors": null,
+      "name": "PAPAA: PanCancer map mutation class",
+      "post_job_actions": {},
+      "label": null,
+      "inputs": [],
+      "position": {
+        "top": 368.5000114440918,
+        "left": 741.02001953125
+      },
+      "annotation": "",
+      "content_id": "pancancer_map_mutation_class",
+      "type": "tool"
+    },
+    "26": {
+      "tool_id": "pancancer_alternative_genes_pathwaymapper",
+      "tool_version": "0.1.5",
+      "outputs": [
+        {
+          "type": "txt",
+          "name": "log"
+        },
+        {
+          "type": "txt",
+          "name": "pathway_metrics_pathwaymapper"
+        },
+        {
+          "type": "tabular",
+          "name": "all_gene_metric_ranks"
+        }
+      ],
+      "workflow_outputs": [],
+      "input_connections": {
+        "copy_number_conditional|filename_copy_loss": {
+          "output_name": "output",
+          "id": 3
+        },
+        "filename_mut": {
+          "output_name": "output",
+          "id": 2
+        },
+        "filename_sample": {
+          "output_name": "output",
+          "id": 6
+        },
+        "scores": {
+          "output_name": "classifier_decisions",
+          "id": 21
+        },
+        "path_genes": {
+          "output_name": "output",
+          "id": 11
+        },
+        "copy_number_conditional|filename_copy_gain": {
+          "output_name": "output",
+          "id": 4
+        }
+      },
+      "tool_state": "{\"__page__\": null, \"filename_sample\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"path_genes\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__rerun_remap_job_id__\": null, \"genes\": \"\\\"ERBB2,PIK3CA,KRAS,AKT1\\\"\", \"scores\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"copy_number_conditional\": \"{\\\"__current_case__\\\": 0, \\\"copy_number\\\": \\\"true\\\", \\\"filename_copy_gain\\\": {\\\"__class__\\\": \\\"ConnectedValue\\\"}, \\\"filename_copy_loss\\\": {\\\"__class__\\\": \\\"ConnectedValue\\\"}}\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\", \"filename_mut\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\"}",
+      "id": 26,
+      "uuid": "4f35b04c-26d2-479e-aa51-40ed922b5f94",
+      "errors": null,
+      "name": "PAPAA: PanCancer alternative genes pathwaymapper",
+      "post_job_actions": {},
+      "label": null,
+      "inputs": [],
+      "position": {
+        "top": 643.200023651123,
+        "left": 741.02001953125
+      },
+      "annotation": "",
+      "content_id": "pancancer_alternative_genes_pathwaymapper",
+      "type": "tool"
+    },
+    "27": {
+      "tool_id": "pancancer_pathway_count_heatmaps",
+      "tool_version": "0.1.5",
+      "outputs": [
+        {
+          "type": "txt",
+          "name": "log"
+        },
+        {
+          "type": "pdf",
+          "name": "mut_df"
+        },
+        {
+          "type": "pdf",
+          "name": "copy_df"
+        },
+        {
+          "type": "pdf",
+          "name": "combined_df"
+        },
+        {
+          "type": "txt",
+          "name": "pathway_mapper_percentages"
+        },
+        {
+          "type": "tabular",
+          "name": "path_events_per_sample"
+        }
+      ],
+      "workflow_outputs": [],
+      "input_connections": {
+        "pathway_metrics": {
+          "output_name": "pathway_metrics_pathwaymapper",
+          "id": 26
+        },
+        "x_matrix": {
+          "output_name": "output",
+          "id": 1
+        },
+        "filename_sample": {
+          "output_name": "output",
+          "id": 6
+        },
+        "filename_mut_burden": {
+          "output_name": "output",
+          "id": 5
+        },
+        "all_gene_metric_ranks": {
+          "output_name": "all_gene_metric_ranks",
+          "id": 26
+        },
+        "filename_cancer_gene_classification": {
+          "output_name": "output",
+          "id": 0
+        },
+        "filename_copy_loss": {
+          "output_name": "output",
+          "id": 3
+        },
+        "scores": {
+          "output_name": "classifier_decisions",
+          "id": 21
+        },
+        "filename_copy_gain": {
+          "output_name": "output",
+          "id": 4
+        },
+        "path_genes": {
+          "output_name": "output",
+          "id": 11
+        },
+        "filename_mut": {
+          "output_name": "output",
+          "id": 2
+        }
+      },
+      "tool_state": "{\"__page__\": null, \"filename_copy_loss\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"x_matrix\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__rerun_remap_job_id__\": null, \"filename_sample\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"filename_mut_burden\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"filename_copy_gain\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"filename_cancer_gene_classification\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"pathway_metrics\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"genes\": \"\\\"ERBB2,PIK3CA,KRAS,AKT1\\\"\", \"scores\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\", \"all_gene_metric_ranks\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"path_genes\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"filename_mut\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\"}",
+      "id": 27,
+      "uuid": "51f500e9-808a-4193-a756-6083ad1f2cd1",
+      "errors": null,
+      "name": "PAPAA: PanCancer pathway count heatmaps",
+      "post_job_actions": {},
+      "label": null,
+      "inputs": [],
+      "position": {
+        "top": 134.0000114440918,
+        "left": 960.780029296875
+      },
+      "annotation": "",
+      "content_id": "pancancer_pathway_count_heatmaps",
+      "type": "tool"
+    },
+    "28": {
+      "tool_id": "pancancer_targene_summary_figures",
+      "tool_version": "0.1.5",
+      "outputs": [
+        {
+          "type": "txt",
+          "name": "log"
+        },
+        {
+          "type": "pdf",
+          "name": "targene_heatmap"
+        },
+        {
+          "type": "pdf",
+          "name": "all_targene_heatmap"
+        },
+        {
+          "type": "pdf",
+          "name": "targene_coef_plot"
+        },
+        {
+          "type": "pdf",
+          "name": "variant_gain_fill_map"
+        },
+        {
+          "type": "pdf",
+          "name": "variant_loss_fill_map"
+        },
+        {
+          "type": "pdf",
+          "name": "aupr_distribution"
+        },
+        {
+          "type": "pdf",
+          "name": "auroc_distribution"
+        },
+        {
+          "type": "pdf",
+          "name": "targene_pathway_events_counts"
+        },
+        {
+          "type": "txt",
+          "name": "targene pathway variant AUPR ttest"
+        },
+        {
+          "type": "tabular",
+          "name": "amino acid mutation scores"
+        },
+        {
+          "type": "tabular",
+          "name": "nucleotide acid mutation scores"
+        }
+      ],
+      "workflow_outputs": [],
+      "input_connections": {
+        "summary_counts": {
+          "output_name": "summary_counts",
+          "id": 19
+        },
+        "classifier_folder": {
+          "output_name": "classifier_summary",
+          "id": 19
+        },
+        "all_gene_metric_ranks": {
+          "output_name": "all_gene_metric_ranks",
+          "id": 26
+        },
+        "mutation_classification_scores": {
+          "output_name": "mutation_classification_scores",
+          "id": 25
+        },
+        "pancan_classifier_coefficients": {
+          "output_name": "classifier_coefficients",
+          "id": 19
+        },
+        "path_events_per_sample": {
+          "output_name": "path_events_per_sample",
+          "id": 27
+        }
+      },
+      "tool_state": "{\"__page__\": null, \"summary_counts\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__rerun_remap_job_id__\": null, \"classifier_folder\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"all_gene_metric_ranks\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"mutation_classification_scores\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"pancan_classifier_coefficients\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"path_events_per_sample\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\"}",
+      "id": 28,
+      "uuid": "25fcb1be-64bd-462d-8e79-d66ebad4353f",
+      "errors": null,
+      "name": "PAPAA: PanCancer targene summary figures",
+      "post_job_actions": {},
+      "label": null,
+      "inputs": [],
+      "position": {
+        "top": 134.0000114440918,
+        "left": 1180.5400390625
+      },
+      "annotation": "",
+      "content_id": "pancancer_targene_summary_figures",
+      "type": "tool"
+    },
+    "29": {
+      "tool_id": "pancancer_targene_cell_line_predictions",
+      "tool_version": "0.1.5",
+      "outputs": [
+        {
+          "type": "txt",
+          "name": "log"
+        },
+        {
+          "type": "png",
+          "name": "ccle_histogram"
+        },
+        {
+          "type": "tabular",
+          "name": "ccle targene classifier scores"
+        },
+        {
+          "type": "pdf",
+          "name": "ccle targene WT MUT predictions"
+        },
+        {
+          "type": "csv",
+          "name": "updated_data_nucleotide_scores"
+        },
+        {
+          "type": "csv",
+          "name": "updated_data_aminoacid_scores"
+        },
+        {
+          "type": "png",
+          "name": "gdsc_scores_histogram"
+        },
+        {
+          "type": "tabular",
+          "name": "gdsc targene classifier scores"
+        },
+        {
+          "type": "pdf",
+          "name": "gdsc targene WT MUT predictions"
+        },
+        {
+          "type": "tabular",
+          "name": "gdsc1 targene pharmacology predictions"
+        },
+        {
+          "type": "tabular",
+          "name": "gdsc2 targene pharmacology predictions"
+        },
+        {
+          "type": "tabular",
+          "name": "gdsc1 ccle targene pharmacology predictions"
+        },
+        {
+          "type": "tabular",
+          "name": "gdsc2 ccle targene pharmacology predictions"
+        }
+      ],
+      "workflow_outputs": [],
+      "input_connections": {
+        "amino_acid_mutation_scores": {
+          "output_name": "amino acid mutation scores",
+          "id": 28
+        },
+        "gdsc2_phar": {
+          "output_name": "output",
+          "id": 10
+        },
+        "ccle_rnaseq": {
+          "output_name": "output",
+          "id": 15
+        },
+        "ccle_mut": {
+          "output_name": "output",
+          "id": 17
+        },
+        "nucleotide_mutation_scores": {
+          "output_name": "nucleotide acid mutation scores",
+          "id": 28
+        },
+        "pancan_classifier_coefficients": {
+          "output_name": "classifier_coefficients",
+          "id": 19
+        },
+        "gdsc_rnaseq": {
+          "output_name": "output",
+          "id": 16
+        },
+        "gdsc1_phar": {
+          "output_name": "output",
+          "id": 9
+        },
+        "gdsc_mut": {
+          "output_name": "output",
+          "id": 14
+        },
+        "ccle_maf": {
+          "output_name": "output",
+          "id": 8
+        },
+        "path_genes": {
+          "output_name": "output",
+          "id": 11
+        },
+        "classifier": {
+          "output_name": "classifier_summary",
+          "id": 19
+        }
+      },
+      "tool_state": "{\"amino_acid_mutation_scores\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"gdsc2_phar\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"ccle_rnaseq\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"ccle_mut\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__page__\": null, \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\", \"__rerun_remap_job_id__\": null, \"nucleotide_mutation_scores\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"targenes\": \"\\\"ERBB2_MUT,PIK3CA_MUT,KRAS_MUT,AKT1_MUT\\\"\", \"pancan_classifier_coefficients\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"gdsc_rnaseq\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"gdsc1_phar\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"gdsc_mut\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"ccle_maf\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"path_genes\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"classifier\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\"}",
+      "id": 29,
+      "uuid": "07de5857-fd46-4c8c-8a2e-d49ca659152c",
+      "errors": null,
+      "name": "PAPAA: PanCancer targene cell line predictions",
+      "post_job_actions": {},
+      "label": null,
+      "inputs": [],
+      "position": {
+        "top": 134.0000114440918,
+        "left": 1400.300048828125
+      },
+      "annotation": "",
+      "content_id": "pancancer_targene_cell_line_predictions",
+      "type": "tool"
+    },
+    "30": {
+      "tool_id": "pancancer_targene_pharmacology",
+      "tool_version": "0.1.5",
+      "outputs": [
+        {
+          "type": "txt",
+          "name": "log"
+        },
+        {
+          "type": "pdf",
+          "name": "GDSC1_targene_all_drug_response"
+        },
+        {
+          "type": "pdf",
+          "name": "GDSC2_targene_all_drug_response"
+        },
+        {
+          "type": "pdf",
+          "name": "GDSC1_ccle_targene_all_drug_response"
+        },
+        {
+          "type": "pdf",
+          "name": "GDSC2_ccle_targene_all_drug_response"
+        }
+      ],
+      "workflow_outputs": [],
+      "input_connections": {
+        "gdsc1_ccle_targene_pharmacology_predictions": {
+          "output_name": "gdsc1 ccle targene pharmacology predictions",
+          "id": 29
+        },
+        "compound": {
+          "output_name": "output",
+          "id": 18
+        },
+        "gdsc2_targene_pharmacology_predictions": {
+          "output_name": "gdsc2 targene pharmacology predictions",
+          "id": 29
+        },
+        "gdsc1_targene_pharmacology_predictions": {
+          "output_name": "gdsc1 targene pharmacology predictions",
+          "id": 29
+        },
+        "gdsc2_ccle_targene_pharmacology_predictions": {
+          "output_name": "gdsc2 ccle targene pharmacology predictions",
+          "id": 29
+        }
+      },
+      "tool_state": "{\"gdsc1_ccle_targene_pharmacology_predictions\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__page__\": null, \"gdsc2_targene_pharmacology_predictions\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"gdsc2_ccle_targene_pharmacology_predictions\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"__rerun_remap_job_id__\": null, \"gdsc1_targene_pharmacology_predictions\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"compound\": \"{\\\"__class__\\\": \\\"ConnectedValue\\\"}\", \"chromInfo\": \"\\\"/home/nagampv/galaxy3/tool-data/shared/ucsc/chrom/?.len\\\"\"}",
+      "id": 30,
+      "uuid": "00c1e681-1868-4914-bd54-e8c8323c64c7",
+      "errors": null,
+      "name": "PAPAA: PanCancer targene pharmacology",
+      "post_job_actions": {},
+      "label": null,
+      "inputs": [],
+      "position": {
+        "top": 134.0000114440918,
+        "left": 1620.06005859375
+      },
+      "annotation": "",
+      "content_id": "pancancer_targene_pharmacology",
+      "type": "tool"
+    }
+  },
+  "annotation": "",
+  "a_galaxy_workflow": "true"
+}
