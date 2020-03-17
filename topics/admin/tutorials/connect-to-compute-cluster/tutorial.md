@@ -54,6 +54,10 @@ be taken into consideration when choosing where to run jobs and what parameters 
 
 ## Installing Slurm
 
+> ### {% icon comment %} Ansible Best Practices
+> If you've set up your Galaxy server using the [Galaxy Installation with Ansible]({% link topics/admin/tutorials/ansible-galaxy/tutorial.md %}) tutorial, you will have created a `galaxyservers` group in your inventory file, `hosts`, and placed your variables in `group_vars/galaxyservers.yml`. Although for the purposes of this tutorial, the Galaxy server and Slurm controller/node are one and the same, in a real world deployment they are very likely to be different hosts. We will continue to use the `galaxyservers` group for simplicity, but in your own deployment you should consider creating some additional groups for Slurm controller(s), Slurm nodes, and Slurm clients.
+{: .comment}
+
 > ### {% icon hands_on %} Hands-on: Installing Slurm
 >
 > 1. Create (if needed) and edit a file in your working directory called `requirements.yml` and include the following contents:
@@ -90,7 +94,7 @@ be taken into consideration when choosing where to run jobs and what parameters 
 >        - galaxyproject.slurm
 >    ```
 >
-> 5. Run the playbook (`ansible-playbook -i hosts slurm.yml`)
+> 5. Run the playbook (`ansible-playbook slurm.yml`)
 >
 {: .hands_on}
 
@@ -272,7 +276,7 @@ Above Slurm in the stack is slurm-drmaa, a library that provides a translational
 >            name: slurm-drmaa1
 >    ```
 >
-> 2. Run the playbook (`ansible-playbook -i hosts slurm.yml`)
+> 2. Run the playbook (`ansible-playbook slurm.yml`)
 >
 {: .hands_on}
 
@@ -280,7 +284,7 @@ Moving one level further up the stack, we find DRMAA Python. This is a Galaxy fr
 
 # Galaxy and Slurm
 
-At the top of the stack sits Galaxy. Galaxy must now be configured to use the cluster we've just set up. The DRMAA Python documentation (and Galaxy's own documentation) instruct that you should set the `$DRMAA_LIBRARY_PATH` environment variable so that DRMAA Python can find `libdrmaa.so` (aka slurm-drmaa). Because Galaxy runs under supervisor, the environment that Galaxy starts under is controlled by the `environment` option in `/etc/supervisor/conf.d/galaxy.conf`. The galaxy task should thus be updated to refer to the path to slurm-drmaa, which is `/usr/lib/slurm-drmaa/lib/libdrmaa.so.1`:
+At the top of the stack sits Galaxy. Galaxy must now be configured to use the cluster we've just set up. The DRMAA Python documentation (and Galaxy's own documentation) instruct that you should set the `$DRMAA_LIBRARY_PATH` environment variable so that DRMAA Python can find `libdrmaa.so` (aka slurm-drmaa). Because Galaxy runs under systemd, the environment that Galaxy starts under is controlled by the `environment` option in systemd service unit that the ansible role manages. The galaxy task should thus be updated to refer to the path to slurm-drmaa, which is `/usr/lib/slurm-drmaa/lib/libdrmaa.so.1`:
 
 
 > ### {% icon hands_on %} Hands-on: Making Galaxy aware of DRMAA
@@ -295,7 +299,7 @@ At the top of the stack sits Galaxy. Galaxy must now be configured to use the cl
 >
 > 2. We need to modify `job_conf.xml` to instruct Galaxy on how to use a more advanced job submission setup. We will begin with a basic job conf:
 >
->    If the folder does not exist, create `files/galaxy/config` next to your `playbook.yml` (`mkdir -p files/galaxy/config/`)
+>    If the folder does not exist, create `files/galaxy/config` next to your `galaxy.yml` playbook (`mkdir -p files/galaxy/config/`).
 >
 >    Create `files/galaxy/config/job_conf.xml` with the following contents:
 >
@@ -309,6 +313,12 @@ At the top of the stack sits Galaxy. Galaxy must now be configured to use the cl
 >        </destinations>
 >    </job_conf>
 >    ```
+>
+>    > ### {% icon comment %} Note
+>    >
+>    > Depending on the order in which you are completing this tutorial in relation to other tutorials, you may have already created the `job_conf.xml` file, as well as defined `galaxy_config_files` and set the `job_config_file` option in `galaxy_config` (step 4). If this is the case, be sure to **merge the changes in this section with your existing playbook**.
+>    {: .comment}
+>
 > 3. Next, we need to configure the Slurm job runner. First, we instruct Galaxy's job handlers to load the Slurm job runner plugin, and set the Slurm job submission parameters. A job runner plugin definition must have the `id`, `type`, and `load` attributes. Then we add a basic destination with no parameters, Galaxy will do the equivalent of submitting a job as `sbatch /path/to/job_script.sh`. Note that we also need to set a default destination now that more than one destination is defined. In a `<destination>` tag, the `id` attribute is a unique identifier for that destination and the `runner` attribute must match the `id` of a defined plugin:
 >
 >    ```diff
@@ -330,23 +340,31 @@ At the top of the stack sits Galaxy. Galaxy must now be configured to use the cl
 >
 > 4. Inform `galaxyproject.galaxy` of where you would like the `job_conf.xml` to reside in your group variables:
 >
+>    {% raw %}
 >    ```yaml
+>    galaxy_job_config_file: "{{ galaxy_config_dir }}/job_conf.xml"
+>
 >    galaxy_config:
 >      galaxy:
->        job_config_file: {% raw %}"{{ galaxy_config_dir }}/job_conf.xml"{% endraw %}
+>        # ... existing configuration options in the `galaxy` section ...
+>        job_config_file: "{{ galaxy_job_config_file }}"
 >    ```
+>    {% endraw %}
 >
->    And then deploy the new config file using the `galaxy_config_files` var in your group vars
+>    And then deploy the new config file using the `galaxy_config_files` var in your group vars:
 >
+>    {% raw %}
 >    ```yaml
 >    galaxy_config_files:
+>      # ... possible existing config file definitions
 >      - src: files/galaxy/config/job_conf.xml
->        dest: {% raw %}"{{ galaxy_config['galaxy']['job_config_file'] }}"{% endraw %}
+>        dest: "{{ galaxy_job_config_file }}"
 >    ```
+>    {% endraw %}
 >
 >      The variable `galaxy_config_files` is an array of hashes, each with `src` and `dest`, the files from src will be copied to dest on the server. `galaxy_template_files` exist to template files out.
 >
-> 5. Run your *Galaxy* playbook (`ansible-playbook -i hosts galaxy.yml`)
+> 5. Run your *Galaxy* playbook (`ansible-playbook galaxy.yml`)
 >
 > 6. Follow the logs with `journalctl -f -u galaxy`
 >
@@ -489,14 +507,14 @@ We don't want to overload our training VMs trying to run real tools, so to demon
 >    ```
 >    {: .question}
 >
-> 2. Add the tool to the galaxy group variables under the new item `galaxy_local_tools`
+> 2. Add the tool to the Galaxy group variables under the new item `galaxy_local_tools` :
 >
 >    ```yaml
 >    galaxy_local_tools:
 >    - testing.xml
 >    ```
 >
-> 3. Run the playbook
+> 3. Run the Galaxy playbook.
 >
 > 4. Reload Galaxy in your browser and the new tool should now appear in the tool panel. If you have not already created a dataset in your history, upload a random text dataset. Once you have a dataset, click the tool's name in the tool panel, then click Execute.
 >
@@ -539,7 +557,7 @@ We want our tool to run with more than one core. To do this, we need to instruct
 >        </tools>
 >    ```
 >
-> 3. Run the playbook. Because we modified `job_conf.xml`, Galaxy will be restarted to reread its config files.
+> 3. Run the Galaxy playbook. Because we modified `job_conf.xml`, Galaxy will be restarted to reread its config files.
 >
 > 4. Click the rerun button on the last history item, or click **Testing Tool** in the tool panel, and then click the tool's Execute button.
 >
@@ -611,7 +629,7 @@ Dynamic destinations allow you to write custom python code to dispatch jobs base
 >        </tools>
 >    ```
 >
-> 5. Run the playbook
+> 5. Run the Galaxy playbook.
 >
 {: .hands_on}
 
@@ -685,7 +703,7 @@ If you don't want to write dynamic destinations yourself, Dynamic Tool Destinati
 >        </tools>
 >    ```
 >
-> 4. Run the playbook
+> 4. Run the Galaxy playbook.
 >
 {: .hands_on}
 
@@ -848,7 +866,7 @@ Lastly, we need to write the rule that will read the value of the job resource p
 >        - map_resources.py
 >      ```
 >
-> 3. Run the playbook
+> 3. Run the Galaxy playbook.
 >
 > 4. Run the **Testing Tool** with various resource parameter selections
 >
