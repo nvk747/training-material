@@ -168,7 +168,7 @@ Below we describe two examples of how toy datasets were generated for tutorials:
     - Concatenate the two lists and remove the duplicated IDs.
     - Use **seqtk_subseq** {% icon tool %} to sample your original FASTQ with the list of IDs.
 
-We would then develop the tutorial and test it on this toy dataset. Once we were ready to share it, we would upload the datasets on [Zenodo](https://zenodo.org/) to store them on long-term and obtain a dedicated DOI in the [Galaxy training network community](https://zenodo.org/communities/galaxy-training/?page=1&size=20).
+We would then develop the tutorial and test it on this toy dataset. Once we were ready to share it, we would upload the datasets to [Zenodo](https://zenodo.org/) to store them on long-term and obtain a dedicated DOI in the [Galaxy training network community](https://zenodo.org/communities/galaxy-training/?page=1&size=20).
 
 > ### {% icon hands_on %} Hands-on: Upload the dataset to Zenodo
 >
@@ -213,7 +213,7 @@ Now that you have the structure in place, you can then fill the tutorial per se.
 
 # Add some technical support (recommended)
 
-To able to run the tutorial, we need a Galaxy instance where the needed tools and the data are available. We need then to describe the required technical infrastructure. Tools are installed based on the workflows in the `workflows` directory.
+To be able to run the tutorial, we need a Galaxy instance where the needed tools and the data are available. We need then to describe the required technical infrastructure. Tools are installed based on the workflows in the `workflows` directory.
 
 This description will be used to automatically set up a Docker Galaxy flavour, to set up an existing Galaxy instance and also to test if a public Galaxy instance is able to run the tool.
 
@@ -248,7 +248,7 @@ To develop a new tutorial:
 1. Determine the topic
 2. Create the directory for the tutorial
 3. Add some metadata
-4. Find a good toy dataset and upload it on Zenodo
+4. Find a good toy dataset and upload it to Zenodo
 5. Write the tutorial
 6. Add some technical support (recommended)
 7. Add slides (optional)
@@ -259,8 +259,9 @@ For the next times, you can make it quicker.
 >
 > 1. Determine the topic
 > 2. Create your workflow on a running Galaxy instance
-> 3. Create a Zenodo record with the input data
-> 4. Generate the skeleton of your tutorial
+> 3. Add the topic name as a Tag and the tutorial title as Annotation/Notes to the workflow using the workflow editor.
+> 4. Create a Zenodo record with the input data
+> 5. Generate the skeleton of your tutorial
 >    - option 1: from a workflow located on a Galaxy
 >      ```
 >      $ planemo training_init \
@@ -282,10 +283,10 @@ For the next times, you can make it quicker.
 >             --workflow "path/to/workflow" \
 >             --zenodo_link "URL to the Zenodo record"
 >      ```
->      You can use the example workflow file located in `topics/contributing/tutorials/create-new-tutorial/workflows/example-workflow.ga` if
+>      You can use the example workflow file located at `topics/contributing/tutorials/create-new-tutorial/workflows/example-workflow.ga` if
 >      you do not have a workflow of your own. This is the workflow belonging to the *Galaxy 101* introduction tutorial.
 >
-> 5. Fill the remaining metadata in the `tutorial.md`
-> 6. Fill the content of the `tutorial.md`
-> 7. Check it using Jekyll
+> 6. Fill the remaining metadata in the `tutorial.md`
+> 7. Fill the content of the `tutorial.md`
+> 8. Check it using Jekyll
 {: .hands_on}

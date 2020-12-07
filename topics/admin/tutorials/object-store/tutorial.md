@@ -84,7 +84,7 @@ First, note that your Galaxy datasets have been created thus far in the director
 >    </object_store>
 >    ```
 >
-> 4. Add a `pre_task` to create the `/data2` folder [using the file module](https://docs.ansible.com/ansible/latest/modules/file_module.html).
+> 4. Add a `pre_task` to create the `/data2` folder [using the file module](https://docs.ansible.com/ansible/2.9/modules/file_module.html).
 >
 >    ```
 >        - name: Create the second storage directory
@@ -152,6 +152,17 @@ Sites like UseGalaxy.eu use the distributed object store in order to balance dat
 > ### {% icon details %} More documentation
 >
 > More information can be found in the [sample file](https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/config/sample/object_store_conf.xml.sample).
+>
+{: .details}
+
+> ### {% icon tip %} Can I distribute objects based on the user?
+>
+> Yes! You must write your own dynamic job handler code to handle this.
+> See [PR#6552](https://github.com/galaxyproject/galaxy/pull/6552) and [PR#10233](https://github.com/galaxyproject/galaxy/pull/10233)
+>
+> If you implement something like this, please [let the GTN
+> know](https://github.com/galaxyproject/training-material/issues/new) with
+> some example code, and we can include this as a training module for everyone.
 >
 {: .details}
 

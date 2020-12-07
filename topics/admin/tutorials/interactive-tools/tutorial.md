@@ -21,6 +21,7 @@ contributors:
   - natefoo
   - slugger70
   - hexylena
+  - abretaud
 tags:
   - ansible
 requirements:
@@ -29,6 +30,7 @@ requirements:
     tutorials:
       - ansible
       - ansible-galaxy
+      - connect-to-compute-cluster
 ---
 
 > ### {% icon warning %} Evolving Topic
@@ -107,7 +109,7 @@ We will use several Ansible roles for this tutorial. In order to avoid repetetiv
 >    - src: geerlingguy.docker
 >      version: 2.6.0
 >    - src: usegalaxy_eu.gie_proxy
->      version: 0.0.1
+>      version: 0.0.2
 >    ```
 >
 > 2. Install the requirements with `ansible-galaxy`:
@@ -201,7 +203,7 @@ When an Interactive Tool's Docker container starts, it will be assigned a random
 - Requests for Galaxy are delivered from nginx to Galaxy over a UNIX domain socket (uWSGI protocol)
 - Requests for Interactive Tools are delivered from nginx to the Interactive Tools Proxy over (by default) **port 8000** (http)
   - GxIT http requests are forwarded by the proxy to Docker on the node on the container's (randomly assigned) **port 32768**
-  - GxIT http requests are again forwarded by Docker to Jupyter on its in-container "published" **port 8888*
+  - GxIT http requests are again forwarded by Docker to Jupyter on its in-container "published" **port 8888**
 
 [//]: # The source for this figure can be found at: https://docs.google.com/presentation/d/1_4PtfM6A4mOxOlgGh6OGWvzFcxD1bdw4CydEWtm5n8k/
 
@@ -222,33 +224,31 @@ The GIE Proxy is written in [Node.js][nodejs] and requires some configuration. T
 >
 >    The relevant variables to set for this role are:
 >
->    | Variable                      | Type          | Description                                                           |
->    | ----------                    | -------       | -------------                                                         |
->    | `gie_proxy_dir`               | path (string) | Path of directory into which the proxy application will be installed  |
->    | `gie_proxy_git_version`       | string        | Git reference to clone                                                |
->    | `gie_proxy_setup_nodejs`      | string        | Whether to install Node.js, options are `package` and `nodeenv`       |
->    | `gie_proxy_virtulenv_command` | string        | Command to create virtualenv when using `nodeenv` method              |
->    | `gie_proxy_nodejs_version`    | string        | Version of Node.js to install if using `nodeenv` method               |
->    | `gie_proxy_virtualenv`        | path (string) | Path of virtualenv into which nodeenv/Node.js/npm will be installed   |
->    | `gie_proxy_setup_service`     | string        | Whether to configure the proxy as a service, only option is `systemd` |
->    | `gie_proxy_sessions_path`     | path (string) | Path of Interactive Tools sessions map                                |
+>    | Variable                       | Type          | Description                                                           |
+>    | ----------                     | -------       | -------------                                                         |
+>    | `gie_proxy_dir`                | path (string) | Path of directory into which the proxy application will be installed  |
+>    | `gie_proxy_git_version`        | string        | Git reference to clone                                                |
+>    | `gie_proxy_setup_nodejs`       | string        | Whether to install Node.js, options are `package` and `nodeenv`       |
+>    | `gie_proxy_virtualenv_command` | string        | Command to create virtualenv when using `nodeenv` method              |
+>    | `gie_proxy_nodejs_version`     | string        | Version of Node.js to install if using `nodeenv` method               |
+>    | `gie_proxy_virtualenv`         | path (string) | Path of virtualenv into which nodeenv/Node.js/npm will be installed   |
+>    | `gie_proxy_setup_service`      | string        | Whether to configure the proxy as a service, only option is `systemd` |
+>    | `gie_proxy_sessions_path`      | path (string) | Path of Interactive Tools sessions map                                |
 >
 >    Add the following lines to your `group_vars/galaxyservers.yml` file:
 >
 >    {% raw %}
 >    ```yaml
 >    gie_proxy_dir: /srv/galaxy/gie-proxy/proxy
->    gie_proxy_git_version: ie2
+>    gie_proxy_git_version: master
 >    gie_proxy_setup_nodejs: nodeenv
->    gie_proxy_virtulenv_command: "{{ pip_virtualenv_command }}"
+>    gie_proxy_virtualenv_command: "{{ pip_virtualenv_command }}"
 >    gie_proxy_nodejs_version: "10.13.0"
 >    gie_proxy_virtualenv: /srv/galaxy/gie-proxy/venv
 >    gie_proxy_setup_service: systemd
 >    gie_proxy_sessions_path: "{{ galaxy_mutable_data_dir }}/interactivetools_map.sqlite"
 >    ```
 >    {% endraw %}
->
->    Note the value of `gie_proxy_git_version` is `ie2`: this is because the default branch only works with Interactive Environments, whereas the `ie2` branch has been updated for Interactive Tools. As Interactive Tools mature, this will likely be merged back to the default branch.
 >
 >    We have chosen to install Node.js using [nodeenv][] because the version in the training image's package manager is fairly old.
 >
@@ -365,9 +365,11 @@ During the [Galaxy Installation with Ansible]({% link topics/admin/tutorials/ans
 
 In order to ensure each Interactive Tool's cookies are unique, and to provide each tool with a unique entry point, they are served from a subdomain of your Galaxy server (e.g. `<unique-id>.interactivetoolentrypoint.interactivetool.galaxy.example.org`). Your SSL cert is not valid for this subdomain. Further, in order to support the random `<unique-id>` in the hostname, we need a *wildcard certificate* for `*.interactivetoolentrypoint.interactivetool.galaxy.example.org`. Let's Encrypt wildcard certificates [can only be generated using the DNS-01 challenge method][lets-encrypt-faq], which works by issuing a [dynamic DNS][ddns] update to set the requested domain's `TXT` record. As a result, this process is highly dependent on your site; specifically, your SSL certificate vendor, and your DNS server software or cloud provider.
 
-If you are completing this tutorial as part of a [Galaxy Admin Training][gat] course, we have precreated a dynamic DNS server that you will use for this step. The *TSIG key* that allows you to perform dynamic DNS updates will be provided to you.
+If you are completing this tutorial as part of a [Galaxy Admin Training][gat] course, we have precreated a dynamic DNS server that you will use for this step. The *TSIG key* that allows you to perform dynamic DNS updates will be provided to you. Your instructor will also tell you which option to follow (1 or 2), depending on the DNS provider that was chosen for this course.
 
-> ### {% icon hands_on %} Hands-on: Requesting a Wildcard Certificate with Certbot using Ansible
+> ### {% icon hands_on %} Hands-on: Requesting a Wildcard Certificate with Certbot using Ansible - Option 1 (rfc2136)
+>
+> This method uses a DNS provider hosted by the Galaxy Project.
 >
 > 1. Edit the group variables file, `group_vars/galaxyservers.yml`:
 >
@@ -440,6 +442,108 @@ If you are completing this tutorial as part of a [Galaxy Admin Training][gat] co
 >
 {: .hands_on}
 
+
+> ### {% icon hands_on %} Hands-on: Requesting a Wildcard Certificate with Certbot using Ansible - Option 2 (route53)
+>
+> This method uses route53, the Amazon Web Services DNS provider. To manage connection to AWS, we will first install a specific role.
+>
+> 1. In your working directory, add the aws_cli role to your `requirements.yml`:
+>
+>    ```yaml
+>    - src: usegalaxy_eu.aws_cli
+>      version: 0.0.1
+>    ```
+>
+> 2. Install the requirements with `ansible-galaxy`:
+>
+>    ```
+>    ansible-galaxy role install -p roles -r requirements.yml
+>    ```
+> 3. Open `galaxy.yml` with your text editor to add the role `usegalaxy_eu.aws_cli` just before the nginx role:
+>
+>    ```diff
+>    diff --git a/galaxy.yml b/galaxy.yml
+>    --- a/galaxy.yml
+>    +++ b/galaxy.yml
+>    @@ -21,6 +21,7 @@
+>           become: true
+>           become_user: galaxy
+>         - usegalaxy_eu.galaxy_systemd
+>    +    - usegalaxy_eu.aws_cli
+>         - galaxyproject.nginx
+>         - geerlingguy.docker
+>         - usegalaxy_eu.gie_proxy
+>    ```
+>
+> 4. Edit the group variables file, `group_vars/galaxyservers.yml`:
+>
+>    The relevant variables to set for this role are:
+>
+>    | Variable                  | Type       | Description                                                                                                      |
+>    | ----------                | -------    | -------------                                                                                                    |
+>    | `certbot_domains`         | list       | List of domains to include as subject alternative names (the first will also be the certificate's *common name*) |
+>    | `certbot_dns_provider`    | string     | Name of [Certbot DNS plugin][certbot-dns-plugins] to use                                                         |
+>    | `certbot_dns_credentials` | dictionary | Plugin-specific credentials for performing dynamic DNS updates                                                   |
+>    | `certbot_expand`          | boolean    | Whether to "expand" an existing certificate (add new domain names to it)                                         |
+>
+>    - Add a new item to the **existing** `certbot_domains` list so it matches:
+>
+>      {% raw %}
+>      ```yaml
+>      certbot_domains:
+>        - "{{ inventory_hostname }}"
+>        - "*.interactivetoolentrypoint.interactivetool.{{ inventory_hostname }}"
+>      ```
+>      {% endraw %}
+>
+>    - Comment out the existing `certbot_auth_method` like so:
+>
+>      ```yaml
+>      #certbot_auth_method: --webroot
+>      ```
+>
+>        Although this is not explicitly required (setting `cerbot_dns_provider` as we do overrides this setting), doing so is less confusing in the future, since it makes it clear that the "webroot" method for Let's Encrypt WEB-01 challenges is no longer in use for this server.
+>
+>    - Add the following lines to your `group_vars/galaxyservers.yml` file:
+>
+>      ```yaml
+>      certbot_dns_provider: route53
+>      aws_cli_credentials:
+>        - access_key: "<SECRET PROVIDED BY INSTRUCTOR>"
+>          secret_key: "<SECRET PROVIDED BY INSTRUCTOR>"
+>          homedir: /root
+>          owner: root
+>          group: root
+>      ```
+>
+> 5. Run the playbook **with `certbot_expand`**:
+>
+>    ```
+>    ansible-playbook galaxy.yml -e certbot_expand=true
+>    ```
+>
+>    > ### {% icon question %} Question
+>    >
+>    > What is the `-e` flag to `ansible-playbook` and why did we use it?
+>    >
+>    > > ### {% icon solution %} Solution
+>    > >
+>    > > As per `ansible-playbook --help`:
+>    > >
+>    > > ```
+>    > >   -e EXTRA_VARS, --extra-vars EXTRA_VARS
+>    > >                         set additional variables as key=value or YAML/JSON, if
+>    > >                         filename prepend with @
+>    > > ```
+>    > >
+>    > > We used this flag because `certbot_expand` only needs to be set *once*, when we are adding a new domain to the certificate. It should not be enabled on subsequent runs of the playbook, or else we would request a new certificate on each run! Thus, it does not make sense to add it to a vars file.
+>    > >
+>    > {: .solution }
+>    >
+>    {: .question}
+>
+{: .hands_on}
+
 You can verify that your certificate has been expanded using your browser's developer tools:
 
 ![Wildcard Certificate Dialog](../../images/interactive-tools/wildcard-cert.png "Wildcard Certificate Dialog")
@@ -455,11 +559,11 @@ A few Interactive Tool wrappers are provided with Galaxy, but they are [commente
 
 > ### {% icon hands_on %} Hands-on: Enabling Interactive Tools in Galaxy
 >
-> 1. Rather than modify the default tool configuration file, we'll add a new one that only references the Interactive Tools. This way, the default set of tools will still load without us having to incorporate the entire default tool config in to our playbook.
+> 1. Rather than modifying the default tool configuration file, we'll add a new one that only references the Interactive Tools. This way, the default set of tools will still load without us having to incorporate the entire default tool config into our playbook.
 >
->    If the folder does not exist, create `files/galaxy/config` next to your `galaxy.yml` (`mkdir -p files/galaxy/config/`)
+>    If the folder does not exist, create `templates/galaxy/config` next to your `galaxy.yml` (`mkdir -p templates/galaxy/config/`)
 >
->    Create `files/galaxy/config/tool_conf_interactive.xml` with the following contents:
+>    Create `templates/galaxy/config/tool_conf_interactive.xml.j2` with the following contents:
 >
 >    ```xml
 >    <toolbox monitor="true">
@@ -471,7 +575,7 @@ A few Interactive Tool wrappers are provided with Galaxy, but they are [commente
 >
 > 2. We need to modify `job_conf.xml` to instruct Galaxy on how run Interactive Tools (and specifically, how to run them in Docker). We will begin with a basic job conf:
 >
->    Create `files/galaxy/config/job_conf.xml` with the following contents:
+>    Create `templates/galaxy/config/job_conf.xml.j2` with the following contents:
 >
 >    ```xml
 >    <job_conf>
@@ -485,7 +589,7 @@ A few Interactive Tool wrappers are provided with Galaxy, but they are [commente
 >    ```
 >
 >    > ### {% icon comment %} Note
->    > Depending on the order in which you are completing this tutorial in relation to other tutorials, you may have already created the `job_conf.xml` file, as well as defined `galaxy_config_files` and set the `job_config_file` option in `galaxy_config` (step 4). If this is the case, be sure to **merge the changes in this section with your existing playbook**.
+>    > Depending on the order in which you are completing this tutorial in relation to other tutorials, you may have already created the `job_conf.xml.j2` file, as well as defined `galaxy_config_templates` and set the `job_config_file` option in `galaxy_config` (step 4). If this is the case, be sure to **merge the changes in this section with your existing playbook**.
 >    {: .comment}
 >
 > 3. Next, we need to configure the interactive tools destination. First, we explicitly set the destination to the default `local` destination since there will now be two destinations defined. Then we add a destination for submitting jobs as docker containers using the [advanced sample job configuration][job-conf-docker] as a guide. Finally, use the [EtherCalc GxIT's][ethercalc-tool-wrapper] tool ID to route executions of the EtherCalc GxIT to the newly created destination:
@@ -531,27 +635,25 @@ A few Interactive Tool wrappers are provided with Galaxy, but they are [commente
 >
 >    {% raw %}
 >    ```yaml
->    galaxy_job_config_file: "{{ galaxy_config_dir }}/job_conf.xml"
->
 >    galaxy_config:
 >      galaxy:
 >        # ... existing configuration options in the `galaxy` section ...
->        job_config_file: "{{ galaxy_job_config_file }}"
->        interactivetools_enable: "True"
+>        job_config_file: "{{ galaxy_config_dir }}/job_conf.xml"
+>        interactivetools_enable: true
 >        interactivetools_map: "{{ gie_proxy_sessions_path }}"
 >    ```
 >    {% endraw %}
 >
->    And then deploy the new config files using the `galaxy_config_files` var in your group vars:
+>    And then deploy the new config templates using the `galaxy_config_templates` var in your group vars:
 >
 >    {% raw %}
 >    ```yaml
->    galaxy_config_files:
+>    galaxy_config_templates:
 >      # ... possible existing config file definitions
->      - src: files/galaxy/config/tool_conf_interactive.xml
+>      - src: templates/galaxy/config/tool_conf_interactive.xml.j2
 >        dest: "{{ galaxy_config_dir }}/tool_conf_interactive.xml"
->      - src: files/galaxy/config/job_conf.xml
->        dest: "{{ galaxy_job_config_file }}"
+>      - src: templates/galaxy/config/job_conf.xml.j2
+>        dest: "{{ galaxy_config.galaxy.job_config_file }}"
 >    ```
 >    {% endraw %}
 >
@@ -664,7 +766,7 @@ Because we want to maintain dataset privacy, Pulsar is the better choice here. A
 >    ```
 >    {% endraw %}
 >
-> 2. Modify the job configuration file, `files/galaxy/config/job_conf.xml`, to configure Interactive Tools to use the embedded Pulsar runner.
+> 2. Modify the job configuration file, `templates/galaxy/config/job_conf.xml.j2`, to configure Interactive Tools to use the embedded Pulsar runner.
 >
 >    <br/>
 >
@@ -720,7 +822,7 @@ Because we want to maintain dataset privacy, Pulsar is the better choice here. A
 >    ```
 >    {% endraw %}
 >
->    Addiitionally, you will need to set the `galaxy_infrastructure_url` config option:
+>    Additionally, you will need to set the `galaxy_infrastructure_url` config option:
 >
 >    {% raw %}
 >    ```yaml
